@@ -1,0 +1,37 @@
+﻿@model CarDealership2.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<div class="row">
+    <div class="col-xs-6">
+        @*Note:(return urlquery string parameter) when asp.net redirects a user to the login page, it will automatically populate
+        this information so that after logging in we can return the user to the resource they were trying to acces*@
+        <h2>Login</h2>
+        @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            //Note: WeakReference are using the @Html.AntiForgeryToken() method to ensure users can only login
+            //    if they are on the sam emachine
+            //        'that originally requested the form
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>User Name</label>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.RememberMe) Remember me?
+                </label>
+            </div>
+            <button class="btn btn-primary">Log In</button>
+        }
+    </div>
+</div>

@@ -8,14 +8,14 @@ using System.Web;
 
 namespace CarDealership2.Repositories
 {
-    public class ModelRepositoryQA : IModelRepository
+    public class UserRepositoryQA : IUserRepository
     {
-        public void Add(AddModelVM viewmodel)
+        public void Add(AddUserDataVM viewmodel)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Model> GetAll()
+        public IEnumerable<UserData> GetAll()
         {
             throw new NotImplementedException();
         }

@@ -1,0 +1,27 @@
+﻿@model CarDealership2.ViewModels.AddModelVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("Test", "Admin", FormMethod.Post))
+        {
+        <div class="form-group">
+            @Html.LabelFor(m => m.vehicleModel.ModelName)
+            @Html.TextBoxFor(m => m.vehicleModel.ModelName, new {@class = "form-control", placeholder = "Model Name" })
+            @*after sending post the view model model.ModelName field should be whatever I put into the texbox*@
+        </div>
+        <button type="submit" class="btn btn-primary">Send Post</button>
+        }
+    </div>
+</body>
+</html>

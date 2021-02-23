@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CarDealership2.Interfaces
 {
-    public interface IModelRepository
+    public interface IUserRepository
     {
-        IEnumerable<Model> GetAll();
-        void Add(AddModelVM model);
+        void Add(AddUserDataVM viewmodel);
+        IEnumerable<UserData> GetAll();
     }
 }

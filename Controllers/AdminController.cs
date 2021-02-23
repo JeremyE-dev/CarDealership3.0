@@ -28,7 +28,7 @@ namespace CarDealership2.Controllers
             //pass user name to the model and
 
             //model.currentUsername = User.Identity.GetUserName();
-            
+
 
             //give the view a list of makes to display
             return View(model);
@@ -65,7 +65,7 @@ namespace CarDealership2.Controllers
                 //model.Add(model.make.MakeName);
                 //update list
                 model.makes = MakeRepo.GetAll().ToList();
-                
+
                 model.currentUsername = User.Identity.GetUserName();
 
                 MakeRepositoryFactory.Create().Add(model.make.MakeName, model.currentUsername);
@@ -85,6 +85,25 @@ namespace CarDealership2.Controllers
             }
         }
 
+        //[HttpGet]
+
+        //public ActionResult Test ()
+        //{
+        //    var model = new AddModelVM();
+        //    //how does the data get from a text box to  the rerurned model
+
+        //    return View(model);
+
+        //}
+
+        //[HttpPost]
+        //public ActionResult Test(AddModelVM model)
+        //{
+        //    string s = model.vehicleModel.ModelName;
+
+        //    return View(model);
+
+        //}
 
         [HttpGet]
         public ActionResult Models()
@@ -93,13 +112,13 @@ namespace CarDealership2.Controllers
             var model = new AddModelVM();
             //new instance of repo
             //needed to populated model list
-            var modelRepository = ModelRepositoryFactory.Create();
+            //var modelRepository = ModelRepositoryFactory.Create();
 
             var makeRepository = MakeRepositoryFactory.Create();
             
             //populates list of models
-            model.models = modelRepository.GetAll().ToList(); //this could be null - no seed data
-            
+            model.models = ModelRepositoryFactory.Create().GetAll().ToList(); //this could be null - no seed data
+
             //populates drop down - I think :)
             model.Makes = from m in makeRepository.GetAll()
                           select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
@@ -116,10 +135,10 @@ namespace CarDealership2.Controllers
 
             var repository = ModelRepositoryFactory.Create();
 
-            if (string.IsNullOrEmpty(model.model.ModelName))
+            if (string.IsNullOrEmpty(model.vehicleModel.ModelName))
             {
 
-                ModelState.AddModelError("model.ModelName", "Please Enter a Model Name");
+                ModelState.AddModelError("vehicleModel.ModelName", "Please Enter a Model Name");
 
             }
 
@@ -127,10 +146,17 @@ namespace CarDealership2.Controllers
             {
 
                 model.models = ModelRepo.GetAll().ToList();
-
                 model.currentUsername = User.Identity.GetUserName();
+                
+                //model.MakeId = model.SelectedMakeId;
 
-                ModelRepositoryFactory.Create().Add(model.model.ModelName, model.currentUsername);
+                //change over to model
+
+                //chamge this to take a viewmodel 
+                //MakeRepositoryFactory.Create().Add(model.make.MakeName, model.currentUsername);
+
+                //-- change create.add to take in a view model --
+                ModelRepositoryFactory.Create().Add(model);
 
                 return RedirectToAction("Models", model);
             }
@@ -146,6 +172,30 @@ namespace CarDealership2.Controllers
             }
 
         }
+
+        //[HttpGet]
+        //public ActionResult Users()
+        //{
+        //    return View();
+        //}
+
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            AddUserDataVM model = new AddUserDataVM();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddUser(AddUserDataVM model)
+        {
+            return View();
+        }
+
+        //public ActionResult EditUser()
+        //{
+        //    return View();
+        //}
 
 
     }

@@ -1,5 +1,6 @@
 ﻿using CarDealership2.Interfaces;
 using CarDealership2.Models;
+using CarDealership2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,21 @@ namespace CarDealership2.Repositories
 {
     public class ModelRepositoryProd : IModelRepository
     {
-        public void Add(string modelname, string username)
+        public void Add(AddModelVM viewmodel)
         {
             var repository = new CarDealership2DbContext();
             Model model = new Model();
-            model.ModelName = modelname;
+            //set modelname - from html textbox
+            model.ModelName = viewmodel.vehicleModel.ModelName;
+            //sets new id
             model.ModelId = repository.Models.Max(m => m.ModelId) + 1;
+            //sets dateadded
             model.DateAdded = DateTime.Today.ToShortDateString();
-            //model.MakeId = model.SelectedMakeId;
-            //var Make = repository.Makes.FirstOrDefault(m => m.MakeId == model.MakeId);
-            //model.MakeName = Make.MakeName;
+            model.MakeId = viewmodel.SelectedMakeId;
+            var Make = repository.Makes.FirstOrDefault(m => m.MakeId == model.MakeId);
+            model.MakeName = Make.MakeName;
             // linq query to get the emmail address of the current user
-            var currentuser = repository.Users.Where(u => u.UserName == username).FirstOrDefault();
+            var currentuser = repository.Users.Where(u => u.UserName == viewmodel.currentUsername).FirstOrDefault();
 
             //now current user email is in the DB
             model.currentUserEmail = currentuser.Email;

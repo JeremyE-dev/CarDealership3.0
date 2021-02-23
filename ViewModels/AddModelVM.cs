@@ -9,7 +9,7 @@ namespace CarDealership2.ViewModels
 {
     public class AddModelVM
     {
-        public Model model { get; set; }
+        public Model vehicleModel { get; set; }
 
         public string currentUserEmail { get; set; }
 
@@ -20,14 +20,15 @@ namespace CarDealership2.ViewModels
         //need to add select lo
 
         //not sure what role this plays - this hold the items to select from
-        public  int SelectedMakeId { get; set; }
+        public int SelectedMakeId { get; set; }
         public IEnumerable<SelectListItem> Makes { get; set; }
 
         public AddModelVM()
         {
-            model = new Model();
+            vehicleModel = new Model();
             models = new List<Model>();
             currentUserEmail = "";
+            SelectedMakeId = 0;
 
         }
     }

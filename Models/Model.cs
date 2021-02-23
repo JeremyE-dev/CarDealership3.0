@@ -10,8 +10,8 @@ namespace CarDealership2.Models
         public int ModelId { get; set; }
         public string ModelName { get; set; }
 
-        //public int? MakeId { get; set; }
-        //public string MakeName { get; set; }
+        public int? MakeId { get; set; }
+        public string MakeName { get; set; }
         public string DateAdded { get; set; }
         public string currentUserEmail { get; set; }
 

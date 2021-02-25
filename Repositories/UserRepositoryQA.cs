@@ -15,7 +15,12 @@ namespace CarDealership2.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<UserData> GetAll()
+        //public IEnumerable<UserData> GetAll()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        List<AppUser> IUserRepository.GetAll()
         {
             throw new NotImplementedException();
         }

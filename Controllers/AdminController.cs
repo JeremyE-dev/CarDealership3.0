@@ -1,7 +1,11 @@
 ﻿using CarDealership2.Factories;
 using CarDealership2.Interfaces;
+using CarDealership2.Models;
 using CarDealership2.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+//using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +17,26 @@ namespace CarDealership2.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
+
+        //private UserManager<AppUser> _userManager = UserManager<ApplicationUserManager>;
+
         // GET: Admin
         //Note: in memory repo, add one vehicle, static list not allowing to add multiple items
         //fix later if required
+
+        //private readonly RoleManager<IdentityRole> roleManager;
+
+        //private readonly UserManager<AppUser> userManager;
+
+        //public AdminController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+        //{
+        //    this.roleManager = roleManager;
+        //    this.userManager = userManager;
+
+
+        //}
+
+
 
         [HttpGet]
         public ActionResult Makes()
@@ -115,7 +136,7 @@ namespace CarDealership2.Controllers
             //var modelRepository = ModelRepositoryFactory.Create();
 
             var makeRepository = MakeRepositoryFactory.Create();
-            
+
             //populates list of models
             model.models = ModelRepositoryFactory.Create().GetAll().ToList(); //this could be null - no seed data
 
@@ -147,7 +168,7 @@ namespace CarDealership2.Controllers
 
                 model.models = ModelRepo.GetAll().ToList();
                 model.currentUsername = User.Identity.GetUserName();
-                
+
                 //model.MakeId = model.SelectedMakeId;
 
                 //change over to model
@@ -180,23 +201,50 @@ namespace CarDealership2.Controllers
         //}
 
         [HttpGet]
-        public ActionResult AddUser()
+        public ActionResult Users()
         {
-            AddUserDataVM model = new AddUserDataVM();
+            //var userManager = Request.GetOwinContext().GetUserManager<AppUser>();
+
+            //var roles = userManager.GetRoles(User.Identity.GetUserId());
+
+            //ApplicationUserManager userManager = 
+            //var appUserManager = new ApplicationUserManager(AppUser);
+            var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
+
+            var model = new UsersVM();
+            model.UserList = (IEnumerable<AppUser>)UserRepositoryFactory.Create().GetAll().ToList();
+
+            foreach (AppUser x in model.UserList)
+            {
+                //checkt this out
+                //why is th seco
+               x.RoleName = userManager.GetRoles(x.Id.ToString()).FirstOrDefault();
+            }
             return View(model);
+
         }
 
-        [HttpPost]
-        public ActionResult AddUser(AddUserDataVM model)
-        {
-            return View();
+            [HttpGet]
+            public ActionResult AddUser()
+            {
+                AddUserDataVM model = new AddUserDataVM();
+                return View(model);
+            }
+
+            [HttpPost]
+            public ActionResult AddUser(AddUserDataVM model)
+            {
+                return View();
+            }
+
+            //public ActionResult EditUser()
+            //{
+            //    return View();
+            //}
+
+
         }
-
-        //public ActionResult EditUser()
-        //{
-        //    return View();
-        //}
-
-
     }
-}
+
+
+

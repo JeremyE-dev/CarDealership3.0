@@ -3,6 +3,7 @@
     using CarDealership2.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -13,6 +14,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            
         }
 
         protected override void Seed(CarDealership2.CarDealership2DbContext context)
@@ -88,8 +90,13 @@
             var user1 = new AppUser()
             {
                 UserName = "admin",
-                Email = "admin@sgcars.com"
+                Email = "admin@sgcars.com",
+                FirstName = "Tom",
+                LastName ="Baker",
+                RoleName ="Admin"
+
             };
+            context.SaveChanges();
 
 
 
@@ -102,8 +109,12 @@
             var user2 = new AppUser()
             {
                 UserName = "sales",
-                Email = "sales@sgcars.com"
+                Email = "sales@sgcars.com",
+                FirstName = "William",
+                LastName = "Hartnel",
+                RoleName = "Sales"
             };
+            context.SaveChanges();
 
             // create the user with the manager class
             userMgr.Create(user2, "testing456");

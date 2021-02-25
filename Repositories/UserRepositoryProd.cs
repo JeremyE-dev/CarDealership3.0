@@ -10,14 +10,34 @@ namespace CarDealership2.Repositories
 {
     public class UserRepositoryProd : IUserRepository
     {
+        public IEnumerable<AppUser> UserList { get; set; }
+
         public void Add(AddUserDataVM viewmodel)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<UserData> GetAll()
+        public List<AppUser> GetAll()
         {
-            throw new NotImplementedException();
+            var repository = new CarDealership2DbContext();
+
+            //get the role name here and set it somehow
+            //
+            //var x = repository.
+
+
+            var u = from user in repository.Users
+                    select user;
+
+            //foreach(User x in repository.Users)
+
+
+
+            return u.ToList();
+
+            
         }
+
+      
     }
 }

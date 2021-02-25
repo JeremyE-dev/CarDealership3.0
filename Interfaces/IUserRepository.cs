@@ -11,6 +11,8 @@ namespace CarDealership2.Interfaces
     public interface IUserRepository
     {
         void Add(AddUserDataVM viewmodel);
-        IEnumerable<UserData> GetAll();
+        //IEnumerable<UserData> GetAll();
+
+        List<AppUser> GetAll();
     }
 }

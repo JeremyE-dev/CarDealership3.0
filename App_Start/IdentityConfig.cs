@@ -29,6 +29,10 @@ namespace CarDealership2.App_Start
             app.CreatePerOwinContext<RoleManager<AppRole>>((options, context) =>
                 new RoleManager<AppRole>(
                     new RoleStore<AppRole>(context.Get<CarDealership2DbContext>())));
+            //experiment
+            //app.CreatePerOwinContext<UserManager<AppUser>>((options, context) =>
+            //    new UserManager<AppUser>(
+            //        new UserStore<AppUser>(context.Get<CarDealership2DbContext>())));
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

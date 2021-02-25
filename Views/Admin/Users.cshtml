@@ -1,0 +1,50 @@
+﻿@model CarDealership2.ViewModels.UsersVM
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Users</title>
+</head>
+<body>
+
+    <div style="padding-top: 25px; " class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <table class=" table table-bordered table-striped table-hover" style="width: auto;">
+                    <thead>
+                        <tr>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.UserList)
+                        {
+                        <tr>
+                            <td>@user.LastName</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.Email</td>
+                            <td>@user.RoleName</td>
+                            @*<td>@Roles.GetRolesForUser(user.UserName).FirstOrDefault();</td>*@
+                            @*<td>@user.Roles.Where(u => u.UserId == user.Id).GetRolesForUser().GetFirstOrDefault();</td>*@
+                            @*get the role that matches the userid*@
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

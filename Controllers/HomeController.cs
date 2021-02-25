@@ -39,6 +39,8 @@ namespace CarDealership2.Controllers
             var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
             var authManager = HttpContext.GetOwinContext().Authentication;
 
+            
+
             // attempt to load the user with this password
             AppUser user = userManager.Find(model.UserName, model.Password);
 

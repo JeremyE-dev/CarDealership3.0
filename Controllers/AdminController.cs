@@ -1,14 +1,18 @@
 ﻿using CarDealership2.Factories;
 using CarDealership2.Interfaces;
 using CarDealership2.Models;
+using CarDealership2.Repositories;
 using CarDealership2.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+
 //using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,17 +30,14 @@ namespace CarDealership2.Controllers
 
         //private readonly RoleManager<IdentityRole> roleManager;
 
-        //private readonly UserManager<AppUser> userManager;
+        ////private readonly UserManager<AppUser> userManager;
 
-        //public AdminController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+        //public AdminController(RoleManager<IdentityRole> roleManager)
         //{
         //    this.roleManager = roleManager;
-        //    this.userManager = userManager;
 
 
         //}
-
-
 
         [HttpGet]
         public ActionResult Makes()
@@ -227,11 +228,80 @@ namespace CarDealership2.Controllers
             [HttpGet]
             public ActionResult AddUser()
             {
-                AddUserDataVM model = new AddUserDataVM();
+
+                RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
+                
+                AddUserVM model = new AddUserVM();
+
+                var context = new CarDealership2DbContext();
+
+                var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+
+                var roles = roleMgr.Roles;
+
+                model.Roles = from m in RoleRepo.GetAll()
+                                select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
+
                 return View(model);
             }
 
             [HttpPost]
+            public async Task<ActionResult> AddUser(AddUserVM model)
+            {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
+
+            //got the 
+            var context = new CarDealership2DbContext();
+
+            var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+
+            var roles = roleMgr.Roles;
+
+            //populate select list
+
+
+            var user = new AppUser
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                UserName = model.Email
+            };
+
+            await userManager.CreateAsync(user, model.Password);
+
+            return View(model);
+
+
+            //var signInManager = new SignInManager<AppUser>(new UserStore<AppUser>(context));
+
+
+
+            //now get an identity user of the type I extended
+
+            //if (ModelState.IsValid)
+            //{
+            //    //add role to field in userVM for easier access
+            //    var user = new AppUser
+            //    {
+            //        FirstName = model.FirstName,
+            //        LastName = model.LastName,
+            //        Email = model.Email,
+            //        UserName = model.Email
+            //    };
+
+            //var result = await userManager.CreateAsync(user, model.Password);
+
+            //    //if (result.Succeeded) { }
+
+            //}
+  
+            }
+
+
+
+
+        [HttpPost]
             public ActionResult AddUser(AddUserDataVM model)
             {
                 return View();

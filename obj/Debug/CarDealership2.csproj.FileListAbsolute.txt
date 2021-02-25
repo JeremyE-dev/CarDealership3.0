@@ -361,3 +361,13 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migration
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.roleTest.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.wednesday.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.test3.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Microsoft.Owin.Host.HttpListener.dll
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Microsoft.Owin.Hosting.dll
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Net.Http.Formatting.dll
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.Http.dll
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.Http.Owin.dll
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Microsoft.Owin.Host.HttpListener.xml
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Microsoft.Owin.Hosting.xml
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Net.Http.Formatting.xml
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.Http.xml
+C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.Http.Owin.xml

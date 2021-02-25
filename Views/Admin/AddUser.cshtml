@@ -1,4 +1,4 @@
-﻿@model CarDealership2.ViewModels.AddUserDataVM
+﻿@model CarDealership2.ViewModels.AddUserVM
 
 @{
     Layout = "~/Views/Shared/_NewLayout.cshtml";
@@ -20,10 +20,10 @@
                 {
                     <div class="form-group">
                         <label for="FirstName"> First Name </label>
-                        @Html.TextBoxFor(m => m.user.FirstName, new { @class = "form-horizontal", placeholder = "first name" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-horizontal", placeholder = "first name" })
 
                         <label for="LastName"> Last Name </label>
-                        @Html.TextBoxFor(m => m.user.LastName, new { @class = "form-horizontal", placeholder = "last name" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-horizontal", placeholder = "last name" })
 
                     </div>
 
@@ -34,8 +34,8 @@
                     @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, "-Select-", new { @class = "form-horizontal" })*@
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.user.Email)
-                        @Html.TextBoxFor(m => m.user.Email, new { @class = "form-horizontal", placeholder = "email" })
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-horizontal", placeholder = "email" })
 
                         @Html.LabelFor(m => m.Roles)
                         @Html.DropDownListFor(m => m.SelectedRoleId, Model.Roles, "-Select-", new { @class = "form-horizontal" })
@@ -43,7 +43,7 @@
 
                     <div class="form-group">
                         <label for="Password"> Password </label>
-                        @Html.TextBoxFor(m => m.user.Password, new { @class = "form-horizontal", placeholder = "password" })
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-horizontal", placeholder = "password" })
 
                         <label for="ConfirmPassword"> Confirm Password </label>
                         @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-horizontal", placeholder = "confirm password" })

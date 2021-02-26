@@ -10,7 +10,9 @@ namespace CarDealership2.Repositories
 {
     public class UserRepositoryQA : IUserRepository
     {
-        public void Add(AddUserDataVM viewmodel)
+   
+
+        public void Add(AddUserVM viewmodel)
         {
             throw new NotImplementedException();
         }

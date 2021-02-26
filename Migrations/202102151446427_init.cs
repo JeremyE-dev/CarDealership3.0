@@ -29,7 +29,7 @@
                         LastName = c.String(maxLength: 50),
                         Email = c.String(maxLength: 50),
                         Role = c.String(maxLength: 50),
-                        Password = c.String(maxLength: 50),
+                        Password = c.String(),
                     })
                 .PrimaryKey(t => t.UserId);
             

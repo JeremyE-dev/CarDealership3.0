@@ -334,6 +334,14 @@
     <Compile Include="Migrations\202102241734475_test3.designer.cs">
       <DependentUpon>202102241734475_test3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102261627058_init1.cs" />
+    <Compile Include="Migrations\202102261627058_init1.designer.cs">
+      <DependentUpon>202102261627058_init1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102261736139_init2.cs" />
+    <Compile Include="Migrations\202102261736139_init2.designer.cs">
+      <DependentUpon>202102261736139_init2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -490,6 +498,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102241734475_test3.resx">
       <DependentUpon>202102241734475_test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102261627058_init1.resx">
+      <DependentUpon>202102261627058_init1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102261736139_init2.resx">
+      <DependentUpon>202102261736139_init2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

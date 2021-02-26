@@ -226,18 +226,18 @@ namespace CarDealership2.Controllers
         }
 
             [HttpGet]
-            public ActionResult AddUser()
+            public  ActionResult AddUser()
             {
 
                 RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
                 
                 AddUserVM model = new AddUserVM();
 
-                var context = new CarDealership2DbContext();
+                //var context = new CarDealership2DbContext();
 
-                var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+                //var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
 
-                var roles = roleMgr.Roles;
+                //var roles = roleMgr.Roles;
 
                 model.Roles = from m in RoleRepo.GetAll()
                                 select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
@@ -246,31 +246,100 @@ namespace CarDealership2.Controllers
             }
 
             [HttpPost]
-            public async Task<ActionResult> AddUser(AddUserVM model)
+
+            //by the timr I get here, model.SelectedRoleId should have a value
+            public ActionResult AddUser(AddUserVM model)
             {
             var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
+            RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
+            UserRepositoryProd UserRepo = new UserRepositoryProd();
+
+            //errors - check for empty fields
+            if(string.IsNullOrEmpty(model.FirstName))
+            {
+                ModelState.AddModelError("FirstName", "First Name is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.LastName))
+            {
+                ModelState.AddModelError("LastName", "First Name is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.Email))
+            {
+                ModelState.AddModelError("Email", "Email is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.Password))
+            {
+                ModelState.AddModelError("Password", "Password is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.ConfirmPassword))
+            {
+                ModelState.AddModelError("ConfirmPassword", "Confirm Password is Required");
+            }
 
             //got the 
-            var context = new CarDealership2DbContext();
+            //var context = new CarDealership2DbContext();
 
-            var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+            //var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
 
-            var roles = roleMgr.Roles;
+            //var roles = roleMgr.Roles;
 
             //populate select list
 
 
-            var user = new AppUser
+            //if (ModelState.IsValid)
+            //{
+            //var user = new AppUser
+            //{
+            //FirstName = model.FirstName,
+            //LastName = model.LastName,
+            //Email = model.Email,
+            //UserName = model.Email
+            //};
+
+            //get the name of the rolke selected in the dropdown;
+
+            model.Roles = from m in RoleRepo.GetAll()
+                          select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
+
+            foreach ( SelectListItem x in model.Roles)
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Email = model.Email,
-                UserName = model.Email
-            };
+                if (x.Selected == true)
+                {
+                    model.SelectedRoleName = x.Text;
+                }
+            }
 
-            await userManager.CreateAsync(user, model.Password);
 
-            return View(model);
+            //userManager.AddPassword(user.Id, model.Password);
+       
+            
+            
+
+            UserRepo.Add(model);
+
+                //await userManager.CreateAsync(user, model.Password);
+               
+            //not sure if this is the corerct view
+
+
+            //return RedirectToAction("Models", model);
+            return RedirectToAction("AddUser", model);
+            //}
+
+            //else //add error messages
+            //{
+            //    model.Roles = from m in RoleRepo.GetAll()
+            //        select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
+            //    //not sure if this is the corerct view
+            //    return View("AddUser", model);
+            //}
+
+
+
 
 
             //var signInManager = new SignInManager<AppUser>(new UserStore<AppUser>(context));
@@ -290,27 +359,25 @@ namespace CarDealership2.Controllers
             //        UserName = model.Email
             //    };
 
-            //var result = await userManager.CreateAsync(user, model.Password);
-
-            //    //if (result.Succeeded) { }
+            //
 
             //}
-  
-            }
+
+        }
 
 
 
 
-        [HttpPost]
-            public ActionResult AddUser(AddUserDataVM model)
-            {
-                return View();
-            }
+        //[HttpPost]
+        //    public ActionResult AddUser(AddUserDataVM model)
+        //    {
+        //        return View();
+        //    }
 
-            //public ActionResult EditUser()
-            //{
-            //    return View();
-            //}
+        //    //public ActionResult EditUser()
+        //    //{
+        //    //    return View();
+        //    //}
 
 
         }

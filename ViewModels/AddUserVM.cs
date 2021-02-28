@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarDealership2.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,15 +26,50 @@ namespace CarDealership2.ViewModels
        // [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public string SelectedRoleName { get; set; }
+        //public string SelectedRoleName { get; set; }
 
         //[DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
        [Compare("Password", ErrorMessage = "Password and confirmation do not match")]
         public string ConfirmPassword { get; set; }
 
-        public int SelectedRoleId { get; set; }
-        public IEnumerable<SelectListItem> Roles { get; set; }
+        //get this from viewbag
+        public RoleType SelectedRoleType { get; set; }
+
+        //public int SelectedRoleId { get; set; }
+
+        //public IEnumerable<SelectListItem> Roles { get; set; }
+
+        //public LocalRole SelectedRole { get; set; }
+
+
+        //public List<string> rolenames { get; set; }
+
+
+        //public AddUserVM()
+        //{
+        //    SelectedRoleId = 0;
+        //}
+
+
+        //public void SetRoleNames()
+        //{
+        //    rolenames = new List<string>();
+
+        //    CarDealership2DbContext db = new CarDealership2DbContext();
+
+        //    foreach(AppRole x in db.Roles)
+        //    {
+        //        rolenames.Add(x.Name);
+        //    }
+        //}
+
 
     }
+
+
+
+
+   
+
 }

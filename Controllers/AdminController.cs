@@ -107,23 +107,94 @@ namespace CarDealership2.Controllers
             }
         }
 
-        //[HttpGet]
+        [HttpGet]
 
-        //public ActionResult Test ()
-        //{
-        //    var model = new AddModelVM();
-        //    //how does the data get from a text box to  the rerurned model
+        public ActionResult Test()
+        {
+            //RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
 
-        //    return View(model);
+            //var model = new AddUserVM();
 
-        //}
+            //model.Roles = from r in RoleRepo.GetAll()
+            //              select new SelectListItem { Text = r.Name, Value = r.Id.ToString() };
+
+            //model.Roles = from r in RoleRepo.GetAll()
+            //              select new SelectListItem { Text = r.RoleName, Value = r.RoleId };
+
+            //CarDealership2DbContext db = new CarDealership2DbContext();
+
+            //var query = db.Roles.Select(c => new SelectListItem
+            //{
+            //    Value = c.Id.ToString(),
+            //    Text = c.Name,
+            //    Selected = c.Id.Equals(3)
+            //});
+
+            //var model = new AddUserVM 
+            //{ 
+            //    Roles = query.AsEnumerable() 
+            //};
+
+            //return View(model);
+
+
+            ////data = id, text = namer
+
+            ////TestModel model = new TestModel();
+
+
+            //////model.Roles = new SelectList(db.Roles, "Id", "Name");
+
+            //////ViewBag.ViewBagRoles = new SelectList(db.Roles, "Id", "Name");
+
+            ////model.Roles = from r in db.Roles
+            ////              select new SelectListItem { Text = r.Name, Value = r.Id.ToString() };
+
+            ////create new model
+            //AddUserVM model = new AddUserVM();
+
+            //model.SelectedRole = new AppRole();
+
+            //model.Roles = from r in db.Roles
+            //              select new SelectListItem { Text = r.Name, Value = r.Id.ToString() };
+
+            //model.rolenames = new List<string>();
+
+            ////set names of roles 
+            //foreach (AppRole x in db.Roles)
+            //{
+            //    model.rolenames.Add(x.Name);
+            //}
+
+            //return View(model);
+            return View();
+
+
+        }
+
+        [HttpPost]
+        public ActionResult Test(RoleModel model)
+        {
+            var selectedValue = model.SelectedRoleType;
+
+            ViewBag.RoleType = selectedValue.ToString();
+
+            //RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
+            
+            //model.Roles = from r in RoleRepo.GetAll()
+            //              select new SelectListItem { Text = r.RoleName, Value = r.RoleId };
+            return View();
+
+        }
 
         //[HttpPost]
-        //public ActionResult Test(AddModelVM model)
+        //public ActionResult Test(UserModel model)
         //{
-        //    string s = model.vehicleModel.ModelName;
+        //    var selectedValue = model.SelectTeaType;
+        //    ViewBag.TeaType = selectedValue.ToString();
 
-        //    return View(model);
+
+        //    return View();
 
         //}
 
@@ -151,6 +222,7 @@ namespace CarDealership2.Controllers
         [HttpPost]
         public ActionResult Models(AddModelVM model)
         {
+                 
             IModelRepository ModelRepo = ModelRepositoryFactory.Create();
 
             var makeRepository = MakeRepositoryFactory.Create();
@@ -225,37 +297,41 @@ namespace CarDealership2.Controllers
 
         }
 
-            [HttpGet]
-            public  ActionResult AddUser()
-            {
+        [HttpGet]
+        public ActionResult AddUser()
+        {
 
-                RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
-                
-                AddUserVM model = new AddUserVM();
+            RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
 
-                //var context = new CarDealership2DbContext();
+            AddUserVM model = new AddUserVM();
 
-                //var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+            //var context = new CarDealership2DbContext();
 
-                //var roles = roleMgr.Roles;
+            //var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
 
-                model.Roles = from m in RoleRepo.GetAll()
-                                select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
+            //var roles = roleMgr.Roles;
 
-                return View(model);
-            }
+            //model.Roles = from m in RoleRepo.GetAll()
+            //              select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
 
-            [HttpPost]
+            return View(model);
+        }
 
-            //by the timr I get here, model.SelectedRoleId should have a value
-            public ActionResult AddUser(AddUserVM model)
-            {
+        [HttpPost]
+
+        //by the timr I get here, model.SelectedRoleId should have a value
+        public ActionResult AddUser(AddUserVM model)
+        {
             var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
             RoleRepositoryProd RoleRepo = new RoleRepositoryProd();
             UserRepositoryProd UserRepo = new UserRepositoryProd();
 
+            var selectedValue = model.SelectedRoleType;
+
+            ViewBag.RoleType = selectedValue.ToString();
+
             //errors - check for empty fields
-            if(string.IsNullOrEmpty(model.FirstName))
+            if (string.IsNullOrEmpty(model.FirstName))
             {
                 ModelState.AddModelError("FirstName", "First Name is Required");
             }
@@ -281,62 +357,63 @@ namespace CarDealership2.Controllers
             }
 
             //got the 
-            //var context = new CarDealership2DbContext();
+            var context = new CarDealership2DbContext();
 
-            //var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+            var roleMgr = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
 
-            //var roles = roleMgr.Roles;
+            var roles = roleMgr.Roles;
 
             //populate select list
 
 
-            //if (ModelState.IsValid)
-            //{
-            //var user = new AppUser
-            //{
-            //FirstName = model.FirstName,
-            //LastName = model.LastName,
-            //Email = model.Email,
-            //UserName = model.Email
-            //};
-
-            //get the name of the rolke selected in the dropdown;
-
-            model.Roles = from m in RoleRepo.GetAll()
-                          select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
-
-            foreach ( SelectListItem x in model.Roles)
+            if (ModelState.IsValid)
             {
-                if (x.Selected == true)
+                var user = new AppUser
                 {
-                    model.SelectedRoleName = x.Text;
-                }
-            }
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    UserName = model.Email
+                };
+
+                //get the name of the rolke selected in the dropdown;
+
+                //model.Roles = from m in RoleRepo.GetAll()
+                //              select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
+
+                //foreach (SelectListItem x in model.Roles)
+                //{
+                //    if (x.Selected == true)
+                //    {
+                //        model.SelectedRoleName = x.Text;
+                //    }
+                //}
 
 
-            //userManager.AddPassword(user.Id, model.Password);
-       
-            
-            
+                //userManager.AddPassword(user.Id, model.Password);
 
-            UserRepo.Add(model);
 
-                //await userManager.CreateAsync(user, model.Password);
-               
+
+
+                UserRepo.Add(model);
+
+
+            //await userManager.CreateAsync(user, model.Password);
+
             //not sure if this is the corerct view
 
 
             //return RedirectToAction("Models", model);
             return RedirectToAction("AddUser", model);
-            //}
+            }
 
-            //else //add error messages
-            //{
-            //    model.Roles = from m in RoleRepo.GetAll()
-            //        select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
-            //    //not sure if this is the corerct view
-            //    return View("AddUser", model);
-            //}
+            else //add error messages
+            {
+                //model.Roles = from m in RoleRepo.GetAll()
+                //              select new SelectListItem { Text = m.Name, Value = m.Id.ToString() };
+                //not sure if this is the corerct view
+                return View("AddUser", model);
+            }
 
 
 
@@ -380,7 +457,7 @@ namespace CarDealership2.Controllers
         //    //}
 
 
-        }
+    }
     }
 
 

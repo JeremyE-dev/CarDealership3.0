@@ -373,3 +373,4 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.Http.xml
 C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.Http.Owin.xml
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.init1.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.init2.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.init3.resources

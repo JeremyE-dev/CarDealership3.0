@@ -1,6 +1,13 @@
-﻿@model CarDealership2.ViewModels.AddModelVM
+﻿
+@using CarDealership2.Models
+@model UserModel
+
+
+
+
 
 @{
+    ViewBag.Title = "DropDown Test";
     Layout = null;
 }
 
@@ -8,19 +15,58 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    @*<meta name="viewport" content="width=device-width" />*@
     <title>Test</title>
 </head>
 <body>
-    <div> 
+    <div>
         @using (Html.BeginForm("Test", "Admin", FormMethod.Post))
         {
         <div class="form-group">
-            @Html.LabelFor(m => m.vehicleModel.ModelName)
-            @Html.TextBoxFor(m => m.vehicleModel.ModelName, new {@class = "form-control", placeholder = "Model Name" })
+            <b>Select Role Type: </b>
+
+            @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--")
+            <input type="submit" value="submit" />
+
+
+
+            @*@Html.DropDownListFor(m => m.SelectedRoleId, Model.Roles, "- SELECT -", new { @class = "form-control" })*@
+            @*@Html.DropDownList("Roles");*@
+
+            @*@Html.LabelFor(m => m.vehicleModel.ModelName)
+        @Html.TextBoxFor(m => m.vehicleModel.ModelName, new {@class = "form-control", placeholder = "Model Name" })*@
             @*after sending post the view model model.ModelName field should be whatever I put into the texbox*@
+            <b>Select Tea Type: </b>
+
+            @*@Html.DropDownList("SelectTeaType", new SelectList(Enum.GetValues(typeof(TeaType))), "--Select TeaType--")
+        <input type="submit" value="submit" />
+
+        @Html.DropDownListFor(m => m.SelectTeaType, new SelectList(Enum.GetValues(typeof(TeaType))), "--Select TeaType--")
+        <input type="submit" value="submit" />*@
+
+            @*//the model is a usermodel here the selected tea type is a property of that model
+        //the constructor new select List takes in an Ienumerable list of items*@
+            @*@Html.DropDownListFor(m => m.SelectedRoleId, Model.Roles, "--Select RoleName--")*@
+
+
+
+
+            @*@Html.DropDownListFor(m => m.SelectedRole, Model.Roles, "-Select-", new { @class = "form-horizontal" })*@
+
+            @*<button type="submit" class="btn btn-sm btn-primary">Send POST</button>
+
+
+
+            <input type="submit" value="submit" />*@
+
+
+
+            <h4>You Selected</h4>
+        <b>Role Type: </b>@ViewBag.RoleType
+
+
         </div>
-        <button type="submit" class="btn btn-primary">Send Post</button>
+            <button type="submit" class="btn btn-primary">Send Post</button>
         }
     </div>
 </body>

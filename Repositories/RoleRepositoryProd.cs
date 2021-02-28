@@ -9,9 +9,12 @@ namespace CarDealership2.Repositories
 {
     public class RoleRepositoryProd
     {
-        public List<IdentityRole> GetAll()
+        //public List<IdentityRole> GetAll()
+        public IEnumerable<LocalRole> GetAll()
         {
             var repository = new CarDealership2DbContext();
+
+            List<LocalRole> LocalRoleList = new List<LocalRole>();
 
             //get the role name here and set it somehow
             //
@@ -21,9 +24,23 @@ namespace CarDealership2.Repositories
             var r = from role in repository.Roles
                     select role;
 
+            foreach(AppRole x in r)
+            {
+                LocalRole lr = new LocalRole();
+
+                lr.RoleId = x.Id;
+                lr.RoleName = x.Name;
+
+                LocalRoleList.Add(lr);
+            }
+
+
+
             //foreach(User x in repository.Users)
 
-            return r.ToList();
+            //return r.ToList();
+
+            return LocalRoleList;
 
 
         }

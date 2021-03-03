@@ -31,6 +31,7 @@ namespace CarDealership2.Repositories
         {
             var repository = new CarDealership2DbContext();
             var userManager = new UserManager<AppUser>(new UserStore<AppUser>(repository));
+            //var roleManager = new RoleManager<AppRole>(new RoleStore<AppRole>(repository));
        
             var user = new AppUser
             {
@@ -41,6 +42,8 @@ namespace CarDealership2.Repositories
                 RoleName = viewmodel.SelectedRoleType.ToString()
                                 
             };
+
+
             
             userManager.Create(user, viewmodel.Password);
             userManager.AddToRole(user.Id, viewmodel.SelectedRoleType.ToString());
@@ -50,6 +53,57 @@ namespace CarDealership2.Repositories
             //userManager.AddPassword(user.Id, viewmodel.Password);
 
         }
+
+        public void Edit(EditUserVM viewmodel)
+        {
+            var repository = new CarDealership2DbContext();
+            var userManager = new UserManager<AppUser>(new UserStore<AppUser>(repository));
+            var roleManager = new RoleManager<AppRole>(new RoleStore<AppRole>(repository));
+            var user = userManager.FindById(viewmodel.UserId);
+
+            user.FirstName = viewmodel.FirstName;
+            user.LastName = viewmodel.LastName;
+            user.Email = viewmodel.Email;
+
+            //What to do with the roles
+            if(!string.IsNullOrEmpty(viewmodel.Password))
+            {
+                userManager.ChangePassword(user.Id,user.PasswordHash, viewmodel.Password);
+            }
+
+            string selectedrolename = Enum.GetName(typeof(RoleType), viewmodel.SelectedRoleType);
+
+            if (viewmodel.SelectedRoleType.ToString() != user.RoleName)
+            {
+                userManager.AddToRole(user.Id,selectedrolename);
+            }
+
+            userManager.Update(user);
+
+
+            //var user = new AppUser
+            //{
+            //    FirstName = viewmodel.FirstName,
+            //    LastName = viewmodel.LastName,
+            //    Email = viewmodel.Email,
+            //    UserName = viewmodel.Email,
+            //    RoleName = viewmodel.SelectedRoleType.ToString()
+
+            //};
+
+            //userManager.Update(user);
+
+            
+            //userManager.AddToRole(user.Id, viewmodel.SelectedRoleType.ToString());
+
+
+            //SAVED FOR LATER
+            //userManager.AddPassword(user.Id, viewmodel.Password);
+
+        }
+
+
+
 
         public List<AppUser> GetAll()
         {
@@ -71,6 +125,18 @@ namespace CarDealership2.Repositories
 
             
         }
+
+
+        //public AppUser GetUserById(AppUser appuser)
+        //{
+        //    var repository = new CarDealership2DbContext();
+
+        //    var userManager = new UserManager<AppUser>(new UserStore<AppUser>(repository));
+
+        //    var user = userManager.FindById(appuser.Id);
+
+        //    return user;
+        //}
 
       
     }

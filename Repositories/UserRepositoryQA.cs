@@ -17,6 +17,11 @@ namespace CarDealership2.Repositories
             throw new NotImplementedException();
         }
 
+        public void Edit(EditUserVM viewmodel)
+        {
+            throw new NotImplementedException();
+        }
+
         //public IEnumerable<UserData> GetAll()
         //{
         //    throw new NotImplementedException();

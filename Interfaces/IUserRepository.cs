@@ -13,6 +13,8 @@ namespace CarDealership2.Interfaces
         void Add(AddUserVM viewmodel);
         //IEnumerable<UserData> GetAll();
 
+        void Edit(EditUserVM viewmodel);
+
         List<AppUser> GetAll();
     }
 }

@@ -1,0 +1,85 @@
+﻿@using CarDealership2.Models
+@model CarDealership2.ViewModels.EditUserVM
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditUser</title>
+</head>
+<body>
+    <div style="padding-top: 25px;" class="container">
+        <h2 strong>Edit User</h2>
+        <div style="border-style: groove;" class="row">
+            <div style="padding-top: 25px;padding-bottom: 25px;" class="col-xs-12">
+                @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+                {
+
+                    <div class="form-group">
+                        <label for="FirstName"> First Name </label>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-horizontal", placeholder = "first name" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
+
+                        <label for="LastName"> Last Name </label>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-horizontal", placeholder = "last name" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="User Id"> User Id </label>
+                        @Html.TextBoxFor(m => m.UserId, new { @class = "form-horizontal", placeholder = "user id" })
+                        @*<span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>*@
+
+                      
+
+                    </div>
+
+
+                    @*@Html.LabelFor(m => m.vehicleModel.ModelName)
+            @Html.TextBoxFor(m => m.vehicleModel.ModelName, new { @class = "form-horizontal", placeholder = "Model Name" })
+
+            @Html.LabelFor(m => m.Makes)
+            @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, "-Select-", new { @class = "form-horizontal" })*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-horizontal", placeholder = "email" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+
+                        @*@Html.LabelFor(m => m.Roles)
+                @Html.DropDownListFor(m => m.SelectedRoleId, Model.Roles, "-Select-", new { @class = "form-horizontal" })*@
+                        @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--")
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Password"> Password </label>
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-horizontal", placeholder = "password" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Password)</span>
+
+                        <label for="ConfirmPassword"> Confirm Password </label>
+                        @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-horizontal", placeholder = "confirm password" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.ConfirmPassword)</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+
+                }
+
+                @*<span class="text-danger">@Html.ValidationMessageFor(m => m.vehicleModel.ModelName)</span>*@
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
+                </>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

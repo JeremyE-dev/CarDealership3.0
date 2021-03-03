@@ -28,8 +28,8 @@ namespace CarDealership2.ViewModels
 
         //public string SelectedRoleName { get; set; }
 
-        //[DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+       [DataType(DataType.Password)]
+       [Display(Name = "Confirm password")]
        [Compare("Password", ErrorMessage = "Password and confirmation do not match")]
         public string ConfirmPassword { get; set; }
 

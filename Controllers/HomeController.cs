@@ -70,18 +70,25 @@ namespace CarDealership2.Controllers
             return View();
         }
 
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
+        [HttpGet]
+        public ActionResult Specials()
+        {
+            return View();
+        }
 
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
+        [HttpPost]
+        public ActionResult Contact(ContactVM model) //need contacts repository
+        {
+            return View();
+        }
 
-        //    return View();
-        //}
+
+
     }
 }

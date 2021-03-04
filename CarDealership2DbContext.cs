@@ -20,5 +20,7 @@ namespace CarDealership2
         //public DbSet<User> Users { get; set; }
 
         public DbSet<Model> Models { get; set; }
+
+        public DbSet<Special> Specials { get; set; }
     }
 }

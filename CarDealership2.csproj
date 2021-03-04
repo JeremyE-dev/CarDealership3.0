@@ -226,16 +226,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CarDealership2DbContext.cs" />
     <Compile Include="CarDealership2Entities.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Factories\MakeRepositoryFactory.cs" />
     <Compile Include="Factories\ModelRepositoryFactory.cs" />
+    <Compile Include="Factories\SpecialRepositoryFactory.cs" />
     <Compile Include="Factories\UserRepositoryFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IMakeRepository.cs" />
     <Compile Include="Interfaces\IModelRepository.cs" />
+    <Compile Include="Interfaces\ISpecialRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Migrations\202102151446427_init.cs" />
     <Compile Include="Migrations\202102151446427_init.designer.cs">
@@ -345,6 +351,10 @@
     <Compile Include="Migrations\202102281422206_init3.designer.cs">
       <DependentUpon>202102281422206_init3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103041513314_addspecialstable.cs" />
+    <Compile Include="Migrations\202103041513314_addspecialstable.Designer.cs">
+      <DependentUpon>202103041513314_addspecialstable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -354,6 +364,7 @@
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\RoleType.cs" />
+    <Compile Include="Models\Special.cs" />
     <Compile Include="Models\TeaType.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -363,15 +374,27 @@
     <Compile Include="Repositories\ModelRepositoryProd.cs" />
     <Compile Include="Repositories\ModelRepositoryQA.cs" />
     <Compile Include="Repositories\RoleRepositoryProd.cs" />
+    <Compile Include="Repositories\SpecialRepositoryProd.cs" />
+    <Compile Include="Repositories\SpecialRepositoryQA.cs" />
     <Compile Include="Repositories\UserRepositoryProd.cs" />
     <Compile Include="Repositories\UserRepositoryQA.cs" />
     <Compile Include="ViewModels\AddMakeVM.cs" />
     <Compile Include="ViewModels\AddUserDataVM.cs" />
     <Compile Include="ViewModels\AddUserVM.cs" />
+    <Compile Include="ViewModels\AddVehicleVM.cs" />
+    <Compile Include="ViewModels\ChangePasswordVM.cs" />
+    <Compile Include="ViewModels\ContactVM.cs" />
+    <Compile Include="ViewModels\DeleteSpecialVM.cs" />
     <Compile Include="ViewModels\EditUserVM.cs" />
+    <Compile Include="ViewModels\EditVehicleVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AddModelVM.cs" />
+    <Compile Include="ViewModels\LoginVM.cs" />
+    <Compile Include="ViewModels\NewVehicleSearchVM.cs" />
+    <Compile Include="ViewModels\PurchaseVM.cs" />
+    <Compile Include="ViewModels\AddSpecialVM.cs" />
     <Compile Include="ViewModels\TestModel.cs" />
+    <Compile Include="ViewModels\UsedVehicleSearchVM.cs" />
     <Compile Include="ViewModels\UsersVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -420,10 +443,16 @@
     <Content Include="Views\Admin\AddUser.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\View.cshtml" />
+    <Content Include="Views\Admin\AddSpecial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\202102231257444_2\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Inventory\" />
+    <Folder Include="Views\Reports\" />
+    <Folder Include="Views\Sales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -519,6 +548,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102281422206_init3.resx">
       <DependentUpon>202102281422206_init3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103041513314_addspecialstable.resx">
+      <DependentUpon>202103041513314_addspecialstable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

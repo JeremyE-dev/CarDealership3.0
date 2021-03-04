@@ -31,7 +31,7 @@ namespace CarDealership2.Controllers
             //add list to model
             //get email address
             model.makes = MakeRepositoryFactory.Create().GetAll().ToList();
-         
+
             return View(model);
         }
 
@@ -51,28 +51,28 @@ namespace CarDealership2.Controllers
             {
 
                 ModelState.AddModelError("make.MakeName", "Please Enter a Make Name");
-           
 
-                
+
+
             }
             //note: success writing to db, not displaying view only displaying after second save
             // set breakpoints: either controller iss or view
 
             if (ModelState.IsValid)
             {
-             
+
                 model.makes = MakeRepo.GetAll().ToList();
 
                 model.currentUsername = User.Identity.GetUserName();
 
                 MakeRepositoryFactory.Create().Add(model.make.MakeName, model.currentUsername);
-                
+
                 return RedirectToAction("Makes", model);
             }
 
             else
             {
-         
+
                 model.makes = MakeRepo.GetAll().ToList();
                 return View("Makes", model);
             }
@@ -95,19 +95,19 @@ namespace CarDealership2.Controllers
 
             ViewBag.RoleType = selectedValue.ToString();
 
-        
+
             return View();
 
         }
 
-    
+
 
         [HttpGet]
         public ActionResult Models()
         {
-           
+
             var model = new AddModelVM();
-         
+
 
             var makeRepository = MakeRepositoryFactory.Create();
 
@@ -124,7 +124,7 @@ namespace CarDealership2.Controllers
         [HttpPost]
         public ActionResult Models(AddModelVM model)
         {
-                 
+
             IModelRepository ModelRepo = ModelRepositoryFactory.Create();
 
             var makeRepository = MakeRepositoryFactory.Create();
@@ -144,7 +144,7 @@ namespace CarDealership2.Controllers
                 model.models = ModelRepo.GetAll().ToList();
                 model.currentUsername = User.Identity.GetUserName();
 
-            
+
                 ModelRepositoryFactory.Create().Add(model);
 
                 return RedirectToAction("Models", model);
@@ -162,12 +162,12 @@ namespace CarDealership2.Controllers
 
         }
 
-      
+
 
         [HttpGet]
         public ActionResult Users()
         {
-       
+
             var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
 
             var model = new UsersVM();
@@ -177,7 +177,7 @@ namespace CarDealership2.Controllers
             {
                 //checkt this out
                 //why is th seco
-               x.RoleName = userManager.GetRoles(x.Id.ToString()).FirstOrDefault();
+                x.RoleName = userManager.GetRoles(x.Id.ToString()).FirstOrDefault();
             }
             return View(model);
 
@@ -227,7 +227,7 @@ namespace CarDealership2.Controllers
                 ModelState.AddModelError("ConfirmPassword", "Confirm Password is Required");
             }
 
-    
+
 
             if (ModelState.IsValid)
             {
@@ -241,7 +241,7 @@ namespace CarDealership2.Controllers
                 return View("AddUser", model);
             }
 
-    
+
 
         }
 
@@ -265,7 +265,7 @@ namespace CarDealership2.Controllers
             //do not populate password and confirm password
             // if no password is supplied in post do not change it
             // if it is suppled then change it
-            return View("EditUser", model); 
+            return View("EditUser", model);
         }
 
 
@@ -294,8 +294,6 @@ namespace CarDealership2.Controllers
                 ModelState.AddModelError("Email", "Email is Required");
             }
 
-
-
             if (ModelState.IsValid)
             {
                 UserRepo.Edit(model); //in edit - if password and is not null -- update it
@@ -310,21 +308,77 @@ namespace CarDealership2.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Vehicles()
+        {
+            return View();
+        }
 
 
+        [HttpGet]
+        public ActionResult AddVehicle()
+        {
+            return View();
+        }
 
 
+        [HttpPost]
+        public ActionResult AddVehicle(AddVehicleVM model)
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //    public ActionResult AddUser(AddUserDataVM model)
-        //    {
-        //        return View();
-        //    }
+        [HttpGet]
+        public ActionResult EditVehicle()
+        {
+            return View();
+        }
 
-        //    //public ActionResult EditUser()
-        //    //{
-        //    //    return View();
-        //    //}
+
+        [HttpPost]
+        public ActionResult EditVehicle(EditVehicleVM model)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AddSpecial()
+        {
+            ISpecialRepository SpecialRepo = SpecialRepositoryFactory.Create();
+
+            AddSpecialVM model = new AddSpecialVM();
+
+            model.specials = SpecialRepo.GetAll().ToList();
+
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult AddSpecial(AddSpecialVM model)
+        {
+            ISpecialRepository SpecialRepo = SpecialRepositoryFactory.Create();
+            SpecialRepo.Add(model);
+            model.specials = SpecialRepo.GetAll().ToList();
+            return View("AddSpecial", model);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteSpecial(int id)
+        {
+            ISpecialRepository SpecialRepo = SpecialRepositoryFactory.Create();
+
+            AddSpecialVM model = new AddSpecialVM();
+
+           
+          
+            SpecialRepo.Delete(id);
+            model.specials = SpecialRepo.GetAll().ToList();
+
+            return View("AddSpecial",model);
+
+        }
 
 
     }

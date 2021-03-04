@@ -42,7 +42,8 @@
                         </div>
 
                         <div class="form-group col-sm-6">
-                            @Html.LabelFor(m => m.SelectedRoleType)
+                            @*@Html.LabelFor(m => m.SelectedRoleType)*@
+                            <label for="SeletedRoleType">Role</label>
                             @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--", new { @class = "form-control" })
                         </div>
                     </div>
@@ -60,20 +61,26 @@
                             <label for="ConfirmPassword"> Confirm Password </label>
                             @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "confirm password" })
                             <span class="text-danger">@Html.ValidationMessageFor(m => m.ConfirmPassword)</span>
-                           
+
                         </div>
-                        <button type="submit" class="btn btn-md btn-primary">Save</button>
+                        @*<button type="submit" class="btn btn-md btn-primary">Save</button>*@
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-md btn-primary">Save</button>
+                        </div>
                     </div>
 
-                    @*<button type="submit" class="btn btn-sm btn-primary">Save</button>*@
+                        @*<button type="submit" class="btn btn-sm btn-primary">Save</button>*@
 
-                }
+                        }
 
-                @*<span class="text-danger">@Html.ValidationMessageFor(m => m.vehicleModel.ModelName)</span>*@
-                <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
-                </>
-            </div>
-        </div>
+                        @*<span class="text-danger">@Html.ValidationMessageFor(m => m.vehicleModel.ModelName)</span>*@
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
+                        </>
+                    </div>
+                </div>
     </div>
 
 </body>

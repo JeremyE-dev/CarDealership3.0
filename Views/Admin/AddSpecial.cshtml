@@ -1,0 +1,82 @@
+﻿@model CarDealership2.ViewModels.AddSpecialVM
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddSpecial</title>
+</head>
+<body>
+    <div class="container">
+        <h2 strong> Specials</h2>
+        <div style="border-style: groove;" class="row">
+            <div>
+                @using (Html.BeginForm("AddSpecial", "Admin", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div style="padding-top:25px;" class="form-group col-md-6">
+                            <label for="special.Title"> Title </label>
+                            @Html.TextBoxFor(m => m.special.Title, new { @class = "form-control", placeholder = "title" })
+                            @*<span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>*@
+
+                            <label style="padding-top:25px;" for="special.Description"> Description </label>
+                            @Html.TextAreaFor(m => m.special.Description, new { @class = "form-control", @style = "height:150px;", placeholder = "description" })
+                            @*<span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>*@
+
+
+                            <div style="padding-top:25px;">
+                                <button type="submit" class="btn btn-md btn-primary">Save</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+            @* for each loop adding a special*@
+
+    
+            @foreach (var special in Model.specials)
+            {
+            <div style="border-style: groove; margin-top:10px; padding-top:25px;" class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <p strong>Image goes here</p>
+                    </div>
+                    
+                    <div class="col-md-10">
+
+                        <div class="form-row">
+                            <div class="col-md-11">
+                                @*Use Label here instaed
+                                    *@
+                                @*@Html.LabelFor(m => m.special.Title)*@
+                                <p class="h3">@special.Title</p>
+                            </div>
+                            <div class="col btn-md-1">
+                                @Html.ActionLink("Delete", "DeleteSpecial", "Admin", new { id = @special.SpecialId }, new { @class = "btn btn-primary btn-large" })
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            @* *@
+                            <blockquote class=" blockquote">
+                                <p style="padding-top:25px;">@special.Description</p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            }
+
+</body>
+ </html>

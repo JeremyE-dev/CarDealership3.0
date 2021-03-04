@@ -1,0 +1,213 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+        {
+
+        <button type="submit" class="btn btn-md btn-primary">Save</button>
+        }
+    </div>
+
+    <div>
+        @*text area example*@
+
+        @*<div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>*@
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+                <div class="w-100"></div>
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @*container, one row, three columns inline*@
+    </div>
+
+    <div>
+        @*container inline row and table*@
+    </div>
+
+
+    <div>
+        @*two text boxes in a row with label*@
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @*<label for="FirstName"> First Name </label>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>*@
+            </div>
+
+            <div class="form-group col-md-6">
+                @*<label for="LastName"> Last Name </label>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>*@
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @*Text Box and drop down list example*@
+
+        @*<div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="Email"> Email </label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    @Html.LabelFor(m => m.SelectedRoleType)
+                    @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--", new { @class = "form-control" })
+                </div>
+            </div>*@
+
+    </div>
+
+    <div>
+
+    @*form row with labels tpo right of box example*@
+    @*<div class="form-row form-inline">
+        <div class="form-group col-md-6">
+            <label for="FirstName"> First Name </label>
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="LastName"> Last Name </label>
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>
+        </div>*@
+    </div>
+
+
+
+    <div>
+        @*Form small squares example Grouping example*@
+    </div>
+    <div>
+        @* small squares example Grouping example*@
+    </div>
+    <div>
+        <button type="submit" class="btn btn-md btn-primary">Save</button>
+    </div>
+
+    <div>
+        @* Horizontal grouping*@
+    </div>
+
+    <div>
+        @* Search Bar example *@
+    </div>
+    <div>
+        @* For Each Loop example adding element on the fly *@
+        <!--<table class=" table table-bordered table-striped table-hover" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>UserId</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @*
+                @foreach (var user in Model.UserList)
+                {
+                    <tr>
+                        <td>@user.LastName</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.Email</td>
+                        <td>@user.RoleName</td>
+                        <td>@user.Id</td>
+                        <td>@Html.ActionLink("edit", "EditUser", "Admin", new { id = @user.Id.ToString() }, null) </td>-->
+
+                        @*<td>@Roles.GetRolesForUser(user.UserName).FirstOrDefault();</td>*@
+                        @*<td>@user.Roles.Where(u => u.UserId == user.Id).GetRolesForUser().GetFirstOrDefault();</td>*@
+                        @*get the role that matches the userid*@
+
+                    <!--</tr>
+                }
+
+            </tbody>
+        </table>-->
+        
+
+    </div>
+    <div>
+        @* Action Link exampler example *@
+    </div>
+
+    <div>
+        @* Vehicle Search Result Box example with Details button *@
+    </div>
+
+    <div>
+        @*Vehicle Details box with contact us button *@
+    </div>
+
+    <div>
+        @*Specials box no image *@
+    </div>
+
+    <div>
+        @*Contact Us Form with submit*@
+    </div>
+
+    <div>
+        @*Purchase vehicle - Sales Information portion*@
+    </div>
+
+    <div>
+        @*Picture upload*@
+    </div>
+
+    <div>
+        @*Add/Edit vehicle form*@
+    </div>
+
+    <div>
+        @*Change Password form with Save button form*@
+    </div>
+
+    <div>
+        @*Specials form with delete with Save button form*@
+    </div>
+
+    <div>
+        @*Sales Report search bar*@
+    </div>
+
+    <div>
+        @*Inventory Report two tables*@
+    </div>
+    <div>
+        @*JumboTron example*@
+    </div>
+
+
+</body>
+</html>

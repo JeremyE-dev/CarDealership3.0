@@ -318,14 +318,32 @@ namespace CarDealership2.Controllers
         [HttpGet]
         public ActionResult AddVehicle()
         {
-            return View();
+            var model = new AddVehicleVM();
+
+            //create copies of needed repositories
+            var makeRepository = MakeRepositoryFactory.Create();
+            var modelRepository = ModelRepositoryFactory.Create();
+            var vehicleTypeRepository = VehicleTypeRepositoryFactory.Create();
+            var bodystyleRepository = BodyStyleRepositoryFactory.Create();
+            var transmissionRepository = TransmissionRepositoryFactory.Create();
+            var colorRepository = ColorRepositoryFactory.Create();
+            var InteriorFactory = InteriorRepositoryFactory.Create();
+
+            model.Makes = from m in makeRepository.GetAll()
+                          select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
+            //populates remaining lists
+
+
+            return View(model);
         }
 
 
         [HttpPost]
         public ActionResult AddVehicle(AddVehicleVM model)
         {
-            return View();
+
+            return View(model);
+         
         }
 
         [HttpGet]

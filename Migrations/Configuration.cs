@@ -21,8 +21,8 @@
         {
             //This method will be called after migrating to the latest version.
 
-                 //You can use the DbSet<T>.AddOrUpdate() helper extension method
-                 //to avoid creating duplicate seed data.
+            //You can use the DbSet<T>.AddOrUpdate() helper extension method
+            //to avoid creating duplicate seed data.
             //context.Users.AddOrUpdate(
             ////do not have access to foreign keys yet, so need to use different unique identifier
             // u => u.Email,
@@ -30,6 +30,144 @@
             // new Models.User { FirstName = "William", LastName = "Hartnell", Email = "whartnell@sgcars.com", Role = "Admin", Password = "Tardis1" }
             // );
             //context.SaveChanges();
+
+
+            context.VehicleTypes.AddOrUpdate(
+                m => m.VehicleTypeName,
+                new Models.VehicleType { 
+                VehicleTypeName = "New"
+                }
+                );
+
+            context.VehicleTypes.AddOrUpdate(
+              m => m.VehicleTypeName,
+              new Models.VehicleType
+              {
+                  VehicleTypeName = "Used"
+              }
+              );
+
+
+            context.BodyStyles.AddOrUpdate(
+                 m => m.BodyStyleName,
+              new Models.BodyStyle
+              {
+                  BodyStyleName = "Car"
+              }
+            );
+
+            context.BodyStyles.AddOrUpdate(
+              m => m.BodyStyleName,
+               new Models.BodyStyle
+               {
+                   BodyStyleName = "Truck"
+               }
+             );
+
+            context.BodyStyles.AddOrUpdate(
+             m => m.BodyStyleName,
+              new Models.BodyStyle
+              {
+                  BodyStyleName = "SUV"
+              }
+            );
+
+            context.BodyStyles.AddOrUpdate(
+             m => m.BodyStyleName,
+              new Models.BodyStyle
+              {
+                   BodyStyleName = "Van"
+              }
+             );
+
+            context.Transmissions.AddOrUpdate(
+            m => m.TransmissionName,
+              new Models.Transmission
+              {
+                    TransmissionName = "Manual"
+              }
+            );
+
+            context.Transmissions.AddOrUpdate(
+            m => m.TransmissionName,
+              new Models.Transmission
+              {
+                    TransmissionName = "Automatic"
+              }
+            );
+
+            context.Colors.AddOrUpdate(
+            m => m.ColorName,
+            new Models.Color
+            {
+            ColorName = "Black"
+            }
+            );
+
+            context.Colors.AddOrUpdate(
+            m => m.ColorName,
+            new Models.Color
+            {
+                ColorName = "Gray"
+            }
+            );
+
+            context.Colors.AddOrUpdate(
+            m => m.ColorName,
+            new Models.Color
+            {
+                ColorName = "Blue"
+            }
+            );
+
+            context.Colors.AddOrUpdate(
+            m => m.ColorName,
+            new Models.Color
+            {
+                ColorName = "Yellow"
+            }
+            );
+
+            context.Colors.AddOrUpdate(
+            m => m.ColorName,
+            new Models.Color
+            {
+                ColorName = "Tan"
+            }
+            );
+
+            context.Interiors.AddOrUpdate(
+            m => m.InteriorName,
+            new Models.Interior
+            {
+                InteriorName = "Tan"
+            }
+            );
+
+            context.Interiors.AddOrUpdate(
+            m => m.InteriorName,
+            new Models.Interior
+            {
+                InteriorName = "Gray"
+            }
+            );
+
+
+            context.Interiors.AddOrUpdate(
+            m => m.InteriorName,
+            new Models.Interior
+            {
+                InteriorName = "Black"
+            }
+            );
+
+            context.Interiors.AddOrUpdate(
+            m => m.InteriorName,
+            new Models.Interior
+            {
+                InteriorName = "Blue"
+            }
+            );
 
             context.Makes.AddOrUpdate(
                 m => m.MakeName,

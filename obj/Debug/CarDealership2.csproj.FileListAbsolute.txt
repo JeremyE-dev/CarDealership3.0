@@ -375,3 +375,4 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migration
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.init2.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.init3.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.addspecialstable.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.vehicletbles.resources

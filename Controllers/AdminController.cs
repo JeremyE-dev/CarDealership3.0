@@ -318,6 +318,7 @@ namespace CarDealership2.Controllers
         [HttpGet]
         public ActionResult AddVehicle()
         {
+            //create empty view model
             var model = new AddVehicleVM();
 
             //create copies of needed repositories
@@ -327,11 +328,32 @@ namespace CarDealership2.Controllers
             var bodystyleRepository = BodyStyleRepositoryFactory.Create();
             var transmissionRepository = TransmissionRepositoryFactory.Create();
             var colorRepository = ColorRepositoryFactory.Create();
-            var InteriorFactory = InteriorRepositoryFactory.Create();
+            var interiorRepository = InteriorRepositoryFactory.Create();
 
+
+            //populate selectlists for dropdowns
             model.Makes = from m in makeRepository.GetAll()
                           select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
-            //populates remaining lists
+           
+            model.VehicleModels = from m in modelRepository.GetAll()
+                                  select new SelectListItem { Text = m.ModelName, Value = m.ModelId.ToString() };
+            
+            model.VehicleTypes = from m in vehicleTypeRepository.GetAll()
+                                  select new SelectListItem { Text = m.VehicleTypeName, Value = m.VehicleTypeId.ToString() };
+
+            model.BodyStyles = from m in bodystyleRepository.GetAll()
+                                 select new SelectListItem { Text = m.BodyStyleName, Value = m.BodyStyleId.ToString() };
+
+            model.Transmissions = from m in transmissionRepository.GetAll()
+                                  select new SelectListItem { Text = m.TransmissionName, Value = m.TransmissionId.ToString() };
+
+            model.Colors = from m in colorRepository.GetAll()
+                           select new SelectListItem { Text = m.ColorName, Value = m.ColorId.ToString() };
+           
+            model.Interiors = from m in interiorRepository.GetAll()
+                           select new SelectListItem { Text = m.InteriorName, Value = m.InteriorId.ToString() };
+
+
 
 
             return View(model);
@@ -341,6 +363,30 @@ namespace CarDealership2.Controllers
         [HttpPost]
         public ActionResult AddVehicle(AddVehicleVM model)
         {
+            //add validation 
+            //year null and valid year
+            //Mileage null - must be a number
+            //vin# - null
+            //mrsp- null
+            //sale -price - null
+            // sale price not more than MRSP
+          
+            
+            
+            
+            IVehicleRepository VehicleRepo = VehicleRepositoryFactory.Create();
+            
+            if (ModelState.IsValid)
+            {
+               VehicleRepo.Add(model);
+
+                return RedirectToAction("AddVehicle", model);
+            }
+
+            else
+            {
+
+            }
 
             return View(model);
          
@@ -355,6 +401,12 @@ namespace CarDealership2.Controllers
 
         [HttpPost]
         public ActionResult EditVehicle(EditVehicleVM model)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteVehicle(int id)
         {
             return View();
         }

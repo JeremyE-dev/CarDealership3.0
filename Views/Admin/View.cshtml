@@ -15,7 +15,7 @@
         @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
         {
 
-        <button type="submit" class="btn btn-md btn-primary">Save</button>
+            <button type="submit" class="btn btn-md btn-primary">Save</button>
         }
     </div>
 
@@ -23,9 +23,9 @@
         @*text area example*@
 
         @*<div class="form-group">
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
-        </div>*@
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>*@
     </div>
 
     <div>
@@ -46,6 +46,12 @@
 
     <div>
         @*container inline row and table*@
+    </div>
+
+    <div>
+        @*text are area example*@
+        <label style="padding-top:25px;" for="special.Description"> Description </label>
+        @Html.TextAreaFor(m => m.special.Description, new { @class = "form-control", @style = "height:150px;", placeholder = "description" })
     </div>
 
 
@@ -86,19 +92,19 @@
 
     <div>
 
-    @*form row with labels tpo right of box example*@
-    @*<div class="form-row form-inline">
-        <div class="form-group col-md-6">
-            <label for="FirstName"> First Name </label>
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
-            <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
-        </div>
+        @*form row with labels tpo right of box example*@
+        @*<div class="form-row form-inline">
+            <div class="form-group col-md-6">
+                <label for="FirstName"> First Name </label>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
+            </div>
 
-        <div class="form-group col-md-6">
-            <label for="LastName"> Last Name </label>
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
-            <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>
-        </div>*@
+            <div class="form-group col-md-6">
+                <label for="LastName"> Last Name </label>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>
+            </div>*@
     </div>
 
 
@@ -154,7 +160,7 @@
 
             </tbody>
         </table>-->
-        
+
 
     </div>
     <div>

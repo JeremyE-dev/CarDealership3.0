@@ -371,6 +371,10 @@
     <Compile Include="Migrations\202103061545227_vehicletbles.Designer.cs">
       <DependentUpon>202103061545227_vehicletbles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103071723185_addvehicletable.cs" />
+    <Compile Include="Migrations\202103071723185_addvehicletable.Designer.cs">
+      <DependentUpon>202103071723185_addvehicletable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -430,6 +434,7 @@
     <Compile Include="ViewModels\TestModel.cs" />
     <Compile Include="ViewModels\UsedVehicleSearchVM.cs" />
     <Compile Include="ViewModels\UsersVM.cs" />
+    <Compile Include="ViewModels\VehicleSearchVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -479,6 +484,7 @@
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\View.cshtml" />
     <Content Include="Views\Admin\AddSpecial.cshtml" />
+    <Content Include="Views\Admin\AddVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -589,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103061545227_vehicletbles.resx">
       <DependentUpon>202103061545227_vehicletbles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103071723185_addvehicletable.resx">
+      <DependentUpon>202103071723185_addvehicletable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

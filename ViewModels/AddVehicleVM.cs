@@ -37,7 +37,7 @@ namespace CarDealership2.ViewModels
         public IEnumerable<SelectListItem> Colors { get; set; }
 
         //Interior
-        public int InteriorId { get; set; }
+        public int SelectedInteriorId { get; set; }
         public IEnumerable<SelectListItem> Interiors { get; set; }
 
 

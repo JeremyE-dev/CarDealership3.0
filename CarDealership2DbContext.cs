@@ -25,7 +25,9 @@ namespace CarDealership2
         public DbSet<BodyStyle> BodyStyles { get; set; }
         public DbSet<Transmission> Transmissions { get; set; }
         public DbSet<Color> Colors { get; set; }
-        public DbSet<Interior> Interiors { get; set; }
+        public DbSet<Interior> Interiors { get; set;}
+
+        public DbSet<Vehicle> Vehicles { get; set; }
 
 
 

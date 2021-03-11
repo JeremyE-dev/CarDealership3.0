@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Threading.Tasks;
 using System.Web;
+//using System.Web.Http;
 using System.Web.Mvc;
 
 namespace CarDealership2.Controllers
@@ -311,7 +312,37 @@ namespace CarDealership2.Controllers
         [HttpGet]
         public ActionResult Vehicles()
         {
-            return View();
+            IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
+
+            //VehicleSearchVM model = new VehicleSearchVM();
+            List<Vehicle> VehicleList = new List<Vehicle>();
+
+             VehicleList = vehicleRepository.GetAll().ToList();
+
+            return View(VehicleList);
+
+
+        }
+        [HttpGet]
+        public ActionResult GetAllVehicles()
+        {
+            IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
+            List<Vehicle> VehicleRepoList = new List<Vehicle>();
+            List<VehicleSearchVM> AllVehicles = new List<VehicleSearchVM>();
+            VehicleRepoList = vehicleRepository.GetAll().ToList();
+            //for earch vehicle in the list
+            // teh name associated with the seledcted id passed in
+            //foreach (var item in VehicleRepoList)
+            //{
+            //    VehicleSearchVM model = new VehicleSearchVM();
+            //    model.BodyStlye = 
+            //    AllVehicles.Add(model);
+
+            //}
+            
+            return Json(AllVehicles, JsonRequestBehavior.AllowGet);
+
+
         }
 
 
@@ -385,10 +416,11 @@ namespace CarDealership2.Controllers
 
             else
             {
+                return View(model);
 
             }
 
-            return View(model);
+           
          
         }
 

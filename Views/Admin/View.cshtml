@@ -45,175 +45,305 @@
     </div>
 
     <div>
+        @*inline form example*@
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <label for="staticEmail2" class="sr-only">Email</label>
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">Password</label>
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+        </form>
+    </div>
+
+    <div>
         @*container inline row and table*@
     </div>
+    <div>
+        @*basic select list*@
+        <form action="/action_page.php">
+            <label for="cars">Choose a car:</label>
+            <select name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="container" border: groove;">
+        <div class="row">
+            <form class="form-inline">
+                <div class="form-group col-sm-3">
+
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                </div>
+
+            </form>
+
+            <form class="form-inline">
+                <div class="form-group col-sm-3">
+
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                </div>
+
+            </form>
+
+            <form class="form-inline">
+                <div class="form-group col-sm-3">
+
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div>
+        @*Vehicle display form - for list of vehicles*@
+
+    </div>
+
 
     <div>
         @*text are area example*@
-        <label style="padding-top:25px;" for="special.Description"> Description </label>
-        @Html.TextAreaFor(m => m.special.Description, new { @class = "form-control", @style = "height:150px;", placeholder = "description" })
-    </div>
+        <!--<label style="padding-top:25px;" for="special.Description"> Description </label>
+           @* @Html.TextAreaFor(m => m.special.Description, new { @class = "form-control", @style = "height:150px;", placeholder = "description" })*@
+        </div>
 
 
-    <div>
-        @*two text boxes in a row with label*@
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                @*<label for="FirstName"> First Name </label>
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
-                    <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>*@
-            </div>
+        <div>
+            @*two text boxes in a row with label*@
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @*<label for="FirstName"> First Name </label>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>*@
+                </div>
 
-            <div class="form-group col-md-6">
-                @*<label for="LastName"> Last Name </label>
-                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
-                    <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>*@
+                <div class="form-group col-md-6">
+                    @*<label for="LastName"> Last Name </label>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>*@
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
-        @*Text Box and drop down list example*@
+        <div>
+            @*Text Box and drop down list example*@
 
-        @*<div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label for="Email"> Email </label>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email" })
-                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+            @*<div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="Email"> Email </label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        @Html.LabelFor(m => m.SelectedRoleType)
+                        @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--", new { @class = "form-control" })
+                    </div>
+                </div>*@
+
+        </div>
+
+        <div>
+
+            @*form row with labels tpo right of box example*@
+            @*<div class="form-row form-inline">
+                <div class="form-group col-md-6">
+                    <label for="FirstName"> First Name </label>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
                 </div>
 
-                <div class="form-group col-sm-6">
-                    @Html.LabelFor(m => m.SelectedRoleType)
-                    @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--", new { @class = "form-control" })
-                </div>
-            </div>*@
-
-    </div>
-
-    <div>
-
-        @*form row with labels tpo right of box example*@
-        @*<div class="form-row form-inline">
-            <div class="form-group col-md-6">
-                <label for="FirstName"> First Name </label>
-                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
-                <span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="LastName"> Last Name </label>
-                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
-                <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>
-            </div>*@
-    </div>
+                <div class="form-group col-md-6">
+                    <label for="LastName"> Last Name </label>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "last name" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>
+                </div>*@
+        </div>
 
 
 
-    <div>
-        @*Form small squares example Grouping example*@
-    </div>
-    <div>
-        @* small squares example Grouping example*@
-    </div>
-    <div>
-        <button type="submit" class="btn btn-md btn-primary">Save</button>
-    </div>
+        <div>
+            @*Form small squares example Grouping example*@
+        </div>
+        <div>
+            @* small squares example Grouping example*@
+        </div>
+        <div>
+            <button type="submit" class="btn btn-md btn-primary">Save</button>
+        </div>
 
-    <div>
-        @* Horizontal grouping*@
-    </div>
+        <div>
+            @* Horizontal grouping*@
+        </div>
 
-    <div>
-        @* Search Bar example *@
-    </div>
-    <div>
-        @* For Each Loop example adding element on the fly *@
-        <!--<table class=" table table-bordered table-striped table-hover" style="width: auto;">
-            <thead>
-                <tr>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>UserId</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            @*
-                @foreach (var user in Model.UserList)
-                {
+        <div>
+            @* Search Bar example *@
+        </div>
+        <div>
+            @* For Each Loop example adding element on the fly *@
+            <!--<table class=" table table-bordered table-striped table-hover" style="width: auto;">
+                <thead>
                     <tr>
-                        <td>@user.LastName</td>
-                        <td>@user.FirstName</td>
-                        <td>@user.Email</td>
-                        <td>@user.RoleName</td>
-                        <td>@user.Id</td>
-                        <td>@Html.ActionLink("edit", "EditUser", "Admin", new { id = @user.Id.ToString() }, null) </td>-->
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>UserId</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @*
+                    @foreach (var user in Model.UserList)
+                    {
+                        <tr>
+                            <td>@user.LastName</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.Email</td>
+                            <td>@user.RoleName</td>
+                            <td>@user.Id</td>
+                            <td>@Html.ActionLink("edit", "EditUser", "Admin", new { id = @user.Id.ToString() }, null) </td>-->
 
-                        @*<td>@Roles.GetRolesForUser(user.UserName).FirstOrDefault();</td>*@
-                        @*<td>@user.Roles.Where(u => u.UserId == user.Id).GetRolesForUser().GetFirstOrDefault();</td>*@
-                        @*get the role that matches the userid*@
+                            @*<td>@Roles.GetRolesForUser(user.UserName).FirstOrDefault();</td>*@
+                            @*<td>@user.Roles.Where(u => u.UserId == user.Id).GetRolesForUser().GetFirstOrDefault();</td>*@
+                            @*get the role that matches the userid*@
 
-                    <!--</tr>
-                }
+                        <!--</tr>
+                    }
 
-            </tbody>
-        </table>-->
+                </tbody>
+            </table>-->
 
 
-    </div>
-    <div>
-        @* Action Link exampler example *@
-    </div>
-
-    <div>
-        @* Vehicle Search Result Box example with Details button *@
-    </div>
-
-    <div>
-        @*Vehicle Details box with contact us button *@
-    </div>
-
-    <div>
-        @*Specials box no image *@
     </div>
 
     <div>
-        @*Contact Us Form with submit*@
+        @*get layout of jquery ajax call with script tags*@
     </div>
 
     <div>
-        @*Purchase vehicle - Sales Information portion*@
-    </div>
+        @*document.ready shell*@
+        $(document).ready(function () {
 
-    <div>
-        @*Picture upload*@
-    </div>
-
-    <div>
-        @*Add/Edit vehicle form*@
-    </div>
-
-    <div>
-        @*Change Password form with Save button form*@
-    </div>
-
-    <div>
-        @*Specials form with delete with Save button form*@
-    </div>
-
-    <div>
-        @*Sales Report search bar*@
-    </div>
-
-    <div>
-        @*Inventory Report two tables*@
-    </div>
-    <div>
-        @*JumboTron example*@
+        });
     </div>
 
 
-</body>
+
+
+        <div>
+            @* Action Link exampler example *@
+        </div>
+
+        <div>
+            @* Vehicle Search Result Box example with Details button *@
+        </div>
+
+        <div>
+            @*Vehicle Details box with contact us button *@
+        </div>
+
+        <div>
+            @*Specials box no image *@
+        </div>
+
+        <div>
+            @*Contact Us Form with submit*@
+        </div>
+
+        <div>
+            @*Purchase vehicle - Sales Information portion*@
+        </div>
+
+        <div>
+            @*Picture upload*@
+        </div>
+
+        <div>
+            @*Add/Edit vehicle form*@
+        </div>
+
+        <div>
+            @*Cha
+
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+            @*Specials box no image *@
+        </div>
+
+        <div>
+            @*Contact Us Form with submit*@
+        </div>
+
+        <div>
+            @*Purchase vehicle - Sales Information portion*@
+        </div>
+
+        <div>
+            @*Picture upload*@
+        </div>
+
+        <div>
+            @*Add/Edit vehicle form*@
+        </div>
+
+        <div>
+            @*Change Password form with Save button form*@
+        </div>
+
+        <div>
+            @*Specials form with delete with Save button form*@
+        </div>
+
+        <div>
+            @*Sales Report search bar*@
+        </div>
+
+        <div>
+            @*Inventory Report two tables*@
+        </div>
+        <div>
+            @*JumboTron example*@
+        </div>
+
+
+    </body>
 </html>

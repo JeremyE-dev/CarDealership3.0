@@ -1,4 +1,4 @@
-﻿@model CarDealership2.ViewModels.VehicleSearchVM
+﻿@*@model CarDealership2.ViewModels.VehicleSearchVM*@
 
 @{
     Layout = "~/Views/Shared/_NewLayout.cshtml";
@@ -80,12 +80,32 @@
                 </div>
             </div>
         </div>
+    
+
+
+
         <div class="container" border: groove;">
             <div class="row">
                 <form class="form-inline">
-                    <div class="form-group col-sm-3">
+                    <div class="form-group col-sm-3" id="1">
                         <label for="BodyStyle"> Body Style:  </label>
-                        <input type="text" style="width:150px;"  />
+                        <input type="text" style="width:150px;" />
+
+
+                    </div>
+
+                    @*<div class="form-group col-sm-3">
+
+                    </div>*@
+
+                    <div class="form-group col-sm-3">
+
+                    </div>
+
+                </form>
+
+                <form class="form-inline">
+                    <div class="form-group col-sm-3">
 
                     </div>
 
@@ -112,43 +132,173 @@
 
                     </div>
 
-                </form>
-
-                <form class="form-inline">
-                    <div class="form-group col-sm-3">
-
-                    </div>
-
-                    <div class="form-group col-sm-3">
-
-                    </div>
-
-                    <div class="form-group col-sm-3">
-
-                    </div>
-                
                 </form>
             </div>
         </div>
 
+        <div class="container">
+            <div class="row" id="vehiclelist">
+                <div id="emptyDiv">
 
+
+                </div>
+
+
+            </div>
+        </div>
 
     </div>
-    
-    
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>*@
     <script>
         //write js here
         //write practice filter script
         // will need document, ready funtion
         $(document).ready(function () {
+
             $("#SearchButton").on("click", function () {
-                alert("search button clicked");
-                //getthe list of vehicles and display each one
+                $.get("http://localhost:50347/Admin/GetAllVehicles", function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                    //var data = JSON.parse(data);//here result should be json encoded data
+
+
+                    $.each(data, function (index, vehicle) {
+                        //alert(vehicle.BodyStyle.BodyStyleName);
+                        //create and element for each
+                        var testtext = vehicle.BodyStyle.BodyStyleName
+                        var Year = vehicle.Year;
+                        var Make = vehicle.MakeName;
+                        var Model = vehicle.VehicleModelName;
+                        var BodyStyle = vehicle.BodyStyleName;
+                        var Interior = vehicle.InteriorName;
+                        var SalePrice = vehicle.SalePrice;
+                        var Transmission = vehicle.TransmissionMame;
+                        var Mileage = vehicle.Mileage;
+                        var MRSP = vehicle.MRSP;
+
+                        var Color = vehicle.colorName;
+                        var VIN = vehicle.VIN;
+
+
+                        //var vehicleInfo = "<p>";
+                        //vehicleInfo += "BodyStyle:" + BodyStyle + "<br/>";
+                        //vehicleInfo += "<p>";
+                        //$("TESTID").append(vehicleInfo);
+
+
+                        //put data received into variables
+                        //var tablestart = '<table class="table">';
+
+                        //var row = '<tr>';
+                        //row += '<td>' + vehicle.BodyStyle.BodyStyleName + '</td>';
+                        //var tableend = '</table>';
+                        //var testappendtext = $("<p></p>").Text("this was apppended").
+                        //$("body").append(testappendtext);
+
+
+                        //$("#TESTID").text("BodyStyle: " + BodyStyle + "Color: " + Color + "SalePrice: " + SalePrice);
+                        $("emptyDiv").append("p").text("A new paragraph of text");
+                        $("#TESTID").text("Transmission: " + Transmission + "Mileage: " + Mileage + "MRSP: " + MRSP);
+
+                        //var txt2 = $("<p></p>").text("Tardis type 40" + vehicle.Color.ColorName);
+                        //var Table = $('<table >');
+                        //Table.append('<tr><td>' + Year + Make + Model + '</td></tr>');
+                        //Table.append('<tr><td>' + BodyStyle + Interior + Saleprice + '</td></tr>');
+                        ////$("#1").append(txt2);
+                        //$("#1").append(Table);
+
+
+                    });
+
+                });
             })
-            
-        });//fun
+
+        });
+
+            @*$("#SearchButton").on("click", function () {
+                alert("search button clicked");
+                $.ajax({
+                    url: @Url.Action("GetAllVehicles", "Admin"),
+                    success: function (data)
+                    {
+                        if (data.success == "ok") {
+                            alert("data ok");
+                        }
+
+                    }
+.
+
+
+
+                });
+
+            })
+
+        });*@
+
+            //$("#SearchButton").on("click", function () {
+            ////    alert("search button clicked");
+            ////    //getAllVehicles();
+            ////    //ajax call here to get teh list and display each item?
+            ////})
+            //$.ajax({
+
+
+            //    //type: "GET",
+            //    //url: "http://localhost:50347/Admin/GetAllVehicles",
+            //    //success: function (data, status) {
+            //    //    //gET A REFERENCE WHERE YOU WANTTHE DATA TO GO
+            //    //    //ex. vehiclelistDiv = $(#allVehhicles);
+            //    //    $.each(listofVehicles, function (index, vehicle) {
+            //    //        var Make = vehicle.NameName;
+            //    //        alert("nailed it");
+
+            //    //    });
+
+
+            //    //},
+            //    //error: function () {
+            //    //    alert("FAILURE");
+            //    //}
+
+            //});
+
+
+
+
+            //$("#SearchButton").on("click", function () {
+            //    alert("search button clicked");
+            //    //getAllVehicles();
+            //    //ajax call here to get teh list and display each item?
+            //})
+
+        //});//fun
+
+        //function getAllVehicles() {
+        //    //function takes in a JS object (key/value pairs) param is a object lteral that starts and ends with curly brace {}
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "http://localhost:50347/Admin/GetAllVehicles",
+        //        success: function (data, status) {
+        //            //gET A REFERENCE WHERE YOU WANTTHE DATA TO GO
+        //            //ex. vehiclelistDiv = $(#allVehhicles);
+        //            $.each(listofVehicles, function (index, vehicle) {
+        //                var Make = vehicle.NameName;
+        //                alert("nailed it");
+
+        //            });
+
+
+        //        },
+        //        error: function () {
+        //            alert("FAILURE");
+        //        }
+
+        //    });
+        //}
     </script>
 </body>
 </html>

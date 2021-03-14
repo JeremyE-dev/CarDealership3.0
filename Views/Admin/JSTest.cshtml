@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JSTest</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <!--container for all elements -->
+        <div id="VEHICLEdisplaytableDiv">
+
+            <table id="VEHICLEdisplaytable" class="table table-hover table-bordered">
+                <!-- <thead> -->
+                <tr style="text-align: left;">
+                    <th class="col-sm-1"> Year </th>
+                    <th class="col-sm-1"> Make</th>
+                    <th class="col-sm-1"> Model </th>
+                    <th class="col-sm-1"> BodyStyle</th>
+                    <th class="col-sm-1"> Interior</th>
+                    <th class="col-sm-1"> Sale Price</th>
+                    <th class="col-sm-1"> Transmission</th>
+                    <th class="col-sm-1"> Mileage</th>
+                    <th class="col-sm-1"> MRSP</th>
+                    <th class="col-sm-1"> Color </th>
+                    <th class="col-sm-1"> VIN </th>
+                </tr>
+                <!-- </thead> -->
+                <tbody id="VEHICLEdisplaycontentRows"></tbody>
+                <!-- will append rows here -->
+            </table>
+        </div>
+    </div>
+
+    <div style="border-style: groove; margin-top:5px; padding-top:5px;" class="container">
+        <div class="row">
+            <table style="width: 15%;">
+                <colgroup>
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                </colgroup>
+
+                <tbody>
+                    <tr style="height: 40px;">
+                        <td>2016</td>
+                        <td>Make</td>
+                        <td>Model</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="/images/dollar.png" alt="dollar sign" style="width:100px" class="center">
+            </div> 
+
+            <div class="col-md-10">
+
+                <table style="width: 100%;">
+                    <colgroup>
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 15%">
+                        <col span="1" style="width: 5%">
+                        <col span="1" style="width: 15%">
+                        <col span="1" style="width: 5%">
+                        <col span="1" style="width: 15%">
+                    </colgroup>
+                <tbody>
+                    <tr style="height: 40px;">
+                        <td ><b>Body Style:</b></td>
+                        <td style="text-align: left;">SUV</td>
+                        <td><b>Interior:</b> </td>
+                        <td>Black</td>
+                        <td><b>Sale Price:</b></td>
+                        <td>12,875</td>
+                    </tr>
+
+                    <tr style="height: 40px;">
+                        <td ><b>Trans:</b></td>
+                        <td>Automatic</td>
+                        <td><b>Mileage</b></td>
+                        <td>123</td>
+                        <td><b>MRSP:</b></td>
+                        <td>14,875</td>
+                    </tr>
+
+                    <tr style="height: 40px;">
+                        <td><b>Color:</b> </td>
+                        <td>Silver</td>
+                        <td><b>VIN:</b></td>
+                        <td>12345767899090</td>
+                        <td><button type="button" class="btn btn-primary">Details</button></td>  
+                    </tr>
+                    </tbody>
+                </table>
+                
+                
+
+</div>
+        </div>
+    </div>
+
+  
+
+
+
+
+
+        <script src="~/Scripts/jquery-3.5.1.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/JavaScriptTEST.js"></script>
+</body>
+</html>

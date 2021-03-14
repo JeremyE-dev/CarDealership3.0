@@ -34,13 +34,29 @@ namespace CarDealership2.Repositories
 
         
             model.Make = repository.Makes.FirstOrDefault(m => m.MakeId == viewmodel.SelectedMakeId);
+            //add makename to model
+            model.MakeName = model.Make.MakeName;
             model.VehicleModel = repository.Models.FirstOrDefault(m => m.ModelId == viewmodel.SelectedVehicleModelId);
+            //add modelname to model
+            model.VehicleModelName = model.VehicleModel.ModelName; 
             model.Type = repository.VehicleTypes.FirstOrDefault(m => m.VehicleTypeId == viewmodel.SelectedVehicleTypeId);
+            //add type name to model
+            model.VehicleTypeName = model.Type.VehicleTypeName;
             model.BodyStyle = repository.BodyStyles.FirstOrDefault(m => m.BodyStyleId == viewmodel.SelectedBodyStyleId);
+            //add bodystyle name to model
+            model.BodyStyleName = model.BodyStyle.BodyStyleName;
+            
             model.Year = viewmodel.Vehicle.Year;
             model.Transmission = repository.Transmissions.FirstOrDefault(m => m.TransmissionId == viewmodel.SelectedTransmissionId);
+            //add transmission name
+            model.TransmissionName = model.Transmission.TransmissionName;
+
             model.Color = repository.Colors.FirstOrDefault(m => m.ColorId == viewmodel.SelectedColorId);
+            //add color name
+            model.ColorName = model.Color.ColorName;
             model.Interior = repository.Interiors.FirstOrDefault(m => m.InteriorId == viewmodel.SelectedInteriorId);
+            //add interior name
+            model.InteriorName = model.Interior.InteriorName;
             model.Mileage = viewmodel.Vehicle.Mileage;
             model.VIN = viewmodel.Vehicle.VIN;
             model.MRSP = viewmodel.Vehicle.MRSP;

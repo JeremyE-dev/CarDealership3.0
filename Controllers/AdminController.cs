@@ -85,8 +85,16 @@ namespace CarDealership2.Controllers
         {
 
             return View();
+        }
 
+        public ActionResult JQueryTest()
+        {
+            return View();
+        }
 
+        public ActionResult JSTest()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -327,20 +335,13 @@ namespace CarDealership2.Controllers
         public ActionResult GetAllVehicles()
         {
             IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
-            List<Vehicle> VehicleRepoList = new List<Vehicle>();
-            List<VehicleSearchVM> AllVehicles = new List<VehicleSearchVM>();
-            VehicleRepoList = vehicleRepository.GetAll().ToList();
-            //for earch vehicle in the list
-            // teh name associated with the seledcted id passed in
-            //foreach (var item in VehicleRepoList)
-            //{
-            //    VehicleSearchVM model = new VehicleSearchVM();
-            //    model.BodyStlye = 
-            //    AllVehicles.Add(model);
+     
+            List<Vehicle>VehicleRepoList = vehicleRepository.GetAll().ToList();
 
-            //}
+            ViewBag.List = VehicleRepoList; // could I loop through this 
+
             
-            return Json(AllVehicles, JsonRequestBehavior.AllowGet);
+            return Json(VehicleRepoList, JsonRequestBehavior.AllowGet);
 
 
         }

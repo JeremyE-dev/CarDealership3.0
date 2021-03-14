@@ -376,6 +376,18 @@
     <Compile Include="Migrations\202103071723185_addvehicletable.Designer.cs">
       <DependentUpon>202103071723185_addvehicletable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103111528345_NamesToVehicleClass.cs" />
+    <Compile Include="Migrations\202103111528345_NamesToVehicleClass.Designer.cs">
+      <DependentUpon>202103111528345_NamesToVehicleClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103111646411_vehicletypenametovehicle.cs" />
+    <Compile Include="Migrations\202103111646411_vehicletypenametovehicle.Designer.cs">
+      <DependentUpon>202103111646411_vehicletypenametovehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103111851338_bodystylenametovehicle.cs" />
+    <Compile Include="Migrations\202103111851338_bodystylenametovehicle.Designer.cs">
+      <DependentUpon>202103111851338_bodystylenametovehicle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -446,9 +458,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Help.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\JavaScriptTEST.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
@@ -489,6 +503,8 @@
     <Content Include="Views\Admin\AddSpecial.cshtml" />
     <Content Include="Views\Admin\AddVehicle.cshtml" />
     <Content Include="Views\Admin\Vehicles.cshtml" />
+    <Content Include="Views\Admin\JQueryTest.cshtml" />
+    <Content Include="Views\Admin\JSTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -601,6 +617,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103071723185_addvehicletable.resx">
       <DependentUpon>202103071723185_addvehicletable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111528345_NamesToVehicleClass.resx">
+      <DependentUpon>202103111528345_NamesToVehicleClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111646411_vehicletypenametovehicle.resx">
+      <DependentUpon>202103111646411_vehicletypenametovehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111851338_bodystylenametovehicle.resx">
+      <DependentUpon>202103111851338_bodystylenametovehicle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,7 +20,7 @@ namespace CarDealership2.Controllers
             
             IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
             VehicleSearchVM model = new VehicleSearchVM();
-            model.vehicles = vehicleRepository.GetAll().ToList();
+            //model.vehicles = vehicleRepository.GetAll().ToList();
 
         
 

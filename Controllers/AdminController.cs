@@ -343,8 +343,42 @@ namespace CarDealership2.Controllers
             
             return Json(VehicleRepoList, JsonRequestBehavior.AllowGet);
 
+        }
+
+       
+
+        [Route("GetVehicleSearchResults/{searchTerm}/{minPrice}/{maxPrice}/{minYear}/{maxYear}")]
+        //[Route("GetVehicleSearchResults/{searchTerm}/{}")]
+        [HttpGet]
+        public ActionResult GetVehicleSearchResults(string searchTerm , int minPrice, int maxPrice, int minYear, int maxYear)
+        {
+           
+            
+            IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
+            List<Vehicle> VehicleRepoList = new List<Vehicle>();
+
+            //if all fields are empty return all of the vehicles
+
+            if (searchTerm == "0" && minPrice == 0 && maxPrice == 0 && minYear == 0 && maxYear == 0) 
+            {
+                VehicleRepoList = vehicleRepository.GetAll().ToList();
+            }
+
+            else
+            {
+                VehicleRepoList = vehicleRepository.GetAll().ToList();
+            }
+
+          
+
+            ViewBag.List = VehicleRepoList; // could I loop through this 
+
+
+            return Json(VehicleRepoList, JsonRequestBehavior.AllowGet);
 
         }
+
+
 
 
         [HttpGet]

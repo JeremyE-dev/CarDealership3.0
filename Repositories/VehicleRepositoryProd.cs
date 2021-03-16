@@ -87,6 +87,61 @@ namespace CarDealership2.Repositories
 
         }
 
+        public IEnumerable<Vehicle> SearchVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear)
+        {
+            //var query = from invite in db.invites
+            //            where invite.Division.Contains(userInput.Division.Text) &&
+            //                  invite.Status.Contains(userInput.Status.Text)
+            //            select invite;
+
+            int number;
+
+            if (int.TryParse(searchTerm, out number))
+            {
+
+            }
+
+            else
+            {
+                number = 0;
+            }
+              
+
+
+
+            var repository = new CarDealership2DbContext();
+
+            var query = from vehicle in repository.Vehicles
+                        where vehicle.VehicleModelName.Contains(searchTerm) &&
+                              vehicle.MakeName.Contains(searchTerm) &&
+                              vehicle.Year == number      
+                        select vehicle;
+
+            //IEnumerable<Vehicle> vehicles = Enumerable.Range(minPrice, maxPrice).Select(v => v.);
+
+            //IEnumerable<int> squares = Enumerable.Range(1, 10).Select(x => x * x);
+
+            //foreach (int num in squares)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            //var result1 = repository.Vehicles.FirstOrDefault(v => v.VehicleModelName.Contains(searchTerm));
+            //      var result2 = repository.Vehicles.FirstOrDefault(v => v.MakeName.Contains(searchTerm));
+
+            //need in parse
+
+
+
+            //var result3 = repository.Vehicles.FirstOrDefault(v => v.Year == searchTerm);
+            //var v = from vehicle in repository.Vehicles
+            //        select vehicle;
+
+
+
+            return query;
+        }
+
         public IEnumerable<Vehicle> GetAll()
         {
             var repository = new CarDealership2DbContext();

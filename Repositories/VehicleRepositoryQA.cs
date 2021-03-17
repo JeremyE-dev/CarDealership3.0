@@ -15,12 +15,22 @@ namespace CarDealership2.Repositories
             throw new NotImplementedException();
         }
 
-        public void Edit(EditVehicleVM viewmodel)
+        public void Edit(int id)
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Vehicle> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Vehicle GetVehicleById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Vehicle> SearchVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear)
         {
             throw new NotImplementedException();
         }

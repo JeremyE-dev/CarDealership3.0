@@ -12,9 +12,13 @@ namespace CarDealership2.Interfaces
     {
         IEnumerable<Vehicle> GetAll();
 
+        IEnumerable<Vehicle> SearchVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
+
         void Add(AddVehicleVM viewmodel);
 
-        void Edit(EditVehicleVM viewmodel);
+        Vehicle GetVehicleById(int id);
+
+        void Edit(int id);
 
         //void Delete(DeleteVehicleVM viewModel);
 

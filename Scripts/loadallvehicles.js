@@ -19,6 +19,7 @@ function getAllVehicles() {
         success: function (data, status) {
             $.each(data, function (index, vehicle) {
                
+                var VehicleId = vehicle.VehicleId;
                 var Year = vehicle.Year;
                 var Make = vehicle.MakeName;
                 var Model = vehicle.VehicleModelName;
@@ -133,7 +134,13 @@ function getAllVehicles() {
                 $("#" + trcolorvinbutton).append('<td style="text-align: left;">' + Color + '</td>');
                 $("#" + trcolorvinbutton).append('<td><b>VIN:</b></td>');
                 $("#" + trcolorvinbutton).append('<td>' + VIN + '</td>');
-                $("#" + trcolorvinbutton).append('<td><button type="button" class="btn btn-primary">Details</button></td>');
+                //$("#" + trcolorvinbutton).append('<td><button type="button" class="btn btn-primary">Details</button></td>'); // add edit button with vehicleid in it
+                //$("#" + trcolorvinbutton).append('<td>@Html.ActionLink("edit","EditVehicle","Admin", new {id ='  + VehicleId  +' }, null) </td>');
+                //$("#" + trcolorvinbutton).append('<td><a href='@Url.Action("EditVehicle", "Admin", new { id = "<id>" }) ' class="btn btn-primary">Click Me</a></td>');
+                $("#" + trcolorvinbutton).append('<a href="/Admin/EditVehicle/' + VehicleId + '"><button class="btn btn-primary">Edit</button></a>');
+
+            //@Html.ActionLink("edit","EditUser","Admin", new {id = @user.Id.ToString() }, null) 
+            //<a href='@Url.Action("Action", "Controller")' class="btn btn-primary">Click Me</a>
 
 
             }); // end success:function
@@ -168,6 +175,7 @@ function getSearchResults() {
         success: function (data, status) {
             $.each(data, function (index, vehicle) {
 
+                var VehicleId = vehicle.VehicleId;
                 var Year = vehicle.Year;
                 var Make = vehicle.MakeName;
                 var Model = vehicle.VehicleModelName;
@@ -282,9 +290,9 @@ function getSearchResults() {
                 $("#" + trcolorvinbutton).append('<td style="text-align: left;">' + Color + '</td>');
                 $("#" + trcolorvinbutton).append('<td><b>VIN:</b></td>');
                 $("#" + trcolorvinbutton).append('<td>' + VIN + '</td>');
-                $("#" + trcolorvinbutton).append('<td><button type="button" class="btn btn-primary">Details</button></td>');
-
-
+                //$("#" + trcolorvinbutton).append('<td><button type="button" class="btn btn-primary">Details</button></td>');
+                //$("#" + trcolorvinbutton).append('<td>@Html.ActionLink("edit","EditVehicle","Admin", new {id =' + VehicleId + ' }, null) </td>');
+                $("#" + trcolorvinbutton).append('<a href="/Admin/EditVehicle/' + VehicleId + '"><button class="btn btn-primary">Edit</button></a>');
             }); // end success:function
         },
         error: function () {

@@ -71,9 +71,18 @@ namespace CarDealership2.Repositories
 
         }
 
-        public void Edit(EditVehicleVM viewmodel)
+        public void Edit(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public Vehicle GetVehicleById(int id)
+        {
+            var repository = new CarDealership2DbContext();
+
+            var vehicleToEdit = repository.Vehicles.FirstOrDefault(v => v.VehicleId == id);
+
+            return vehicleToEdit;
         }
 
         public void Delete(int id)
@@ -105,7 +114,17 @@ namespace CarDealership2.Repositories
             {
                 number = 0;
             }
-              
+
+            if(maxYear == 0)
+            {
+                maxYear = 3000;
+            }
+
+            if (maxPrice == 0)
+            {
+                maxPrice = 20000000; // max price of a car is now 
+            }
+
 
 
 
@@ -114,7 +133,9 @@ namespace CarDealership2.Repositories
             var query = from vehicle in repository.Vehicles
                         where vehicle.VehicleModelName.Contains(searchTerm) &&
                               vehicle.MakeName.Contains(searchTerm) &&
-                              vehicle.Year == number      
+                              vehicle.Year == number &&
+                              vehicle.Year >= minYear &&  vehicle.Year <= maxYear &&
+                              vehicle.MRSP >= minPrice && vehicle.MRSP <= maxPrice
                         select vehicle;
 
             //IEnumerable<Vehicle> vehicles = Enumerable.Range(minPrice, maxPrice).Select(v => v.);

@@ -259,8 +259,16 @@ namespace CarDealership2.Controllers
         {
             var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
 
+            //1.) get object
+            //2.) create new model
+            //3.) populate new model with input from user
+            //4.) return View ("EditUser", model) sends the updated model to edit post method
+            //5.) post does the editing and saves the changes
+            
+            //get object
             var user = userManager.FindById(id);
 
+            //create new model
             EditUserVM model = new EditUserVM();
 
             model.UserId = "";
@@ -366,7 +374,7 @@ namespace CarDealership2.Controllers
 
             else
             {
-                VehicleRepoList = vehicleRepository.GetAll().ToList();
+                VehicleRepoList = vehicleRepository.SearchVehicles(searchTerm,minPrice,maxPrice,minYear,maxYear).ToList();
             }
 
           
@@ -460,15 +468,22 @@ namespace CarDealership2.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditVehicle()
+        public ActionResult EditVehicle(int id)
         {
-            return View();
+            //get the repo
+            IVehicleRepository VehicleRepo = VehicleRepositoryFactory.Create();
+            //get the vehicle to edit and pass it to the view
+
+            Vehicle model = VehicleRepo.GetVehicleById(id);
+            
+            return View("EditVehicle", model);
         }
 
 
         [HttpPost]
         public ActionResult EditVehicle(EditVehicleVM model)
         {
+            //post method sends the changes to the 
             return View();
         }
 

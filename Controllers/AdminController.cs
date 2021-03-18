@@ -487,9 +487,11 @@ namespace CarDealership2.Controllers
 
             EditVehicleVM model = new EditVehicleVM();
             model.Vehicle = new Vehicle();
-            model.Vehicle = vehicleToEdit;
+            model.Vehicle = vehicleToEdit; // is the Vehcile found have a null make here
+            model.Vehicle.VehicleId = vehicleToEdit.VehicleId;
 
             //set the the EditViewModels selection ids to match vehicleToEdit
+            // why is vehicle id zero when it is passed to post contoller????
            
             model.Vehicle.Make = new Make();
             model.Vehicle.Make = vehicleToEdit.Make;
@@ -558,10 +560,53 @@ namespace CarDealership2.Controllers
 
 
         [HttpPost]
-        public ActionResult EditVehicle(EditVehicleVM model)
+
+        public ActionResult EditVehicle(EditVehicleVM model, int id)
         {
+            model.Vehicle.VehicleId = id;
+
+            IVehicleRepository VehicleRepo = VehicleRepositoryFactory.Create();
+            var makeRepository = MakeRepositoryFactory.Create();
+            var modelRepository = ModelRepositoryFactory.Create();
+            var vehicleTypeRepository = VehicleTypeRepositoryFactory.Create();
+            var bodystyleRepository = BodyStyleRepositoryFactory.Create();
+            var transmissionRepository = TransmissionRepositoryFactory.Create();
+            var colorRepository = ColorRepositoryFactory.Create();
+            var interiorRepository = InteriorRepositoryFactory.Create();
+
+            model.Makes = from m in makeRepository.GetAll()
+                          select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
+
+            model.VehicleModels = from m in modelRepository.GetAll()
+                                  select new SelectListItem { Text = m.ModelName, Value = m.ModelId.ToString() };
+
+            model.VehicleTypes = from m in vehicleTypeRepository.GetAll()
+                                 select new SelectListItem { Text = m.VehicleTypeName, Value = m.VehicleTypeId.ToString() };
+
+            model.BodyStyles = from m in bodystyleRepository.GetAll()
+                               select new SelectListItem { Text = m.BodyStyleName, Value = m.BodyStyleId.ToString() };
+
+            model.Transmissions = from m in transmissionRepository.GetAll()
+                                  select new SelectListItem { Text = m.TransmissionName, Value = m.TransmissionId.ToString() };
+
+            model.Colors = from m in colorRepository.GetAll()
+                           select new SelectListItem { Text = m.ColorName, Value = m.ColorId.ToString() };
+
+            model.Interiors = from m in interiorRepository.GetAll()
+                              select new SelectListItem { Text = m.InteriorName, Value = m.InteriorId.ToString() };
+
+
             //start here 3/18/21
-            return View();
+            //if modelstate is valid
+            //make changes, where to go after 
+            VehicleRepo.Edit(model);
+            return View("Vehicles");
+
+            //else
+            //reload dropdowns and return to form with data they tried to submit, and dsiplay error messages
+
+
+            //return View();
         }
 
         [HttpGet]

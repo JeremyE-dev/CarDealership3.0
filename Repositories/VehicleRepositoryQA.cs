@@ -15,7 +15,7 @@ namespace CarDealership2.Repositories
             throw new NotImplementedException();
         }
 
-        public void Edit(int id)
+        public void Edit(EditVehicleVM viewmodel)
         {
             throw new NotImplementedException();
         }

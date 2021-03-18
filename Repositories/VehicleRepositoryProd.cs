@@ -32,6 +32,9 @@ namespace CarDealership2.Repositories
                 model.VehicleId = repository.Vehicles.Max(m => m.VehicleId) + 1;
             }
 
+            //
+
+
         
             model.Make = repository.Makes.FirstOrDefault(m => m.MakeId == viewmodel.SelectedMakeId);
             //add makename to model
@@ -71,9 +74,37 @@ namespace CarDealership2.Repositories
 
         }
 
-        public void Edit(int id)
+        public void Edit(EditVehicleVM viewmodel)
         {
-            throw new NotImplementedException();
+            var repository = new CarDealership2DbContext();
+
+            var vehicleToEdit = repository.Vehicles.FirstOrDefault(v => v.VehicleId == viewmodel.Vehicle.VehicleId);
+            //if the element is null keep it the same, else change it
+
+            //start here to update names
+            //next finish delete fubnction
+            //in seed method turn off cascade deletes
+
+            vehicleToEdit.Make = new Make();
+            
+            vehicleToEdit.Make = repository.Makes.FirstOrDefault(m => m.MakeId == viewmodel.SelectedMakeId);
+            vehicleToEdit.VehicleModel = repository.Models.FirstOrDefault(m => m.ModelId == viewmodel.SelectedVehicleModelId);
+            vehicleToEdit.Type = repository.VehicleTypes.FirstOrDefault(m => m.VehicleTypeId == viewmodel.SelectedVehicleTypeId);
+            vehicleToEdit.BodyStyle = repository.BodyStyles.FirstOrDefault(m => m.BodyStyleId == viewmodel.SelectedBodyStyleId);
+            vehicleToEdit.Year = viewmodel.Vehicle.Year;
+            vehicleToEdit.Transmission = repository.Transmissions.FirstOrDefault(m => m.TransmissionId == viewmodel.SelectedTransmissionId);
+            vehicleToEdit.Color = repository.Colors.FirstOrDefault(m => m.ColorId == viewmodel.SelectedColorId);
+            vehicleToEdit.Interior = repository.Interiors.FirstOrDefault(m => m.InteriorId == viewmodel.SelectedInteriorId);
+            vehicleToEdit.Mileage = viewmodel.Vehicle.Mileage;
+            vehicleToEdit.VIN = viewmodel.Vehicle.VIN;
+            vehicleToEdit.MRSP = viewmodel.Vehicle.MRSP;
+            vehicleToEdit.SalePrice = viewmodel.Vehicle.SalePrice;
+            vehicleToEdit.Description = viewmodel.Vehicle.Description;
+            vehicleToEdit.IsFeatured = viewmodel.Vehicle.IsFeatured;
+            vehicleToEdit.PhotoPath = viewmodel.Vehicle.PhotoPath;
+
+            repository.SaveChanges();
+
         }
 
         public Vehicle GetVehicleById(int id)
@@ -81,6 +112,7 @@ namespace CarDealership2.Repositories
             var repository = new CarDealership2DbContext();
 
             var vehicleToEdit = repository.Vehicles.FirstOrDefault(v => v.VehicleId == id);
+
 
             return vehicleToEdit;
         }

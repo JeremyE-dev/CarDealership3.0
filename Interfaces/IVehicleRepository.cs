@@ -18,7 +18,7 @@ namespace CarDealership2.Interfaces
 
         Vehicle GetVehicleById(int id);
 
-        void Edit(int id);
+        void Edit(EditVehicleVM viewmodel);
 
         //void Delete(DeleteVehicleVM viewModel);
 

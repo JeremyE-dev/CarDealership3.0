@@ -14,18 +14,18 @@
 <body>
     <div style="padding-top: 25px;" class="container">
         <div class="row">
-            @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post))
+            @using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post))
             {
 
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="Makes"> Make </label>
-                        @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, Model.Vehicle.Make.MakeName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, "-Select-", new { @class = "form-control" })
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="VehicleModels"> Model </label>
-                        @Html.DropDownListFor(m => m.SelectedVehicleModelId, Model.VehicleModels, Model.Vehicle.VehicleModel.ModelName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedVehicleModelId, Model.VehicleModels, "-Select", new { @class = "form-control" })
                     </div>
 
 
@@ -35,12 +35,12 @@
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="VehicleTypes"> Type </label>
-                        @Html.DropDownListFor(m => m.SelectedVehicleTypeId, Model.VehicleTypes, Model.Vehicle.Type.VehicleTypeName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedVehicleTypeId, Model.VehicleTypes, "-Select", new { @class = "form-control" })
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="BodyStyles"> Body Style </label>
-                        @Html.DropDownListFor(m => m.SelectedBodyStyleId, Model.BodyStyles, Model.Vehicle.BodyStyle.BodyStyleName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedBodyStyleId, Model.BodyStyles, "-Select_", new { @class = "form-control" })
                     </div>
 
 
@@ -54,7 +54,7 @@
 
                     <div class="form-group col-md-5">
                         <label for="Transmission"> Transmission </label>
-                        @Html.DropDownListFor(m => m.SelectedTransmissionId, Model.Transmissions, Model.Vehicle.Transmission.TransmissionName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedTransmissionId, Model.Transmissions,"-Select-", new { @class = "form-control" })
                     </div>
 
                 </div>
@@ -62,12 +62,12 @@
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="Colors"> Color </label>
-                        @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors, Model.Vehicle.Color.ColorName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors, "-Select-", new { @class = "form-control" })
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="Interiors"> Interior </label>
-                        @Html.DropDownListFor(m => m.SelectedInteriorId, Model.Interiors, Model.Vehicle.Interior.InteriorName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedInteriorId, Model.Interiors, "-Select-", new { @class = "form-control" })
                     </div>
 
 

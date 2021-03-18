@@ -20,13 +20,13 @@
 </head>
 <body>
     <div>
-        @using (Html.BeginForm("Test", "Admin", FormMethod.Post))
+        <!--@using (Html.BeginForm("Test", "Admin", FormMethod.Post))
         {
         <div class="form-group">
             <b>Select Role Type: </b>
 
             @Html.DropDownList("SelectedRoleType", new SelectList(Enum.GetValues(typeof(RoleType))), "--Select RoleType--")
-            <input type="submit" value="submit" />
+            <input type="submit" value="submit" />-->
 
 
 
@@ -36,7 +36,7 @@
             @*@Html.LabelFor(m => m.vehicleModel.ModelName)
         @Html.TextBoxFor(m => m.vehicleModel.ModelName, new {@class = "form-control", placeholder = "Model Name" })*@
             @*after sending post the view model model.ModelName field should be whatever I put into the texbox*@
-            <b>Select Tea Type: </b>
+            <!--<b>Select Tea Type: </b>-->
 
             @*@Html.DropDownList("SelectTeaType", new SelectList(Enum.GetValues(typeof(TeaType))), "--Select TeaType--")
         <input type="submit" value="submit" />
@@ -65,10 +65,10 @@
         <b>Role Type: </b>@ViewBag.RoleType*@
 
 
-        </div>
+        <!--</div>
             <button type="submit" class="btn btn-primary">Send Post</button>
         }
-    </div>
+    </div>-->
 
 
 

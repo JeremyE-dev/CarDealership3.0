@@ -380,3 +380,4 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migration
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.NamesToVehicleClass.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.vehicletypenametovehicle.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.bodystylenametovehicle.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.vehiclemodelincludesIsFeatured.resources

@@ -388,6 +388,10 @@
     <Compile Include="Migrations\202103111851338_bodystylenametovehicle.Designer.cs">
       <DependentUpon>202103111851338_bodystylenametovehicle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103172334329_vehiclemodelincludesIsFeatured.cs" />
+    <Compile Include="Migrations\202103172334329_vehiclemodelincludesIsFeatured.Designer.cs">
+      <DependentUpon>202103172334329_vehiclemodelincludesIsFeatured.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -506,6 +510,7 @@
     <Content Include="Views\Admin\Vehicles.cshtml" />
     <Content Include="Views\Admin\JQueryTest.cshtml" />
     <Content Include="Views\Admin\JSTest.cshtml" />
+    <Content Include="Views\Admin\EditVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -627,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103111851338_bodystylenametovehicle.resx">
       <DependentUpon>202103111851338_bodystylenametovehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103172334329_vehiclemodelincludesIsFeatured.resx">
+      <DependentUpon>202103172334329_vehiclemodelincludesIsFeatured.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

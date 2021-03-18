@@ -474,8 +474,85 @@ namespace CarDealership2.Controllers
             IVehicleRepository VehicleRepo = VehicleRepositoryFactory.Create();
             //get the vehicle to edit and pass it to the view
 
-            Vehicle model = VehicleRepo.GetVehicleById(id);
+            //create copies of needed repositories
+            var makeRepository = MakeRepositoryFactory.Create();
+            var modelRepository = ModelRepositoryFactory.Create();
+            var vehicleTypeRepository = VehicleTypeRepositoryFactory.Create();
+            var bodystyleRepository = BodyStyleRepositoryFactory.Create();
+            var transmissionRepository = TransmissionRepositoryFactory.Create();
+            var colorRepository = ColorRepositoryFactory.Create();
+            var interiorRepository = InteriorRepositoryFactory.Create();
+
+            Vehicle vehicleToEdit = VehicleRepo.GetVehicleById(id);
+
+            EditVehicleVM model = new EditVehicleVM();
+            model.Vehicle = new Vehicle();
+            model.Vehicle = vehicleToEdit;
+
+            //set the the EditViewModels selection ids to match vehicleToEdit
+           
+            model.Vehicle.Make = new Make();
+            model.Vehicle.Make = vehicleToEdit.Make;
+
+            model.Vehicle.VehicleModel = new Model();
+            model.Vehicle.VehicleModel = vehicleToEdit.VehicleModel;
+
+
+            model.Vehicle.Type = new VehicleType();
+            model.Vehicle.Type = vehicleToEdit.Type;
+
+
+            model.Vehicle.BodyStyle = new BodyStyle();
+            model.Vehicle.BodyStyle = vehicleToEdit.BodyStyle;
             
+            model.Vehicle.Year = vehicleToEdit.Year;
+
+            model.Vehicle.Transmission = new Transmission();
+            model.Vehicle.Transmission = vehicleToEdit.Transmission;
+
+            model.Vehicle.Color = new Color();
+            model.Vehicle.Color = vehicleToEdit.Color;
+
+            model.Vehicle.Interior = new Interior();
+            model.Vehicle.Interior = vehicleToEdit.Interior;
+            
+            model.Vehicle.Mileage = vehicleToEdit.Mileage;
+            
+            model.Vehicle.VIN = vehicleToEdit.VIN;
+            
+            model.Vehicle.MRSP = vehicleToEdit.MRSP;
+            
+            model.Vehicle.SalePrice = vehicleToEdit.SalePrice;
+            
+            model.Vehicle.Description = vehicleToEdit.Description;
+            
+            model.Vehicle.IsFeatured = vehicleToEdit.IsFeatured;
+
+
+            //populate selectlists for dropdowns
+            model.Makes = from m in makeRepository.GetAll()
+                          select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
+
+            model.VehicleModels = from m in modelRepository.GetAll()
+                                  select new SelectListItem { Text = m.ModelName, Value = m.ModelId.ToString() };
+
+            model.VehicleTypes = from m in vehicleTypeRepository.GetAll()
+                                 select new SelectListItem { Text = m.VehicleTypeName, Value = m.VehicleTypeId.ToString() };
+
+            model.BodyStyles = from m in bodystyleRepository.GetAll()
+                               select new SelectListItem { Text = m.BodyStyleName, Value = m.BodyStyleId.ToString() };
+
+            model.Transmissions = from m in transmissionRepository.GetAll()
+                                  select new SelectListItem { Text = m.TransmissionName, Value = m.TransmissionId.ToString() };
+
+            model.Colors = from m in colorRepository.GetAll()
+                           select new SelectListItem { Text = m.ColorName, Value = m.ColorId.ToString() };
+
+            model.Interiors = from m in interiorRepository.GetAll()
+                              select new SelectListItem { Text = m.InteriorName, Value = m.InteriorId.ToString() };
+
+            
+
             return View("EditVehicle", model);
         }
 
@@ -483,7 +560,7 @@ namespace CarDealership2.Controllers
         [HttpPost]
         public ActionResult EditVehicle(EditVehicleVM model)
         {
-            //post method sends the changes to the 
+            //start here 3/18/21
             return View();
         }
 

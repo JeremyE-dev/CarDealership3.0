@@ -88,13 +88,29 @@ namespace CarDealership2.Repositories
             vehicleToEdit.Make = new Make();
             
             vehicleToEdit.Make = repository.Makes.FirstOrDefault(m => m.MakeId == viewmodel.SelectedMakeId);
+            //update makename - so it appears in vehicles db table
+            vehicleToEdit.MakeName = vehicleToEdit.Make.MakeName;
+
             vehicleToEdit.VehicleModel = repository.Models.FirstOrDefault(m => m.ModelId == viewmodel.SelectedVehicleModelId);
+            vehicleToEdit.VehicleModelName = vehicleToEdit.VehicleModel.ModelName;
+
             vehicleToEdit.Type = repository.VehicleTypes.FirstOrDefault(m => m.VehicleTypeId == viewmodel.SelectedVehicleTypeId);
+            vehicleToEdit.VehicleTypeName = vehicleToEdit.Type.VehicleTypeName;
+
             vehicleToEdit.BodyStyle = repository.BodyStyles.FirstOrDefault(m => m.BodyStyleId == viewmodel.SelectedBodyStyleId);
+            vehicleToEdit.BodyStyleName = vehicleToEdit.BodyStyle.BodyStyleName;
+
             vehicleToEdit.Year = viewmodel.Vehicle.Year;
+            
             vehicleToEdit.Transmission = repository.Transmissions.FirstOrDefault(m => m.TransmissionId == viewmodel.SelectedTransmissionId);
+            vehicleToEdit.TransmissionName = vehicleToEdit.Transmission.TransmissionName;
+
             vehicleToEdit.Color = repository.Colors.FirstOrDefault(m => m.ColorId == viewmodel.SelectedColorId);
+            vehicleToEdit.ColorName = vehicleToEdit.Color.ColorName;
+
             vehicleToEdit.Interior = repository.Interiors.FirstOrDefault(m => m.InteriorId == viewmodel.SelectedInteriorId);
+            vehicleToEdit.InteriorName = vehicleToEdit.Interior.InteriorName;
+
             vehicleToEdit.Mileage = viewmodel.Vehicle.Mileage;
             vehicleToEdit.VIN = viewmodel.Vehicle.VIN;
             vehicleToEdit.MRSP = viewmodel.Vehicle.MRSP;
@@ -195,11 +211,173 @@ namespace CarDealership2.Repositories
             return query;
         }
 
+        public IEnumerable<Vehicle> SearchNewVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear)
+        {
+            //var query = from invite in db.invites
+            //            where invite.Division.Contains(userInput.Division.Text) &&
+            //                  invite.Status.Contains(userInput.Status.Text)
+            //            select invite;
+
+            int number;
+
+            if (int.TryParse(searchTerm, out number))
+            {
+
+            }
+
+            else
+            {
+                number = 0;
+            }
+
+            if (maxYear == 0)
+            {
+                maxYear = 3000;
+            }
+
+            if (maxPrice == 0)
+            {
+                maxPrice = 20000000; // max price of a car is now 
+            }
+
+
+
+
+            var repository = new CarDealership2DbContext();
+
+
+
+            var query = from vehicle in repository.Vehicles
+                        where vehicle.VehicleTypeName == "New" &&
+                              vehicle.VehicleModelName.Contains(searchTerm) &&
+                              vehicle.MakeName.Contains(searchTerm) &&
+                              vehicle.Year == number &&
+                              vehicle.Year >= minYear && vehicle.Year <= maxYear &&
+                              vehicle.MRSP >= minPrice && vehicle.MRSP <= maxPrice
+                        select vehicle;
+
+            //IEnumerable<Vehicle> vehicles = Enumerable.Range(minPrice, maxPrice).Select(v => v.);
+
+            //IEnumerable<int> squares = Enumerable.Range(1, 10).Select(x => x * x);
+
+            //foreach (int num in squares)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            //var result1 = repository.Vehicles.FirstOrDefault(v => v.VehicleModelName.Contains(searchTerm));
+            //      var result2 = repository.Vehicles.FirstOrDefault(v => v.MakeName.Contains(searchTerm));
+
+            //need in parse
+
+
+
+            //var result3 = repository.Vehicles.FirstOrDefault(v => v.Year == searchTerm);
+            //var v = from vehicle in repository.Vehicles
+            //        select vehicle;
+
+
+
+            return query;
+        }
+
+        public IEnumerable<Vehicle> SearchUsedVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear)
+        {
+            //var query = from invite in db.invites
+            //            where invite.Division.Contains(userInput.Division.Text) &&
+            //                  invite.Status.Contains(userInput.Status.Text)
+            //            select invite;
+
+            int number;
+
+            if (int.TryParse(searchTerm, out number))
+            {
+
+            }
+
+            else
+            {
+                number = 0;
+            }
+
+            if (maxYear == 0)
+            {
+                maxYear = 3000;
+            }
+
+            if (maxPrice == 0)
+            {
+                maxPrice = 20000000; // max price of a car is now 
+            }
+
+
+
+
+            var repository = new CarDealership2DbContext();
+
+
+
+            var query = from vehicle in repository.Vehicles
+                        where vehicle.VehicleTypeName == "New" &&
+                              vehicle.VehicleModelName.Contains(searchTerm) &&
+                              vehicle.MakeName.Contains(searchTerm) &&
+                              vehicle.Year == number &&
+                              vehicle.Year >= minYear && vehicle.Year <= maxYear &&
+                              vehicle.MRSP >= minPrice && vehicle.MRSP <= maxPrice
+                        select vehicle;
+
+            //IEnumerable<Vehicle> vehicles = Enumerable.Range(minPrice, maxPrice).Select(v => v.);
+
+            //IEnumerable<int> squares = Enumerable.Range(1, 10).Select(x => x * x);
+
+            //foreach (int num in squares)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            //var result1 = repository.Vehicles.FirstOrDefault(v => v.VehicleModelName.Contains(searchTerm));
+            //      var result2 = repository.Vehicles.FirstOrDefault(v => v.MakeName.Contains(searchTerm));
+
+            //need in parse
+
+
+
+            //var result3 = repository.Vehicles.FirstOrDefault(v => v.Year == searchTerm);
+            //var v = from vehicle in repository.Vehicles
+            //        select vehicle;
+
+
+
+            return query;
+        }
         public IEnumerable<Vehicle> GetAll()
         {
             var repository = new CarDealership2DbContext();
 
             var v = from vehicle in repository.Vehicles
+                    
+                    select vehicle;
+
+            return v;
+        }
+
+        public IEnumerable<Vehicle> GetAllNewVehicles()
+        {
+            var repository = new CarDealership2DbContext();
+
+            var v = from vehicle in repository.Vehicles
+                    where vehicle.Type.VehicleTypeName == "New"
+            select vehicle;
+
+            return v;
+        }
+
+        public IEnumerable<Vehicle> GetAllUsedVehicles()
+        {
+            var repository = new CarDealership2DbContext();
+
+            var v = from vehicle in repository.Vehicles
+                    where vehicle.Type.VehicleTypeName == "Used"
                     select vehicle;
 
             return v;

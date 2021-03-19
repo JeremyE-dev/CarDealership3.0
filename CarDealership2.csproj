@@ -478,6 +478,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\loadusedvehicles.js" />
+    <Content Include="Scripts\loadnewvehicles.js" />
     <Content Include="Scripts\loadallvehicles.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
@@ -511,13 +513,15 @@
     <Content Include="Views\Admin\JQueryTest.cshtml" />
     <Content Include="Views\Admin\JSTest.cshtml" />
     <Content Include="Views\Admin\EditVehicle.cshtml" />
+    <Content Include="Views\Inventory\New.cshtml" />
+    <Content Include="Views\Inventory\Used.cshtml" />
+    <Content Include="Views\Inventory\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Migrations\202102231257444_2\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Inventory\" />
     <Folder Include="Views\Reports\" />
     <Folder Include="Views\Sales\" />
     <Folder Include="Views\Search\" />

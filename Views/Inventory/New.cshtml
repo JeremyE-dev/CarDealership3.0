@@ -1,0 +1,89 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vehicles</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>New Vehicles</h2>
+
+            <div class="container" style="padding-top: 40px; padding-bottom:40px; border: groove;">
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="form-group col-sm-3">
+                            <label for="SearchTerm"> Quick Search </label>
+                            <input type="text" id="search-term" class="form-control" style="width:150px;" value="" placeholder="make, model, year" />
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="MinPrice"> Price </label>
+                            <select class="form-control" name="MinPrice" id="MinPrice" placeholder="Min Price">
+                                <option value="0">Min Price</option>
+                                <option value="5000">5000</option>
+                                <option value="10000">10000</option>
+                                <option value="20000">20000</option>
+                                <option value="30000">30000</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            @*<label for="MaxPrice"> Price </label>*@
+                            <select class="form-control" name="MaxPrice" id="MaxPrice">
+                                <option value="0">Max Price</option>
+                                <option value="5000">5000</option>
+                                <option value="10000">10000</option>
+                                <option value="20000">20000</option>
+                                <option value="30000">30000</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <label for="MinYear"> Year </label>
+                            <select class="form-control" name="MinYear" id="MinYear">
+                                <option value="0">Min Year</option>
+                                <option value="2000">2000</option>
+                                <option value="2005">2005</option>
+                                <option value="2010">2010</option>
+                                <option value="2015">2015</option>
+                                <option value="2020">2020</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            @*<label for="MaxPrice"> Price </label>*@
+                            <select class="form-control" name="MaxYear" id="MaxYear">
+                                <option value="0">Max Year</option>
+                                <option value="2000">2000</option>
+                                <option value="2005">2005</option>
+                                <option value="2010">2010</option>
+                                <option value="2015">2015</option>
+                                <option value="2020">2020</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 offset-md-3">
+                        <button type="submit" class="btn btn-primary" id="SearchButton">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/loadnewvehicles.js"></script>
+
+</body>
+</html>

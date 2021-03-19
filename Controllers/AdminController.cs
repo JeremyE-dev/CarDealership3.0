@@ -612,7 +612,13 @@ namespace CarDealership2.Controllers
         [HttpGet]
         public ActionResult DeleteVehicle(int id)
         {
-            return View();
+            IVehicleRepository VehicleRepo = VehicleRepositoryFactory.Create();
+
+
+            VehicleRepo.Delete(id);
+
+
+            return View("Vehicles");
         }
 
         [HttpGet]

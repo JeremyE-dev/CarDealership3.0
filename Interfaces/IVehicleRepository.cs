@@ -12,7 +12,17 @@ namespace CarDealership2.Interfaces
     {
         IEnumerable<Vehicle> GetAll();
 
+        IEnumerable<Vehicle> GetAllNewVehicles();
+        IEnumerable<Vehicle> GetAllUsedVehicles();
+
+
         IEnumerable<Vehicle> SearchVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
+
+        IEnumerable<Vehicle> SearchNewVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
+
+        IEnumerable<Vehicle> SearchUsedVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
+
+
 
         void Add(AddVehicleVM viewmodel);
 
@@ -20,7 +30,9 @@ namespace CarDealership2.Interfaces
 
         void Edit(EditVehicleVM viewmodel);
 
-        //void Delete(DeleteVehicleVM viewModel);
+        void Delete(int id);
+
+       
 
     }
 }

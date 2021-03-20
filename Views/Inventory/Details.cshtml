@@ -1,4 +1,5 @@
-﻿
+﻿@model CarDealership2.Models.Vehicle
+
 @{
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
@@ -11,7 +12,101 @@
     <title>Details</title>
 </head>
 <body>
-    <div> 
+
+    <div style="margin-top:5px; padding-top:5px;" class="container">
+        <div class="row">
+            <h2>Vehicle Details</h2>
+        </div>
     </div>
+
+
+
+    <div style="border-style: groove; margin-top:5px; padding-top:5px;" class="container">
+        <div class="row">
+           <table style="width: 15%;">
+               <colgroup>
+                   <col span="1" style="width: 5%">
+                   <col span="1" style="width: 5%">
+                   <col span="1" style="width: 5%">
+               </colgroup>
+               <tbody>
+                   <tr style="height: 40px">
+                       <td>@Model.Year</td>
+                       <td>@Model.MakeName</td>
+                       <td>@Model.VehicleModelName</td>
+                   </tr>
+               </tbody>
+           </table>
+            
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-2">
+                <img src="/images/dollar.png" alt="dollar sign" style="width:100px" class="center">
+            </div>
+
+            <div class="col-md-10">
+
+                <table style="width: 100%;">
+                    <colgroup>
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 15%">
+                        <col span="1" style="width: 5%">
+                        <col span="1" style="width: 15%">
+                        <col span="1" style="width: 5%">
+                        <col span="1" style="width: 15%">
+                    </colgroup>
+                    <tbody>
+                        <tr style="height: 40px;">
+                            <td><b>Body Style:</b></td>
+                            <td style="text-align: left;">@Model.BodyStyle.BodyStyleName</td>
+                            <td><b>Interior:</b> </td>
+                            <td>@Model.Interior.InteriorName</td>
+                            <td><b>Sale Price:</b></td>
+                            <td>@Model.SalePrice</td>
+                        </tr>
+
+                        <tr style="height: 40px;">
+                            <td><b>Trans:</b></td>
+                            <td>@Model.Transmission.TransmissionName</td>
+                            <td><b>Mileage</b></td>
+                            <td>@Model.Mileage</td>
+                            <td><b>MRSP:</b></td>
+                            <td>@Model.Mileage</td>
+                        </tr>
+
+                        <tr style="height: 40px;">
+                            <td><b>Color:</b> </td>
+                            <td>@Model.Color.ColorName</td>
+                            <td><b>VIN:</b></td>
+                            <td>@Model.VIN</td>
+
+                        </tr>
+
+                        <tr style="height: 40px;">
+                            <td><b>Description:</b> </td>
+                            <td> @Model.Description</td>
+
+                        </tr>
+                        @*<tr style="height: 40px; float: right;">
+                                <td ><button type="button" class="btn btn-primary">Contact Us</button></td>
+                            </tr>*@
+
+                    </tbody>
+                </table>
+
+                <div style="height: 40px; display: flex; flex-direction: row-reverse;" class="flex-container">
+                    <div>
+                        <button type="button" class="btn btn-primary">Contact Us</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>

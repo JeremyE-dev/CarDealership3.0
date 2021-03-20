@@ -236,6 +236,7 @@
     <Compile Include="Factories\BodyStyleRepositoryFactory.cs" />
     <Compile Include="Factories\ColorRepositoryFactory.cs" />
     <Compile Include="Factories\InteriorRepositoryFactory.cs" />
+    <Compile Include="Factories\PurchaseRepositoryFactory.cs" />
     <Compile Include="Factories\TransmissionRepositoryFactory.cs" />
     <Compile Include="Factories\VehicleTypeRepositoryFactory.cs" />
     <Compile Include="Factories\MakeRepositoryFactory.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="Interfaces\IInteriorRepository.cs" />
     <Compile Include="Interfaces\IMakeRepository.cs" />
     <Compile Include="Interfaces\IModelRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseRepository.cs" />
     <Compile Include="Interfaces\ITransmissionRepository.cs" />
     <Compile Include="Interfaces\IVehicleRepository.cs" />
     <Compile Include="Interfaces\ISpecialRepository.cs" />
@@ -392,6 +394,14 @@
     <Compile Include="Migrations\202103172334329_vehiclemodelincludesIsFeatured.Designer.cs">
       <DependentUpon>202103172334329_vehiclemodelincludesIsFeatured.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103201710289_addispurchasedtovehiclemodel.cs" />
+    <Compile Include="Migrations\202103201710289_addispurchasedtovehiclemodel.Designer.cs">
+      <DependentUpon>202103201710289_addispurchasedtovehiclemodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103202106508_addpurchasetable2db.cs" />
+    <Compile Include="Migrations\202103202106508_addpurchasetable2db.Designer.cs">
+      <DependentUpon>202103202106508_addpurchasetable2db.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -402,9 +412,11 @@
     <Compile Include="Models\LocalRole.cs" />
     <Compile Include="Models\Make.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\RoleType.cs" />
     <Compile Include="Models\Special.cs" />
+    <Compile Include="Models\States.cs" />
     <Compile Include="Models\TeaType.cs" />
     <Compile Include="Models\Transmission.cs" />
     <Compile Include="Models\VehicleType.cs" />
@@ -422,6 +434,8 @@
     <Compile Include="Repositories\MakeRepositoryQA.cs" />
     <Compile Include="Repositories\ModelRepositoryProd.cs" />
     <Compile Include="Repositories\ModelRepositoryQA.cs" />
+    <Compile Include="Repositories\PurchaseRepositoryProd.cs" />
+    <Compile Include="Repositories\PurchaseRepositoryQA.cs" />
     <Compile Include="Repositories\RoleRepositoryProd.cs" />
     <Compile Include="Repositories\SpecialRepositoryProd.cs" />
     <Compile Include="Repositories\SpecialRepositoryQA.cs" />
@@ -478,6 +492,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\loadsalesindexvehicles.js" />
     <Content Include="Scripts\loadusedvehicles.js" />
     <Content Include="Scripts\loadnewvehicles.js" />
     <Content Include="Scripts\loadallvehicles.js" />
@@ -516,6 +531,8 @@
     <Content Include="Views\Inventory\New.cshtml" />
     <Content Include="Views\Inventory\Used.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\Purchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -523,7 +540,6 @@
     <Folder Include="Migrations\202102231257444_2\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Reports\" />
-    <Folder Include="Views\Sales\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
@@ -639,6 +655,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103172334329_vehiclemodelincludesIsFeatured.resx">
       <DependentUpon>202103172334329_vehiclemodelincludesIsFeatured.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201710289_addispurchasedtovehiclemodel.resx">
+      <DependentUpon>202103201710289_addispurchasedtovehiclemodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103202106508_addpurchasetable2db.resx">
+      <DependentUpon>202103202106508_addpurchasetable2db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -51,6 +51,8 @@ namespace CarDealership2.Models
 
         public bool IsFeatured { get; set; }
 
+        public bool IsPurchased { get; set; }
+
         public string PhotoPath { get; set; }
 
 

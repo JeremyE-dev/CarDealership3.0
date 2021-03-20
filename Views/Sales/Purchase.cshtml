@@ -1,0 +1,197 @@
+﻿@model CarDealership2.ViewModels.PurchaseVM
+
+@using CarDealership2.Models
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Purchase</title>
+</head>
+
+<body>
+
+    <div style="margin-top:5px; padding-top:5px;" class="container">
+        <div class="row">
+            <h2>Purchase Vehicle</h2>
+        </div>
+    </div>
+
+    <div style="border-style: groove; margin-top:5px; padding-top:5px;" class="container">
+        <div class="row">
+            <table style="width: 15%;">
+                <colgroup>
+                    <col span="1" style="width: 5%">
+                    <col span="1" style="width: 5%">
+                    <col span="1" style="width: 5%">
+                </colgroup>
+                <tbody>
+                    <tr style="height: 40px">
+                        <td>@Model.vehicle.Year</td>
+                        <td>@Model.vehicle.MakeName</td>
+                        <td>@Model.vehicle.VehicleModelName</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <img src="/images/dollar.png" alt="dollar sign" style="width:100px" class="center">
+            </div>
+
+            <div class="col-md-10">
+
+                <table style="width: 100%;">
+                    <colgroup>
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 15%">
+                        <col span="1" style="width: 5%">
+                        <col span="1" style="width: 15%">
+                        <col span="1" style="width: 5%">
+                        <col span="1" style="width: 15%">
+                    </colgroup>
+                    <tbody>
+                        <tr style="height: 40px;">
+                            <td><b>Body Style:</b></td>
+                            <td style="text-align: left;">@Model.vehicle.BodyStyle.BodyStyleName</td>
+                            <td><b>Interior:</b> </td>
+                            <td>@Model.vehicle.Interior.InteriorName</td>
+                            <td><b>Sale Price:</b></td>
+                            <td>@Model.vehicle.SalePrice</td>
+                        </tr>
+
+                        <tr style="height: 40px;">
+                            <td><b>Trans:</b></td>
+                            <td>@Model.vehicle.Transmission.TransmissionName</td>
+                            <td><b>Mileage</b></td>
+                            <td>@Model.vehicle.Mileage</td>
+                            <td><b>MRSP:</b></td>
+                            <td>@Model.vehicle.MRSP</td>
+                        </tr>
+
+                        <tr style="height: 40px;">
+                            <td><b>Color:</b> </td>
+                            <td>@Model.vehicle.Color.ColorName</td>
+                            <td><b>VIN:</b></td>
+                            <td>@Model.vehicle.VIN</td>
+
+                        </tr>
+
+                        <tr style="height: 40px;">
+                            <td><b>Description:</b> </td>
+                            <td> @Model.vehicle.Description</td>
+
+                        </tr>
+                        @*<tr style="height: 40px; float: right;">
+                            <td ><button type="button" class="btn btn-primary">Contact Us</button></td>
+                        </tr>*@
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    
+    
+    @*Sales information form*@
+    <div style="margin-top:5px; padding-top:5px;" class="container">
+    <div class="row">
+        @using (Html.BeginForm("Purchase", "Sales", FormMethod.Post))
+        {
+
+            <div class="form-row col-md-10">
+                <div class="form-group col-md-5">
+                    <label for="name"> Name </label>
+                    @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="phone"> Phone </label>
+                    @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-row col-md-10">
+                <div class="form-group col-md-5">
+                    <label for="email"> Email </label>
+                    @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-row col-md-10">
+                <div class="form-group col-md-5">
+                    <label for="street1"> Street 1 </label>
+                    @Html.TextBoxFor(m => m.street1, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="street2"> Street 2 </label>
+                    @Html.TextBoxFor(m => m.street2, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-row col-md-10">
+                <div class="form-group col-md-5">
+                    <label for="city"> City </label>
+                    @Html.TextBoxFor(m => m.city, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="States"> State </label>
+                    @* @Html.DropDownListFor(m => m.SelectedStateId, Model.States, "-Select-", new { @class = "form-control" }) *@
+                    @Html.DropDownListFor(m => m.purchaseState, new SelectList(Enum.GetValues(typeof(State))),
+                    "Select State")
+                </div>
+            </div>
+
+            <div class="form-row col-md-10">
+                <div class="form-group col-md-5">
+                    <label for="zipcode"> Zipcode </label>
+                    @Html.TextBoxFor(m => m.zipcode, new { @class = "form-control" })
+
+                </div>
+               
+            </div>
+
+          
+
+            <div class="form-row col-md-10">
+                <hr>
+                <div class="form-group col-md-5">
+                    <label for="purchasePrice"> Purchase Price </label>
+                    @Html.TextBoxFor(m => m.purchasePrice, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group col-md-">
+                    <label for="purchasePrice"> Purchase Type </label>
+                    <select class="form-control">
+                        <option>Bank Finance</option>
+                        <option>Cash</option>
+                        <option>Dealer Finance</option>
+                    </select>
+                </div>
+            </div>
+
+
+                <div class="form-row col-md-10">
+                    <div class="form-group col-md-2">
+                        <button type="submit" class="btn btn-md btn-primary">Save</button>
+                    </div>
+                </div>
+
+            
+        }
+    </div>
+</div>
+</body>
+
+</html>

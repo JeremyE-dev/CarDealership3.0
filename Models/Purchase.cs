@@ -1,15 +1,14 @@
-﻿using CarDealership2.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
-namespace CarDealership2.ViewModels
+namespace CarDealership2.Models
 {
-    public class PurchaseVM
+    public class Purchase
     {
-        public Vehicle vehicle { get; set; }
+        public int PurchaseId { get; set; }
+        public Vehicle purchasedVehicle { get; set; }
 
         public string name { get; set; }
 
@@ -22,13 +21,13 @@ namespace CarDealership2.ViewModels
 
         public string city { get; set; }
 
-        //public List<string> _states { get; set; }
+      
 
         public int zipcode { get; set; }
 
         public int purchasePrice { get; set; }
 
-        //public int SelectedStateId { get; set; }
+       
 
         public State purchaseState { get; set; }
 
@@ -40,18 +39,13 @@ namespace CarDealership2.ViewModels
 
         public AppUser salesPerson { get; set; }
 
-        public PurchaseVM()
+        public Purchase()
         {
-            //_states = new List<string>();
-            //foreach(State s in Enum.GetValues(typeof(State))) {
-            //    _states.Add(s.ToString());
-            //}
-
+           
             salesPerson = new AppUser();
 
         }
 
-
-
+        public virtual Vehicle vehicle { get; set; }
     }
 }

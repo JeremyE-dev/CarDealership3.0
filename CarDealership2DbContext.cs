@@ -29,6 +29,7 @@ namespace CarDealership2
 
         public DbSet<Vehicle> Vehicles { get; set; }
 
+        public DbSet<Purchase> Purchases { get; set; }
 
 
 

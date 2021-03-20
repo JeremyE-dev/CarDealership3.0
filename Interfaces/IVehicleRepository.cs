@@ -15,12 +15,15 @@ namespace CarDealership2.Interfaces
         IEnumerable<Vehicle> GetAllNewVehicles();
         IEnumerable<Vehicle> GetAllUsedVehicles();
 
+        IEnumerable<Vehicle> GetAllUnSoldVehicles();
+
 
         IEnumerable<Vehicle> SearchVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
 
         IEnumerable<Vehicle> SearchNewVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
 
         IEnumerable<Vehicle> SearchUsedVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
+        IEnumerable<Vehicle> SearchUnSoldVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
 
 
 

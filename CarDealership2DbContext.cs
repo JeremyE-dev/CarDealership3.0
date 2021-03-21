@@ -31,6 +31,8 @@ namespace CarDealership2
 
         public DbSet<Purchase> Purchases { get; set; }
 
+        public DbSet<Contact> Contacts { get; set; }
+
 
 
     }

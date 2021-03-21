@@ -383,3 +383,4 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migration
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.vehiclemodelincludesIsFeatured.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.addispurchasedtovehiclemodel.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.addpurchasetable2db.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.addcontactmodel.resources

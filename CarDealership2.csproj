@@ -235,6 +235,7 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Factories\BodyStyleRepositoryFactory.cs" />
     <Compile Include="Factories\ColorRepositoryFactory.cs" />
+    <Compile Include="Factories\ContactRepositoryFactory.cs" />
     <Compile Include="Factories\InteriorRepositoryFactory.cs" />
     <Compile Include="Factories\PurchaseRepositoryFactory.cs" />
     <Compile Include="Factories\TransmissionRepositoryFactory.cs" />
@@ -249,6 +250,7 @@
     </Compile>
     <Compile Include="Interfaces\IBodyStyleRepository.cs" />
     <Compile Include="Interfaces\IColorRepository.cs" />
+    <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\IInteriorRepository.cs" />
     <Compile Include="Interfaces\IMakeRepository.cs" />
     <Compile Include="Interfaces\IModelRepository.cs" />
@@ -402,11 +404,16 @@
     <Compile Include="Migrations\202103202106508_addpurchasetable2db.Designer.cs">
       <DependentUpon>202103202106508_addpurchasetable2db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103212021302_addcontactmodel.cs" />
+    <Compile Include="Migrations\202103212021302_addcontactmodel.Designer.cs">
+      <DependentUpon>202103212021302_addcontactmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\BodyStyle.cs" />
     <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IceCreamFlavor.cs" />
     <Compile Include="Models\Interior.cs" />
     <Compile Include="Models\LocalRole.cs" />
@@ -428,6 +435,8 @@
     <Compile Include="Repositories\BodyStyleRepositoryQA.cs" />
     <Compile Include="Repositories\ColorRepositoryProd.cs" />
     <Compile Include="Repositories\ColorRepositoryQA.cs" />
+    <Compile Include="Repositories\ContactRepositoryProd.cs" />
+    <Compile Include="Repositories\ContactRepositoryQA.cs" />
     <Compile Include="Repositories\InteriorRepositoryProd.cs" />
     <Compile Include="Repositories\InteriorRepositoryQA.cs" />
     <Compile Include="Repositories\MakeRepositoryProd.cs" />
@@ -456,12 +465,14 @@
     <Compile Include="ViewModels\DeleteSpecialVM.cs" />
     <Compile Include="ViewModels\EditUserVM.cs" />
     <Compile Include="ViewModels\EditVehicleVM.cs" />
+    <Compile Include="ViewModels\HomeIndexVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AddModelVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\NewVehicleSearchVM.cs" />
     <Compile Include="ViewModels\PurchaseVM.cs" />
     <Compile Include="ViewModels\AddSpecialVM.cs" />
+    <Compile Include="ViewModels\SpecialsListVM.cs" />
     <Compile Include="ViewModels\TestModel.cs" />
     <Compile Include="ViewModels\UsedVehicleSearchVM.cs" />
     <Compile Include="ViewModels\UsersVM.cs" />
@@ -531,8 +542,10 @@
     <Content Include="Views\Inventory\New.cshtml" />
     <Content Include="Views\Inventory\Used.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
-    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\SalesIndex.cshtml" />
     <Content Include="Views\Sales\Purchase.cshtml" />
+    <Content Include="Views\Home\Specials.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -661,6 +674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103202106508_addpurchasetable2db.resx">
       <DependentUpon>202103202106508_addpurchasetable2db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103212021302_addcontactmodel.resx">
+      <DependentUpon>202103212021302_addcontactmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

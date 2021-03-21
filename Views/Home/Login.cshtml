@@ -1,15 +1,17 @@
 ﻿@model CarDealership2.ViewModels.LoginViewModel
 
 @{
-    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+
 }
 
 <!DOCTYPE html>
+<div class="container">
 
 <div class="row">
     <div class="col-xs-6">
         @*Note:(return urlquery string parameter) when asp.net redirects a user to the login page, it will automatically populate
-        this information so that after logging in we can return the user to the resource they were trying to acces*@
+            this information so that after logging in we can return the user to the resource they were trying to acces*@
         <h2>Login</h2>
         @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
         {
@@ -34,4 +36,6 @@
             <button class="btn btn-primary">Log In</button>
         }
     </div>
+</div>
+
 </div>

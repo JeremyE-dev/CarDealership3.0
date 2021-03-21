@@ -38,6 +38,8 @@ namespace CarDealership2.ViewModels
 
         public DateTime purchaseDate { get; set; }
 
+        //public int salesPersonId { get; set; }
+
         public AppUser salesPerson { get; set; }
 
         public PurchaseVM()

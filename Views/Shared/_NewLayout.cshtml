@@ -23,8 +23,8 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("New Inventory", "New", "Inventory")</li>
                     <li>@Html.ActionLink("Used Inventory", "Used", "Inventory")</li>
-                    <li>@Html.ActionLink("Specials", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Specials", "Specials", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "ContactUs", "Home")</li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                     {                      
                         <li>@Html.ActionLink("Admin", "Makes", "Admin")</li>

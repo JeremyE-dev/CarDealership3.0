@@ -30,6 +30,11 @@ namespace CarDealership2.Repositories
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Vehicle> GetAllFeaturedVehicles()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Vehicle> GetAllNewVehicles()
         {
             throw new NotImplementedException();

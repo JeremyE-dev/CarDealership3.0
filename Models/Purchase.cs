@@ -39,12 +39,12 @@ namespace CarDealership2.Models
 
         public AppUser salesPerson { get; set; }
 
-        public Purchase()
-        {
-           
-            salesPerson = new AppUser();
+        //public Purchase()
+        //{
 
-        }
+        //    salesPerson = new AppUser();
+
+        //}
 
         public virtual Vehicle vehicle { get; set; }
     }

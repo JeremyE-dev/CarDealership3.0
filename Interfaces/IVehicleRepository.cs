@@ -25,6 +25,8 @@ namespace CarDealership2.Interfaces
         IEnumerable<Vehicle> SearchUsedVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
         IEnumerable<Vehicle> SearchUnSoldVehicles(string searchTerm, int minPrice, int maxPrice, int minYear, int maxYear);
 
+        IEnumerable<Vehicle> GetAllFeaturedVehicles();
+
 
 
         void Add(AddVehicleVM viewmodel);

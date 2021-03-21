@@ -1,4 +1,6 @@
-﻿using CarDealership2.Models;
+﻿using CarDealership2.Factories;
+using CarDealership2.Interfaces;
+using CarDealership2.Models;
 using CarDealership2.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -67,25 +69,47 @@ namespace CarDealership2.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
+            ISpecialRepository specialsRepo = SpecialRepositoryFactory.Create();
+
+            HomeIndexVM model = new HomeIndexVM();
+
+            model.featuredVehicles = vehicleRepository.GetAllFeaturedVehicles().ToList();
+            model.specials = specialsRepo.GetAll().ToList();
+           
+
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult Specials()
         {
-            return View();
+            ISpecialRepository SpecialRepo = SpecialRepositoryFactory.Create();
+
+            SpecialsListVM model = new SpecialsListVM();
+
+            model.specials = SpecialRepo.GetAll().ToList();
+
+            return View(model);
         }
 
         [HttpGet]
-        public ActionResult Contact()
+        public ActionResult ContactUs()
         {
-            return View();
+            ContactVM model = new ContactVM();
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Contact(ContactVM model) //need contacts repository
+        public ActionResult ContactUs(ContactVM model) //need contacts repository
         {
-            return View();
+            IContactRepository ContactRepo = ContactRepositoryFactory.Create();
+            ContactRepo.Add(model);
+
+            //call add
+
+            return RedirectToAction("ContactUs");
         }
 
 

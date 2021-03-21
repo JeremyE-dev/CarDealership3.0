@@ -69,19 +69,25 @@ namespace CarDealership2.Controllers
             //lets see if this works with a list of strings
             //model.States = from s in model._states
             //                  select new SelectListItem { Text = s, Value = "foo"};
-            model.salesPerson.UserName = User.Identity.GetUserName();
+
+            //get identity of user
+            model.salesPerson = new AppUser();
             model.salesPerson.Id = User.Identity.GetUserId();
            
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Purchase(PurchaseVM model)
+        [HttpPost] // add int id
+        public ActionResult Purchase(PurchaseVM model, int id)
         {
             IPurchaseRepository purchaseRepo = PurchaseRepositoryFactory.Create();
-           
-            model.vehicle.IsPurchased = true;
-            model.purchaseDate = DateTime.Today;
+            IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
+            model.vehicle = vehicleRepository.GetVehicleById(id);
+
+
+            //model.vehicle.IsPurchased = true;
+            //model.purchaseDate = DateTime.Today;
+
 
 
             purchaseRepo.Add(model);

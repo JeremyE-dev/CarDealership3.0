@@ -467,5 +467,17 @@ namespace CarDealership2.Repositories
 
             return v;
         }
+
+        public IEnumerable<Vehicle> GetAllFeaturedVehicles()
+        {
+            var repository = new CarDealership2DbContext();
+
+            var v = from vehicle in repository.Vehicles
+                    where vehicle.IsFeatured == true &&
+                          vehicle.IsPurchased == false
+                    select vehicle;
+
+            return v;
+        }
     }
 }

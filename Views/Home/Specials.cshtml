@@ -1,0 +1,47 @@
+﻿@model CarDealership2.ViewModels.SpecialsListVM
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Specials</title>
+</head>
+<body>
+
+    <div>
+        <div class="container">
+            <div class="row">
+                <h2>Specials</h2>
+            </div>
+        </div>
+      
+        @foreach (var special in Model.specials)
+        {
+            <div style="border-style: groove; margin-top:5px; padding-top:5px;" class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="/images/dollar.png" alt="dollar sign" style="width:100px" class="center">
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="row">
+                            <b>@special.Title</b>
+
+                        </div>
+
+                        <div class="row">
+                            @special.Description
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</body>
+</html>

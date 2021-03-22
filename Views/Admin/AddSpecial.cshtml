@@ -18,25 +18,29 @@
             <div>
                 @using (Html.BeginForm("AddSpecial", "Admin", FormMethod.Post))
                 {
-                    <div class="form-row">
-                        <div style="padding-top:25px;" class="form-group col-md-6">
-                            <label for="special.Title"> Title </label>
-                            @Html.TextBoxFor(m => m.special.Title, new { @class = "form-control", placeholder = "title" })
-                            @*<span class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</span>*@
-
-                            <label style="padding-top:25px;" for="special.Description"> Description </label>
-                            @Html.TextAreaFor(m => m.special.Description, new { @class = "form-control", @style = "height:150px;", placeholder = "description" })
-                            @*<span class="text-danger">@Html.ValidationMessageFor(m => m.LastName)</span>*@
+                <div class="form-row">
+                    
+                    <div style="padding-top:25px;" class="form-group col-md-6">
+                        <label for="special.Title"> Title </label>
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.special.Title)</span>
+                        @Html.TextBoxFor(m => m.special.Title, new { @class = "form-control", placeholder = "title" })
 
 
-                            <div style="padding-top:25px;">
-                                <button type="submit" class="btn btn-md btn-primary">Save</button>
-                            </div>
+                        <label style="padding-top:25px;" for="special.Description"> Description </label>
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.special.Description)</span>
+                        @Html.TextAreaFor(m => m.special.Description, new { @class = "form-control", @style = "height:150px;", placeholder = "description" })
+                        
 
+
+                        <div style="padding-top:25px;">
+                            <button type="submit" class="btn btn-md btn-primary">Save</button>
 
                         </div>
 
+
                     </div>
+
+                </div>
                 }
             </div>
         </div>

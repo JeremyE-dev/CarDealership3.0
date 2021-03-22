@@ -14,13 +14,17 @@ namespace CarDealership2.ViewModels
         public string currentUserEmail { get; set; }
 
         public string currentUsername { get; set; }
+
+        //public Make SelectedMake { get; set; }
         public List<Model> models { get; set; }
 
 
         //need to add select lo
 
         //not sure what role this plays - this hold the items to select from
-        public int SelectedMakeId { get; set; }
+        
+
+        public string SelectedMakeId { get; set; }
         public IEnumerable<SelectListItem> Makes { get; set; }
 
         public AddModelVM()
@@ -28,7 +32,7 @@ namespace CarDealership2.ViewModels
             vehicleModel = new Model();
             models = new List<Model>();
             currentUserEmail = "";
-            SelectedMakeId = 0;
+            SelectedMakeId = "";
 
         }
     }

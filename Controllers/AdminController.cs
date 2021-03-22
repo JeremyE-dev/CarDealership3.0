@@ -53,8 +53,6 @@ namespace CarDealership2.Controllers
 
                 ModelState.AddModelError("make.MakeName", "Please Enter a Make Name");
 
-
-
             }
             //note: success writing to db, not displaying view only displaying after second save
             // set breakpoints: either controller iss or view
@@ -140,12 +138,22 @@ namespace CarDealership2.Controllers
 
             var repository = ModelRepositoryFactory.Create();
 
+            if (string.IsNullOrEmpty(model.SelectedMakeId))
+            {
+
+                ModelState.AddModelError("SelectedMakeId", "Please Select A Make");
+
+            }
+
+
+
             if (string.IsNullOrEmpty(model.vehicleModel.ModelName))
             {
 
                 ModelState.AddModelError("vehicleModel.ModelName", "Please Enter a Model Name");
 
             }
+
 
             if (ModelState.IsValid)
             {
@@ -303,7 +311,7 @@ namespace CarDealership2.Controllers
 
             if (string.IsNullOrEmpty(model.LastName))
             {
-                ModelState.AddModelError("LastName", "First Name is Required");
+                ModelState.AddModelError("LastName", "Last Name is Required");
             }
 
             if (string.IsNullOrEmpty(model.Email))
@@ -638,10 +646,36 @@ namespace CarDealership2.Controllers
         [HttpPost]
         public ActionResult AddSpecial(AddSpecialVM model)
         {
-            ISpecialRepository SpecialRepo = SpecialRepositoryFactory.Create();
-            SpecialRepo.Add(model);
-            model.specials = SpecialRepo.GetAll().ToList();
-            return View("AddSpecial", model);
+
+            if (string.IsNullOrEmpty(model.special.Title))
+            {
+
+                ModelState.AddModelError("special.Title", "title is required");
+
+            }
+
+            if (string.IsNullOrEmpty(model.special.Description))
+            {
+
+                ModelState.AddModelError("special.Description", "please add a description");
+
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                ISpecialRepository SpecialRepo = SpecialRepositoryFactory.Create();
+                SpecialRepo.Add(model);
+                model.specials = SpecialRepo.GetAll().ToList();
+                return View("AddSpecial", model);
+            }
+
+
+            else
+            {
+                return View("AddSpecial", model);
+
+            }
         }
 
         [HttpGet]

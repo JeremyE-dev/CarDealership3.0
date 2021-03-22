@@ -20,7 +20,7 @@ namespace CarDealership2.Repositories
             model.ModelId = repository.Models.Max(m => m.ModelId) + 1;
             //sets dateadded
             model.DateAdded = DateTime.Today.ToShortDateString();
-            model.MakeId = viewmodel.SelectedMakeId;
+            model.MakeId = Convert.ToInt32(viewmodel.SelectedMakeId);
             var Make = repository.Makes.FirstOrDefault(m => m.MakeId == model.MakeId);
             model.MakeName = Make.MakeName;
             // linq query to get the emmail address of the current user

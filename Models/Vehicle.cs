@@ -20,6 +20,8 @@ namespace CarDealership2.Models
 
         public int Year{ get; set; }
 
+        
+
         public int TransmissionId { get; set; }
         public string TransmissionName { get; set; }
 

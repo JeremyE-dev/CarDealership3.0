@@ -21,11 +21,13 @@
                     <div class="form-group col-md-5">
                         <label for="Makes"> Make </label>
                         @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedMakeId)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="VehicleModels"> Model </label>
                         @Html.DropDownListFor(m => m.SelectedVehicleModelId, Model.VehicleModels, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedVehicleModelId)</span>
                     </div>
 
 
@@ -36,11 +38,13 @@
                     <div class="form-group col-md-5">
                         <label for="VehicleTypes"> Type </label>
                         @Html.DropDownListFor(m => m.SelectedVehicleTypeId, Model.VehicleTypes, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedVehicleTypeId)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="BodyStyles"> Body Style </label>
                         @Html.DropDownListFor(m => m.SelectedBodyStyleId, Model.BodyStyles, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedBodyStyleId)</span>
                     </div>
 
 
@@ -50,11 +54,13 @@
                     <div class="form-group col-md-5">
                         <label for="Year"> Year </label>
                         @Html.TextBoxFor(m => m.Vehicle.Year, new { @class = "form-control", placeholder = "Year" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.Year)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="Transmission"> Transmission </label>
                         @Html.DropDownListFor(m => m.SelectedTransmissionId, Model.Transmissions, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedTransmissionId)</span>
                     </div>
 
                 </div>
@@ -63,11 +69,13 @@
                     <div class="form-group col-md-5">
                         <label for="Colors"> Color </label>
                         @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedColorId)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="Interiors"> Interior </label>
                         @Html.DropDownListFor(m => m.SelectedInteriorId, Model.Interiors, "-Select-", new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedInteriorId)</span>
                     </div>
 
 
@@ -77,11 +85,14 @@
                     <div class="form-group col-md-5">
                         <label for="Mileage"> Mileage </label>
                         @Html.TextBoxFor(m => m.Vehicle.Mileage, new { @class = "form-control", placeholder = "Mileage" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.Mileage)</span>
+
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="VIN"> VIN # </label>
                         @Html.TextBoxFor(m => m.Vehicle.VIN, new { @class = "form-control", placeholder = "VIN" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.VIN)</span>
                     </div>
 
                 </div>
@@ -90,11 +101,13 @@
                     <div class="form-group col-md-5">
                         <label for="MRSP"> MRSP </label>
                         @Html.TextBoxFor(m => m.Vehicle.MRSP, new { @class = "form-control", placeholder = "MRSP" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.MRSP)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="SalePrice"> Sale Price </label>
                         @Html.TextBoxFor(m => m.Vehicle.SalePrice, new { @class = "form-control", placeholder = "Sale Price" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.SalePrice)</span>
                     </div>
 
 

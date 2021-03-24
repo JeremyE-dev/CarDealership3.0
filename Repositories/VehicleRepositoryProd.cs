@@ -35,29 +35,31 @@ namespace CarDealership2.Repositories
             //
 
 
-        
-            model.Make = repository.Makes.FirstOrDefault(m => m.MakeId == viewmodel.SelectedMakeId);
+
+            //model.MakeId = Convert.ToInt32(viewmodel.SelectedMakeId);
+
+            model.Make = repository.Makes.FirstOrDefault(m => m.MakeId == Convert.ToInt32(viewmodel.SelectedMakeId));
             //add makename to model
             model.MakeName = model.Make.MakeName;
-            model.VehicleModel = repository.Models.FirstOrDefault(m => m.ModelId == viewmodel.SelectedVehicleModelId);
+            model.VehicleModel = repository.Models.FirstOrDefault(m => m.ModelId == Convert.ToInt32(viewmodel.SelectedVehicleModelId));
             //add modelname to model
             model.VehicleModelName = model.VehicleModel.ModelName; 
-            model.Type = repository.VehicleTypes.FirstOrDefault(m => m.VehicleTypeId == viewmodel.SelectedVehicleTypeId);
+            model.Type = repository.VehicleTypes.FirstOrDefault(m => m.VehicleTypeId == Convert.ToInt32(viewmodel.SelectedVehicleTypeId));
             //add type name to model
             model.VehicleTypeName = model.Type.VehicleTypeName;
-            model.BodyStyle = repository.BodyStyles.FirstOrDefault(m => m.BodyStyleId == viewmodel.SelectedBodyStyleId);
+            model.BodyStyle = repository.BodyStyles.FirstOrDefault(m => m.BodyStyleId == Convert.ToInt32(viewmodel.SelectedBodyStyleId));
             //add bodystyle name to model
             model.BodyStyleName = model.BodyStyle.BodyStyleName;
             
             model.Year = viewmodel.Vehicle.Year;
-            model.Transmission = repository.Transmissions.FirstOrDefault(m => m.TransmissionId == viewmodel.SelectedTransmissionId);
+            model.Transmission = repository.Transmissions.FirstOrDefault(m => m.TransmissionId == Convert.ToInt32(viewmodel.SelectedTransmissionId));
             //add transmission name
             model.TransmissionName = model.Transmission.TransmissionName;
 
-            model.Color = repository.Colors.FirstOrDefault(m => m.ColorId == viewmodel.SelectedColorId);
+            model.Color = repository.Colors.FirstOrDefault(m => m.ColorId == Convert.ToInt32(viewmodel.SelectedColorId));
             //add color name
             model.ColorName = model.Color.ColorName;
-            model.Interior = repository.Interiors.FirstOrDefault(m => m.InteriorId == viewmodel.SelectedInteriorId);
+            model.Interior = repository.Interiors.FirstOrDefault(m => m.InteriorId == Convert.ToInt32( viewmodel.SelectedInteriorId));
             //add interior name
             model.InteriorName = model.Interior.InteriorName;
             model.Mileage = viewmodel.Vehicle.Mileage;

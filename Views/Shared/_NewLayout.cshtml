@@ -26,9 +26,25 @@
                     <li>@Html.ActionLink("Specials", "Specials", "Home")</li>
                     <li>@Html.ActionLink("Contact", "ContactUs", "Home")</li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-                    {                      
-                        <li>@Html.ActionLink("Admin", "Makes", "Admin")</li>
+                    {
+                        @*<li>@Html.ActionLink("Admin", "Makes", "Admin")</li>*@
                         //--also will add reports to this list
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin  <span class="caret"></span>
+                                </a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="/Admin/Vehicles">Vehicle Inventory</a></li>
+                                <li><a href="/Admin/AddVehicle">Add Vehicle</a></li>
+                                <li><a href="/Admin/Users">Users</a></li>
+                                <li><a href="/Admin/Makes">Makes</a></li>
+                                <li><a href="/Admin/Models">Models</a></li>
+                                <li><a href="/Admin/Specials">Specials</a></li>
+                            </ul>
+                        </li>
+
+
                     }
 
                     @if (User.Identity.IsAuthenticated && User.IsInRole("sales") || User.IsInRole("admin"))
@@ -36,7 +52,7 @@
                         <li>@Html.ActionLink("Sales", "Index", "Home")</li>
                     }
 
-                </ul>
+                </li>
                 @Html.Partial("_Login")
             </div>
         </div>

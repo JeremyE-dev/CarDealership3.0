@@ -409,6 +409,10 @@
     <Compile Include="Migrations\202103212021302_addcontactmodel.Designer.cs">
       <DependentUpon>202103212021302_addcontactmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103242359062_phonenumberisstring.cs" />
+    <Compile Include="Migrations\202103242359062_phonenumberisstring.Designer.cs">
+      <DependentUpon>202103242359062_phonenumberisstring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -678,6 +682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103212021302_addcontactmodel.resx">
       <DependentUpon>202103212021302_addcontactmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103242359062_phonenumberisstring.resx">
+      <DependentUpon>202103242359062_phonenumberisstring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

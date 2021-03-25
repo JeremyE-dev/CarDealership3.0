@@ -105,11 +105,37 @@ namespace CarDealership2.Controllers
         public ActionResult ContactUs(ContactVM model) //need contacts repository
         {
             IContactRepository ContactRepo = ContactRepositoryFactory.Create();
-            ContactRepo.Add(model);
 
-            //call add
 
-            return RedirectToAction("ContactUs");
+            if (string.IsNullOrEmpty(model.Name))
+            {
+                ModelState.AddModelError("Name", "Name Is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.Email) && string.IsNullOrEmpty(model.Phone))
+            {
+                ModelState.AddModelError("Phone", "either email or phone is required");
+            }
+
+
+
+            if (ModelState.IsValid)
+            {
+                ContactRepo.Add(model);
+
+                //call add
+
+                return RedirectToAction("ContactUs");
+            }
+
+            else
+            {
+                return View(model);
+            }
+            
+           
+
+            
         }
 
 

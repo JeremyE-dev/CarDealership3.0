@@ -555,11 +555,24 @@ namespace CarDealership2.Controllers
                 {
                     if (!string.IsNullOrEmpty(mileage) && model.Vehicle.Mileage > 1000 || model.Vehicle.Mileage < 0)
                     {
-                        ModelState.AddModelError("Vehicle.Mileage", "Mileage Must under 1000 if New");
+                        ModelState.AddModelError("Vehicle.Mileage", "Mileage Must Be Under 1000 if New");
                     }
                     
                 }
             }
+
+            if (!string.IsNullOrEmpty(model.SelectedVehicleTypeId))
+            {
+                if (vehicleType.VehicleTypeName == "Used")
+                {
+                    if (!string.IsNullOrEmpty(mileage) && model.Vehicle.Mileage < 1000 || model.Vehicle.Mileage < 0)
+                    {
+                        ModelState.AddModelError("Vehicle.Mileage", "Mileage Must Be Over 1000 if New");
+                    }
+
+                }
+            }
+
 
             if (string.IsNullOrEmpty(model.Vehicle.VIN))
             {
@@ -580,7 +593,7 @@ namespace CarDealership2.Controllers
                     ModelState.AddModelError("Vehicle.Year", "Year must be a number");
                 }
 
-                if (helper.IsNumber(mileage) && model.Vehicle.Year < 1900 || model.Vehicle.Year > 3000)
+                if (helper.IsNumber(mileage) && model.Vehicle.Year < 2000 || model.Vehicle.Year > DateTime.Now.Year + 1)
                 {
                     ModelState.AddModelError("Vehicle.Year", "Please Enter a Valid Year");
                 }
@@ -639,17 +652,27 @@ namespace CarDealership2.Controllers
             }
 
 
+            if (string.IsNullOrEmpty(model.Vehicle.Description))
+            {
 
+                ModelState.AddModelError("Vehicle.Description", "Description Is Required");
+
+
+            }
 
 
 
             IVehicleRepository VehicleRepo = VehicleRepositoryFactory.Create();
-            
+
             if (ModelState.IsValid)
             {
-               VehicleRepo.Add(model);
+                VehicleRepo.Add(model);
 
-                return RedirectToAction("AddVehicle", model);
+                var lastvehicle = VehicleRepo.GetAll().Last();
+
+                int id = lastvehicle.VehicleId;
+
+                return RedirectToAction("EditVehicle/"+ id, "Admin");
             }
 
             else
@@ -796,6 +819,8 @@ namespace CarDealership2.Controllers
             var colorRepository = ColorRepositoryFactory.Create();
             var interiorRepository = InteriorRepositoryFactory.Create();
 
+            Helper helper = new Helper();
+
             model.Makes = from m in makeRepository.GetAll()
                           select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
 
@@ -818,17 +843,243 @@ namespace CarDealership2.Controllers
                               select new SelectListItem { Text = m.InteriorName, Value = m.InteriorId.ToString() };
 
 
-            //start here 3/18/21
-            //if modelstate is valid
-            //make changes, where to go after 
-            VehicleRepo.Edit(model);
-            return View("Vehicles");
-
-            //else
-            //reload dropdowns and return to form with data they tried to submit, and dsiplay error messages
+            //*BEGIN ERROR MESSAGES
 
 
-            //return View();
+            if (string.IsNullOrEmpty(model.SelectedMakeId))
+            {
+
+                ModelState.AddModelError("SelectedMakeId", "Please Select A Make");
+
+            }
+
+            if (string.IsNullOrEmpty(model.SelectedVehicleModelId))
+            {
+
+                ModelState.AddModelError("SelectedVehicleModelId", "Please Select A Model");
+
+            }
+
+
+            if (string.IsNullOrEmpty(model.SelectedVehicleTypeId))
+            {
+
+                ModelState.AddModelError("SelectedVehicleTypeId", "Please Select A Type");
+
+            }
+
+            if (string.IsNullOrEmpty(model.SelectedBodyStyleId))
+            {
+
+                ModelState.AddModelError("SelectedBodyStyleId", "Please Select A Body Style");
+
+            }
+
+            if (string.IsNullOrEmpty(model.SelectedTransmissionId))
+            {
+
+                ModelState.AddModelError("SelectedTransmissionId", "Please Select A Transmission");
+
+            }
+
+
+            if (string.IsNullOrEmpty(model.SelectedColorId))
+            {
+
+                ModelState.AddModelError("SelectedColorId", "Please Select A Color");
+
+            }
+
+            if (string.IsNullOrEmpty(model.SelectedInteriorId))
+            {
+
+                ModelState.AddModelError("SelectedInteriorId", "Please Select An Interior");
+
+            }
+
+
+
+            string mileage = model.Vehicle.Mileage.ToString();
+
+            if (string.IsNullOrEmpty(mileage))
+            {
+                ModelState.AddModelError("Mileage", "Mileage is required");
+
+
+            }
+
+            if (!string.IsNullOrEmpty(mileage))
+            {
+                if (!helper.IsNumber(mileage))
+                {
+                    ModelState.AddModelError("Mileage", "Mileage input must be an integer");
+
+                    if (model.Vehicle.Mileage < 0)
+                    {
+                        ModelState.AddModelError("Mileage", "Please enter a valid number");
+                    }
+                }
+
+            }
+
+
+
+            int vehicleTypeId = Convert.ToInt32(model.SelectedVehicleTypeId);
+
+            VehicleType vehicleType = new VehicleType();
+
+            vehicleType = vehicleTypeRepository.GetAll().FirstOrDefault(t => t.VehicleTypeId == vehicleTypeId);
+
+
+
+            if (!string.IsNullOrEmpty(model.SelectedVehicleTypeId))
+            {
+                if (vehicleType.VehicleTypeName == "New")
+                {
+                    if (!string.IsNullOrEmpty(mileage) && model.Vehicle.Mileage > 1000 || model.Vehicle.Mileage < 0)
+                    {
+                        ModelState.AddModelError("Vehicle.Mileage", "Mileage Must Be Under 1000 if New");
+                    }
+
+                }
+            }
+
+            if (!string.IsNullOrEmpty(model.SelectedVehicleTypeId))
+            {
+                if (vehicleType.VehicleTypeName == "Used")
+                {
+                    if (!string.IsNullOrEmpty(mileage) && model.Vehicle.Mileage < 1000 || model.Vehicle.Mileage < 0)
+                    {
+                        ModelState.AddModelError("Vehicle.Mileage", "Mileage Must Be Over 1000 if New");
+                    }
+
+                }
+            }
+
+
+            if (string.IsNullOrEmpty(model.Vehicle.VIN))
+            {
+                ModelState.AddModelError("Vehicle.VIN", "VIN is required");
+            }
+
+            string year = model.Vehicle.Year.ToString();
+
+            if (string.IsNullOrEmpty(year))
+            {
+                ModelState.AddModelError("Vehicle.Year", "Year is required");
+            }
+
+            if (!string.IsNullOrEmpty(year))
+            {
+                if (!helper.IsNumber(mileage))
+                {
+                    ModelState.AddModelError("Vehicle.Year", "Year must be a number");
+                }
+
+                if (helper.IsNumber(mileage) && model.Vehicle.Year < 2000 || model.Vehicle.Year > DateTime.Now.Year + 1)
+                {
+                    ModelState.AddModelError("Vehicle.Year", "Please Enter a Valid Year");
+                }
+
+            }
+
+            string mrsp = model.Vehicle.MRSP.ToString();
+
+            if (string.IsNullOrEmpty(mrsp))
+            {
+
+                ModelState.AddModelError("Vehicle.MRSP", "MRSP is required");
+
+
+            }
+
+            if (!string.IsNullOrEmpty(mrsp))
+            {
+                if (!helper.IsNumber(mrsp))
+                {
+                    ModelState.AddModelError("Vehicle.MRSP", "MRSP Must Be A Number");
+                }
+
+            }
+
+            string saleprice = model.Vehicle.SalePrice.ToString();
+
+
+            if (string.IsNullOrEmpty(saleprice))
+            {
+
+                ModelState.AddModelError("Vehicle.SalePrice", "Sale Price Is Required");
+
+
+            }
+
+
+            if (!string.IsNullOrEmpty(saleprice))
+            {
+                if (!helper.IsNumber(saleprice))
+                {
+                    ModelState.AddModelError("Vehicle.SalePrice", "Sale Price Must Be A Number");
+                }
+
+            }
+
+            if (!string.IsNullOrEmpty(mrsp) && !string.IsNullOrEmpty(saleprice))
+            {
+                if (helper.IsNumber(mrsp) && !helper.IsNumber(saleprice))
+                {
+                    if (model.Vehicle.SalePrice > model.Vehicle.MRSP)
+                    {
+                        ModelState.AddModelError("Vehicle.SalePrice", "Sale Price Must Be Less Than MRSP");
+                    }
+                }
+            }
+
+
+            if (string.IsNullOrEmpty(model.Vehicle.Description))
+            {
+
+                ModelState.AddModelError("Vehicle.Description", "Description Is Required");
+
+
+            }
+
+
+
+
+            if (ModelState.IsValid)
+            {
+                VehicleRepo.Edit(model);
+                return View("Vehicles");
+            }
+
+            else
+            {
+                //model.Makes = from m in makeRepository.GetAll()
+                //              select new SelectListItem { Text = m.MakeName, Value = m.MakeId.ToString() };
+
+                //model.VehicleModels = from m in modelRepository.GetAll()
+                //                      select new SelectListItem { Text = m.ModelName, Value = m.ModelId.ToString() };
+
+                //model.VehicleTypes = from m in vehicleTypeRepository.GetAll()
+                //                     select new SelectListItem { Text = m.VehicleTypeName, Value = m.VehicleTypeId.ToString() };
+
+                //model.BodyStyles = from m in bodystyleRepository.GetAll()
+                //                   select new SelectListItem { Text = m.BodyStyleName, Value = m.BodyStyleId.ToString() };
+
+                //model.Transmissions = from m in transmissionRepository.GetAll()
+                //                      select new SelectListItem { Text = m.TransmissionName, Value = m.TransmissionId.ToString() };
+
+                //model.Colors = from m in colorRepository.GetAll()
+                //               select new SelectListItem { Text = m.ColorName, Value = m.ColorId.ToString() };
+
+                //model.Interiors = from m in interiorRepository.GetAll()                
+                //                  select new SelectListItem { Text = m.InteriorName, Value = m.InteriorId.ToString() };
+                
+                return View("EditVehicle", model);
+
+            }
+
+
         }
 
         [HttpGet]

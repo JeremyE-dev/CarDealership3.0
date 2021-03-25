@@ -14,7 +14,7 @@
 <body>
     <div style="padding-top: 25px;" class="container">
         <div class="row">
-            @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post))
+            @using (Html.BeginForm("AddVehicle","Admin", FormMethod.Post))
             {
 
                 <div class="form-row col-md-10">
@@ -119,6 +119,7 @@
                     <div class="form-group col-md-10">
                         <label style="padding-top:25px;" for="vehicle.Description"> Description </label>
                         @Html.TextAreaFor(m => m.Vehicle.Description, new { @class = "form-control", @style = "height:150px", placeholder = "description" })
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.Description)</span>
                     </div>
                 </div>
 

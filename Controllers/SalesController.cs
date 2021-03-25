@@ -15,7 +15,7 @@ namespace CarDealership2.Controllers
     {
         // GET: Sales
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult SalesIndex()
         {
             //Search all vehicles
             IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();

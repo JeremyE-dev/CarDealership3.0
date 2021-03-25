@@ -10,7 +10,7 @@ namespace CarDealership2.Models
         public int ContactId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public int? Phone { get; set; }
+        public string Phone { get; set; }
 
         public string Message { get; set; }
     }

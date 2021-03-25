@@ -49,7 +49,7 @@
 
                     @if (User.Identity.IsAuthenticated && User.IsInRole("sales") || User.IsInRole("admin"))
                     {
-                        <li>@Html.ActionLink("Sales", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Sales", "SalesIndex", "Sales")</li>
                     }
 
                 </li>

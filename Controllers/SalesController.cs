@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using CarDealership2.Helpers;
 
 namespace CarDealership2.Controllers
 {
@@ -65,6 +66,8 @@ namespace CarDealership2.Controllers
             var model = new PurchaseVM();
             model.vehicle = vehicleRepository.GetVehicleById(id);
 
+            Helper helper = new Helper();
+
 
             //lets see if this works with a list of strings
             //model.States = from s in model._states
@@ -73,7 +76,11 @@ namespace CarDealership2.Controllers
             //get identity of user
             model.salesPerson = new AppUser();
             model.salesPerson.Id = User.Identity.GetUserId();
-           
+
+            model.username = User.Identity.GetUserName();
+            string userid = User.Identity.GetUserId();
+            //model.salesPerson.UserName = User.Identity.GetUserName();
+
             return View(model);
         }
 
@@ -84,16 +91,115 @@ namespace CarDealership2.Controllers
             IVehicleRepository vehicleRepository = VehicleRepositoryFactory.Create();
             model.vehicle = vehicleRepository.GetVehicleById(id);
 
+            Helper helper = new Helper();
 
+            model.username = User.Identity.GetUserName();
             //model.vehicle.IsPurchased = true;
             //model.purchaseDate = DateTime.Today;
 
+            if (string.IsNullOrEmpty(model.name))
+            {
+                ModelState.AddModelError("name","Name Is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.phone))
+            {
+                ModelState.AddModelError("phone", "Phone Is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.email))
+            {
+                ModelState.AddModelError("email", "Email Is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.street1))
+            {
+                ModelState.AddModelError("street1", "Street 1 Is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.city))
+            {
+                ModelState.AddModelError("city", "City Is Required");
+            }
+
+            string state = model.purchaseState.ToString();
+
+            if (string.IsNullOrEmpty(state))
+            {
+                ModelState.AddModelError("purchaseState", "State Is Required");
+            }
+
+            string zipcode = model.zipcode.ToString();
+
+            if (string.IsNullOrEmpty(zipcode))
+            {
+                ModelState.AddModelError("zipcode", "Zipcode Is Required");
+            }
 
 
-            purchaseRepo.Add(model);
+
+            if (!string.IsNullOrEmpty(zipcode))
+            {
+                if (!helper.IsNumber(zipcode))
+                {
+                    ModelState.AddModelError("zipcode", "Zipcode must be a number");
+                }
+
+            }
 
 
-            return View("Index");
+            string purchaseprice = model.purchasePrice.ToString();
+
+            if (string.IsNullOrEmpty(purchaseprice))
+            {
+                ModelState.AddModelError("purchasePrice", "Purchase Price Is Required");
+            }
+
+            if (!string.IsNullOrEmpty(purchaseprice))
+            {
+                if (!helper.IsNumber(purchaseprice))
+
+                {
+                    ModelState.AddModelError("purchasePrice", "Zipcode must be a number");
+                }
+
+                if (helper.IsNumber(purchaseprice) && model.purchasePrice > model.vehicle.MRSP)
+                {
+                    ModelState.AddModelError("purchasePrice", "Purchase Price must be less than MRSP");
+                }
+
+
+            }
+
+
+
+
+            string purchaseType = model.purchaseState.ToString();
+
+            if (string.IsNullOrEmpty(purchaseType))
+            {
+                ModelState.AddModelError("purchaseType", "Purchase Type Is Required");
+            }
+
+           
+
+
+
+            if (ModelState.IsValid)
+            {
+                purchaseRepo.Add(model);
+
+
+                return View("SalesIndex");
+            }
+
+            else
+            {
+              
+                return View(model);
+            }
+
+           
         }
 
 

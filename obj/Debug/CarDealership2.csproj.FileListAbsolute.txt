@@ -385,3 +385,5 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migration
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.addpurchasetable2db.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.addcontactmodel.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.phonenumberisstring.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.updatedputchasetype.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.updatedphonetostring.resources

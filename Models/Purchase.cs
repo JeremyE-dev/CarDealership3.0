@@ -12,7 +12,7 @@ namespace CarDealership2.Models
 
         public string name { get; set; }
 
-        public int phone { get; set; }
+        public string phone { get; set; }
 
         public string email { get; set; }
 
@@ -33,7 +33,7 @@ namespace CarDealership2.Models
 
         //public IEnumerable<SelectListItem> States { get; set; }
 
-
+        public PurchaseTypes purchaseType { get; set; }
 
         public DateTime purchaseDate { get; set; }
 

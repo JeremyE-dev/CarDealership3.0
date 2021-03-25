@@ -413,6 +413,14 @@
     <Compile Include="Migrations\202103242359062_phonenumberisstring.Designer.cs">
       <DependentUpon>202103242359062_phonenumberisstring.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103251403578_updatedputchasetype.cs" />
+    <Compile Include="Migrations\202103251403578_updatedputchasetype.Designer.cs">
+      <DependentUpon>202103251403578_updatedputchasetype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103251410067_updatedphonetostring.cs" />
+    <Compile Include="Migrations\202103251410067_updatedphonetostring.Designer.cs">
+      <DependentUpon>202103251410067_updatedphonetostring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -425,6 +433,7 @@
     <Compile Include="Models\Make.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseTypes.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\RoleType.cs" />
     <Compile Include="Models\Special.cs" />
@@ -685,6 +694,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103242359062_phonenumberisstring.resx">
       <DependentUpon>202103242359062_phonenumberisstring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251403578_updatedputchasetype.resx">
+      <DependentUpon>202103251403578_updatedputchasetype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251410067_updatedphonetostring.resx">
+      <DependentUpon>202103251410067_updatedphonetostring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

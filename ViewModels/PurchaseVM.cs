@@ -13,7 +13,7 @@ namespace CarDealership2.ViewModels
 
         public string name { get; set; }
 
-        public int phone { get; set; }
+        public string phone { get; set; }
 
         public string email { get; set; }
 
@@ -32,6 +32,8 @@ namespace CarDealership2.ViewModels
 
         public State purchaseState { get; set; }
 
+        public PurchaseTypes purchaseType{ get;  set; }
+
         //public IEnumerable<SelectListItem> States { get; set; }
 
 
@@ -42,7 +44,9 @@ namespace CarDealership2.ViewModels
 
         public AppUser salesPerson { get; set; }
 
-        public PurchaseVM()
+        public string username { get; set; }
+
+    public PurchaseVM()
         {
             //_states = new List<string>();
             //foreach(State s in Enum.GetValues(typeof(State))) {

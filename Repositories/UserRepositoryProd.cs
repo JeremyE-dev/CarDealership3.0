@@ -123,7 +123,20 @@ namespace CarDealership2.Repositories
 
             return u.ToList();
 
+
             
+        }
+
+        public void ChangePassword(ChangePasswordVM viewmodel)
+        {
+            var repository = new CarDealership2DbContext();
+            var userManager = new UserManager<AppUser>(new UserStore<AppUser>(repository));
+
+            AppUser user = repository.Users.FirstOrDefault(u => u.UserName == viewmodel.UserName);
+
+            userManager.ChangePassword(user.Id,viewmodel.OldPassword,viewmodel.NewPassword);
+
+            repository.SaveChanges();
         }
 
 

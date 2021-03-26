@@ -1,4 +1,9 @@
-﻿using CarDealership2.ViewModels;
+﻿using CarDealership2.Factories;
+using CarDealership2.Interfaces;
+using CarDealership2.Models;
+using CarDealership2.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +31,63 @@ namespace CarDealership2.Controllers
         [HttpGet]
         public ActionResult ChangePassword()
         {
-            return View();
+            
+            ChangePasswordVM model = new ChangePasswordVM();
+
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordVM model)
         {
-            return View();
+
+            model.UserName = User.Identity.GetUserName();
+
+            //var userManager = HttpContext.GetOwinContext().GetUserManager<UserManager<AppUser>>();
+
+            IUserRepository UserRepo = UserRepositoryFactory.Create();
+
+
+            if (string.IsNullOrEmpty(model.OldPassword))
+            {
+                ModelState.AddModelError("OldPassword", " Old Password Is Required");
+            }
+
+
+            if (string.IsNullOrEmpty(model.NewPassword))
+            {
+                ModelState.AddModelError("NewPassword", " New Password Is Required");
+            }
+
+            if (string.IsNullOrEmpty(model.ConfirmNewPassword))
+            {
+                ModelState.AddModelError("ConfirmNewPassword", "Confirm Password Is required");
+            }
+
+            if (string.IsNullOrEmpty(model.NewPassword) && string.IsNullOrEmpty(model.ConfirmNewPassword))
+            {
+
+                if (!string.Equals(model.NewPassword, model.ConfirmNewPassword))
+                {
+                    ModelState.AddModelError("ConfirmPassword"," New Password and Confirm Password Must Match");
+                }
+            }
+
+
+
+            if (ModelState.IsValid)
+            {
+                UserRepo.ChangePassword(model);
+
+
+                return View(model);
+            }
+
+            else
+            {
+                return View(model);
+            }
+
         }
     }
 }

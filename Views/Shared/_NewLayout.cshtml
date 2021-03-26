@@ -32,7 +32,7 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Admin  <span class="caret"></span>
-                                </a>
+                            </a>
                             <ul class="dropdown-menu">
 
                                 <li><a href="/Admin/Vehicles">Vehicle Inventory</a></li>
@@ -40,9 +40,11 @@
                                 <li><a href="/Admin/Users">Users</a></li>
                                 <li><a href="/Admin/Makes">Makes</a></li>
                                 <li><a href="/Admin/Models">Models</a></li>
-                                <li><a href="/Admin/Specials">Specials</a></li>
+                                <li><a href="/Admin/AddSpecial">Add Special</a></li>
                             </ul>
                         </li>
+
+                        @*<li>@Html.ActionLink("Change Password", "ChangePassword", "Account")</li> *@
 
 
                     }
@@ -52,9 +54,9 @@
                         <li>@Html.ActionLink("Sales", "SalesIndex", "Sales")</li>
                     }
 
-                </li>
-                @Html.Partial("_Login")
-            </div>
+                    </li>
+                    @Html.Partial("_Login")
+</div>
         </div>
     </div>
     <div>

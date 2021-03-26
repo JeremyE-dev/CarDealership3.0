@@ -480,12 +480,14 @@
     <Compile Include="ViewModels\EditUserVM.cs" />
     <Compile Include="ViewModels\EditVehicleVM.cs" />
     <Compile Include="ViewModels\HomeIndexVM.cs" />
+    <Compile Include="ViewModels\InventoryReportVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AddModelVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\NewVehicleSearchVM.cs" />
     <Compile Include="ViewModels\PurchaseVM.cs" />
     <Compile Include="ViewModels\AddSpecialVM.cs" />
+    <Compile Include="ViewModels\SalesReportVM.cs" />
     <Compile Include="ViewModels\SpecialsListVM.cs" />
     <Compile Include="ViewModels\TestModel.cs" />
     <Compile Include="ViewModels\UsedVehicleSearchVM.cs" />
@@ -560,12 +562,12 @@
     <Content Include="Views\Sales\Purchase.cshtml" />
     <Content Include="Views\Home\Specials.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Migrations\202102231257444_2\" />
-    <Folder Include="Views\Account\" />
     <Folder Include="Views\Reports\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>

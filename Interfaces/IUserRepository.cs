@@ -16,5 +16,7 @@ namespace CarDealership2.Interfaces
         void Edit(EditUserVM viewmodel);
 
         List<AppUser> GetAll();
+
+        void ChangePassword(ChangePasswordVM viewmodel);
     }
 }

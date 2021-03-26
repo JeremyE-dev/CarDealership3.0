@@ -2,11 +2,22 @@
 @using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a href="#">Hello @User.Identity.GetUserName()!</a>
-        </li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+   @* <li>
+        <a href="#">Hello @User.Identity.GetUserName()!</a>
+    </li> *@
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#" id="navbarAccountDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hello @User.Identity.Name! <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+
+            <li><a href="/Account/ChangePassword">Change Password</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </li>
+
+</ul>
 }
 else
 {

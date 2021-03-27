@@ -102,6 +102,11 @@ namespace CarDealership2.Repositories
 
         }
 
+        public void Delete(EditUserVM viewmodel)
+        {
+
+        }
+
 
 
 

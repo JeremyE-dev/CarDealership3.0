@@ -1,4 +1,9 @@
-﻿using System;
+﻿using CarDealership2.Factories;
+using CarDealership2.Interfaces;
+using CarDealership2.Models;
+using CarDealership2.Repositories;
+using CarDealership2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,20 +16,73 @@ namespace CarDealership2.Controllers
         // GET: Reports
         public ActionResult Index()
         {
-            //contains links to sales report and inventory report
+         
             return View();
         }
 
-        public ActionResult Sales()
+        [HttpGet]
+        public ActionResult SalesReport()
         {
-            //contains links to sales report and inventory report
-            return View();
+            UserRepositoryProd UserRepo = new UserRepositoryProd();
+
+            SalesReportVM model = new SalesReportVM();
+
+            model.Users = from u in UserRepo.GetAll()
+                                 select new SelectListItem { Text = u.UserName, Value = u.Id.ToString() };
+
+            return View(model);
         }
 
-        public ActionResult Inventory()
+        [HttpPost]
+        public ActionResult SalesReport(SalesReportVM model)
         {
-            //contains links to sales report and inventory report
-            return View();
+            ISalesReportRepository SalesRepo = SalesReportRepositoryFactory.Create();
+
+
+            if (ModelState.IsValid)
+            {
+                //get the report from the repo
+                //report wil return a list of 
+                //salespeople, with their total sales and count of vehicles sold
+
+                model.ListOfSales = SalesRepo.GetAll();
+
+                UserRepositoryProd UserRepo = new UserRepositoryProd();
+
+                
+                model.Users = from u in UserRepo.GetAll()
+                              select new SelectListItem { Text = u.UserName, Value = u.Id.ToString() };
+
+
+                return View(model);
+            }
+
+            else
+            {
+                UserRepositoryProd UserRepo = new UserRepositoryProd();
+
+                model.Users = from u in UserRepo.GetAll()
+                              select new SelectListItem { Text = u.UserName, Value = u.Id.ToString() };
+
+                return View(model);
+            }
+
+          
+        }
+
+
+
+        [HttpGet]
+        public ActionResult InventoryReport()
+        {
+            IInventoryReportRepository Inventory = InventoryReportRepositoryFactory.Create();
+
+            InventoryReportVM model = new InventoryReportVM();
+
+            model.usedVehiclesList = Inventory.GetAllUsed();
+
+            model.newVehiclesList = Inventory.GetAllNew();
+            return View(model);
         }
 
     }

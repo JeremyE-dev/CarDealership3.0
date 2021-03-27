@@ -1,0 +1,87 @@
+﻿@model CarDealership2.ViewModels.InventoryReportVM
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InventoryReport</title>
+</head>
+<body>
+    <div class="container">
+        <h2 strong> Inventory Report</h2>
+
+        <div class="row">
+            <div class="col-xs-4" style="margin-top:5px; padding-top:5px; ">
+                <h4 strong> New Vehicles</h4>
+                <table class=" table table-bordered table-striped table-hover" style="width: auto;">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Count</th>
+                            <th>Stock Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var r in Model.newVehiclesList)
+                        {
+                            <tr>
+                                <td>@r.Year</td>
+                                <td>@r.MakeName</td>
+                                <td>@r.ModelName</td>
+                                <td>@r.Count</td>
+                                <td>@r.StockValue</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+   
+
+    <div class="row">
+        <div class="col-xs-4" style="margin-top:5px; padding-top:5px; ">
+            <h4 strong> Used Vehicles</h4>
+            <table class=" table table-bordered table-striped table-hover" style="width: auto;">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Count</th>
+                        <th>Stock Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var r in Model.usedVehiclesList)
+                    {
+                        <tr>
+                            <td>@r.Year</td>
+                            <td>@r.MakeName</td>
+                            <td>@r.ModelName</td>
+                            <td>@r.Count</td>
+                            <td>@r.StockValue</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+        </div>
+    
+
+
+
+
+
+</body>
+</html>

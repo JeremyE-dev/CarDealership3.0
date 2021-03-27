@@ -237,7 +237,9 @@
     <Compile Include="Factories\ColorRepositoryFactory.cs" />
     <Compile Include="Factories\ContactRepositoryFactory.cs" />
     <Compile Include="Factories\InteriorRepositoryFactory.cs" />
+    <Compile Include="Factories\InventoryReportRepositoryFactory.cs" />
     <Compile Include="Factories\PurchaseRepositoryFactory.cs" />
+    <Compile Include="Factories\SalesReportRepositoryFactory.cs" />
     <Compile Include="Factories\TransmissionRepositoryFactory.cs" />
     <Compile Include="Factories\VehicleTypeRepositoryFactory.cs" />
     <Compile Include="Factories\MakeRepositoryFactory.cs" />
@@ -253,9 +255,11 @@
     <Compile Include="Interfaces\IColorRepository.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\IInteriorRepository.cs" />
+    <Compile Include="Interfaces\IInventoryReportRepository.cs" />
     <Compile Include="Interfaces\IMakeRepository.cs" />
     <Compile Include="Interfaces\IModelRepository.cs" />
     <Compile Include="Interfaces\IPurchaseRepository.cs" />
+    <Compile Include="Interfaces\ISalesReportRepository.cs" />
     <Compile Include="Interfaces\ITransmissionRepository.cs" />
     <Compile Include="Interfaces\IVehicleRepository.cs" />
     <Compile Include="Interfaces\ISpecialRepository.cs" />
@@ -434,8 +438,11 @@
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\PurchaseTypes.cs" />
+    <Compile Include="Models\ReportEntry.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\RoleType.cs" />
+    <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\SalesByUser.cs" />
     <Compile Include="Models\Special.cs" />
     <Compile Include="Models\States.cs" />
     <Compile Include="Models\TeaType.cs" />
@@ -453,6 +460,8 @@
     <Compile Include="Repositories\ContactRepositoryQA.cs" />
     <Compile Include="Repositories\InteriorRepositoryProd.cs" />
     <Compile Include="Repositories\InteriorRepositoryQA.cs" />
+    <Compile Include="Repositories\InventoryReportRepositoryProd.cs" />
+    <Compile Include="Repositories\InventoryReportRepositoryQA.cs" />
     <Compile Include="Repositories\MakeRepositoryProd.cs" />
     <Compile Include="Repositories\MakeRepositoryQA.cs" />
     <Compile Include="Repositories\ModelRepositoryProd.cs" />
@@ -460,6 +469,8 @@
     <Compile Include="Repositories\PurchaseRepositoryProd.cs" />
     <Compile Include="Repositories\PurchaseRepositoryQA.cs" />
     <Compile Include="Repositories\RoleRepositoryProd.cs" />
+    <Compile Include="Repositories\SalesReportRepositoryProd.cs" />
+    <Compile Include="Repositories\SalesReportRepositoryQA.cs" />
     <Compile Include="Repositories\SpecialRepositoryProd.cs" />
     <Compile Include="Repositories\SpecialRepositoryQA.cs" />
     <Compile Include="Repositories\TransmissionRepositoryProd.cs" />
@@ -563,12 +574,14 @@
     <Content Include="Views\Home\Specials.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Reports\SalesReport.cshtml" />
+    <Content Include="Views\Reports\InventoryReport.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Migrations\202102231257444_2\" />
-    <Folder Include="Views\Reports\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

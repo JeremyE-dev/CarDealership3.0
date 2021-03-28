@@ -12,6 +12,9 @@ namespace CarDealership2.ViewModels
         public List<Sale> ListOfSales = new List<Sale>();
 
         //list of users select lis
+        public string  Date1 { get; set; }
+
+        public string Date2 { get; set; }
 
         public string SelectedUserId { get; set; }
         public IEnumerable<SelectListItem> Users { get; set; }

@@ -4,6 +4,7 @@
     //getAllVehicles();
 
     $('#SearchButton').on('click', function () {
+        $('#resultsDiv').empty();
         getSearchResults();
     });
 
@@ -217,8 +218,8 @@ function getSearchResults() {
                 $containerDiv.css('margin-top', '5px');
                 $containerDiv.css('padding-top', '5px'); // rendering corerctly
 
-                $('body').append($containerDiv);
-
+                //$('body').append($containerDiv);
+                $('#resultsDiv').append($containerDiv);
                 //begin experiment
                 //add year make model row to container
                 $containerDiv.append('<div class ="row" id =' + divrowyearmakemodel + '> </div>');

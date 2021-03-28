@@ -45,10 +45,11 @@ namespace CarDealership2.Controllers
                 //report wil return a list of 
                 //salespeople, with their total sales and count of vehicles sold
 
-                model.ListOfSales = SalesRepo.GetAll();
+                model.ListOfSales = SalesRepo.SearchSales(model);
+
+
 
                 UserRepositoryProd UserRepo = new UserRepositoryProd();
-
                 
                 model.Users = from u in UserRepo.GetAll()
                               select new SelectListItem { Text = u.UserName, Value = u.Id.ToString() };

@@ -174,7 +174,7 @@ namespace CarDealership2.Controllers
 
 
 
-            string purchaseType = model.purchaseState.ToString();
+            string purchaseType = model.purchaseType.ToString();
 
             if (string.IsNullOrEmpty(purchaseType))
             {

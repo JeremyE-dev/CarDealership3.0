@@ -20,13 +20,13 @@
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="Makes"> Make </label>
-                        @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, "-Select-", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedMakeId, Model.Makes, Model.selectedMakeName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedMakeId)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="VehicleModels"> Model </label>
-                        @Html.DropDownListFor(m => m.SelectedVehicleModelId, Model.VehicleModels, "-Select", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedVehicleModelId, Model.VehicleModels, Model.selectedModelName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedVehicleModelId)</span>
                     </div>
 
@@ -37,13 +37,13 @@
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="VehicleTypes"> Type </label>
-                        @Html.DropDownListFor(m => m.SelectedVehicleTypeId, Model.VehicleTypes, "-Select", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedVehicleTypeId, Model.VehicleTypes, Model.selectedVehicleTypeName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedVehicleTypeId)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="BodyStyles"> Body Style </label>
-                        @Html.DropDownListFor(m => m.SelectedBodyStyleId, Model.BodyStyles, "-Select_", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedBodyStyleId, Model.BodyStyles, Model.selectedBodyStyleName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedBodyStyleId)</span>
                     </div>
 
@@ -59,7 +59,7 @@
 
                     <div class="form-group col-md-5">
                         <label for="Transmission"> Transmission </label>
-                        @Html.DropDownListFor(m => m.SelectedTransmissionId, Model.Transmissions, "-Select-", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedTransmissionId, Model.Transmissions, Model.selectedTransmissionName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedTransmissionId)</span>
                     </div>
 
@@ -68,13 +68,13 @@
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="Colors"> Color </label>
-                        @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors, "-Select-", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors,Model.selectedColorName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedColorId)</span>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="Interiors"> Interior </label>
-                        @Html.DropDownListFor(m => m.SelectedInteriorId, Model.Interiors, "-Select-", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedInteriorId, Model.Interiors, Model.selectedInteriorName, new { @class = "form-control", @selected = "selected", value = "Red" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedInteriorId)</span>
                     </div>
 

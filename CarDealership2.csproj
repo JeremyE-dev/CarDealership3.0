@@ -582,6 +582,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Migrations\202102231257444_2\" />
+    <Folder Include="Uploads\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

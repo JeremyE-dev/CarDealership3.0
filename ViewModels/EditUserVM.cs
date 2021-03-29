@@ -33,5 +33,7 @@ namespace CarDealership2.ViewModels
 
         //get this from viewbag
         public RoleType SelectedRoleType { get; set; }
+
+        public string selectedRoleName { get; set; }
     }
 }

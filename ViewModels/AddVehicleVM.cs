@@ -40,6 +40,8 @@ namespace CarDealership2.ViewModels
         public string SelectedInteriorId { get; set; }
         public IEnumerable<SelectListItem> Interiors { get; set; }
 
+        public HttpPostedFileBase UploadedFile { get; set; }
+
 
     }
 }

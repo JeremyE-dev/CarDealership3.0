@@ -17,6 +17,7 @@ using System.Web;
 //using System.Web.Http;
 using System.Web.Mvc;
 using CarDealership2.Helpers;
+using System.IO;
 
 namespace CarDealership2.Controllers
 {
@@ -304,6 +305,8 @@ namespace CarDealership2.Controllers
 
             ViewBag.RoleType = selectedValue.ToString();
 
+
+
             //errors - check for empty fields
             if (string.IsNullOrEmpty(model.FirstName))
             {
@@ -462,6 +465,14 @@ namespace CarDealership2.Controllers
             var transmissionRepository = TransmissionRepositoryFactory.Create();
             var colorRepository = ColorRepositoryFactory.Create();
             var interiorRepository = InteriorRepositoryFactory.Create();
+
+            //code for adding photo
+            if(model.UploadedFile != null && model.UploadedFile.ContentLength> 0)
+            {
+                string path = Path.Combine(Server.MapPath("~/Uploads"), Path.GetFileName(model.UploadedFile.FileName));
+
+                model.UploadedFile.SaveAs(path);
+            }
 
             if (string.IsNullOrEmpty(model.SelectedMakeId))
             {
@@ -740,6 +751,7 @@ namespace CarDealership2.Controllers
            
             model.Vehicle.Make = new Make();
             model.Vehicle.Make = vehicleToEdit.Make;
+            model.selectedMakeName = model.Vehicle.Make.MakeName;
 
             model.Vehicle.VehicleModel = new Model();
             model.Vehicle.VehicleModel = vehicleToEdit.VehicleModel;

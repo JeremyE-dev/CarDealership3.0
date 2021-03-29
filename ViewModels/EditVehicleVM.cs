@@ -39,5 +39,19 @@ namespace CarDealership2.ViewModels
         //Interior
         public string SelectedInteriorId { get; set; }
         public IEnumerable<SelectListItem> Interiors { get; set; }
+
+        public string selectedColorName { get; set; }
+
+        public string selectedInteriorName { get; set; }
+
+        public string selectedTransmissionName { get; set; }
+
+        public string selectedBodyStyleName { get; set; }
+
+        public string selectedVehicleTypeName { get; set; }
+
+        public string selectedMakeName { get; set; }
+
+        public string selectedModelName { get; set; }
     }
 }

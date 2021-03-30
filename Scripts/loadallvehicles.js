@@ -260,7 +260,7 @@ function getSearchResults() {
                 //add image to image div
                 //$("#" + divimage).append('<img src="/images/dollar.png" alt="dollar sign" style="width:100px; class="center">');
                 //$("#" + divimage).append('<img src=' + PhotoPath + '" alt="dollar sign" style="width:100px; class="center">');
-                $("#" + divimage).append('<img src="/Uploads/' + PhotoPath + '"alt="dollar sign" style="width:100px; class="center">');
+                $("#" + divimage).append('<img src="/Uploads/' + PhotoPath + '"alt="vehicle image" style="width:100px; class="center">');
 
                 //add divvehicledata to divrowimage and vehicledata
                 $("#" + divrowimageandvehicledata).append('<div class="col-md-10" id=' + divvehicledata + '></div>');

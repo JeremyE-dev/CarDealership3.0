@@ -466,12 +466,18 @@ namespace CarDealership2.Controllers
             var colorRepository = ColorRepositoryFactory.Create();
             var interiorRepository = InteriorRepositoryFactory.Create();
 
-            //code for adding photo
+            //if a file was uploaded and that file has content
             if(model.UploadedFile != null && model.UploadedFile.ContentLength> 0)
             {
+                // combine the path on the server with the filename uploaded
                 string path = Path.Combine(Server.MapPath("~/Uploads"), Path.GetFileName(model.UploadedFile.FileName));
 
+                //upload thr file to that path
                 model.UploadedFile.SaveAs(path);
+                // save the file name to the  photopath field
+                // thsi is a workaround, wa sgetting JS error saying not allwed to upload get local file when using whole filename
+                //workaround is combine path and filename in JS file via jquery
+                model.Vehicle.PhotoPath = Path.GetFileName(model.UploadedFile.FileName);
             }
 
             if (string.IsNullOrEmpty(model.SelectedMakeId))
@@ -751,30 +757,35 @@ namespace CarDealership2.Controllers
            
             model.Vehicle.Make = new Make();
             model.Vehicle.Make = vehicleToEdit.Make;
-            model.selectedMakeName = model.Vehicle.Make.MakeName;
+            model.selectedMakeName = model.Vehicle.MakeName;
 
             model.Vehicle.VehicleModel = new Model();
             model.Vehicle.VehicleModel = vehicleToEdit.VehicleModel;
-
+            model.selectedModelName = model.Vehicle.VehicleModelName;
 
             model.Vehicle.Type = new VehicleType();
             model.Vehicle.Type = vehicleToEdit.Type;
+            model.selectedVehicleTypeName = model.Vehicle.VehicleTypeName;
 
 
             model.Vehicle.BodyStyle = new BodyStyle();
             model.Vehicle.BodyStyle = vehicleToEdit.BodyStyle;
-            
+            model.selectedBodyStyleName = model.Vehicle.BodyStyleName;
+
             model.Vehicle.Year = vehicleToEdit.Year;
 
             model.Vehicle.Transmission = new Transmission();
             model.Vehicle.Transmission = vehicleToEdit.Transmission;
+            model.selectedTransmissionName = model.Vehicle.TransmissionName;
 
             model.Vehicle.Color = new Color();
             model.Vehicle.Color = vehicleToEdit.Color;
+            model.selectedColorName = model.Vehicle.ColorName;
 
             model.Vehicle.Interior = new Interior();
             model.Vehicle.Interior = vehicleToEdit.Interior;
-            
+            model.selectedInteriorName = model.Vehicle.InteriorName;
+
             model.Vehicle.Mileage = vehicleToEdit.Mileage;
             
             model.Vehicle.VIN = vehicleToEdit.VIN;
@@ -830,6 +841,21 @@ namespace CarDealership2.Controllers
             var transmissionRepository = TransmissionRepositoryFactory.Create();
             var colorRepository = ColorRepositoryFactory.Create();
             var interiorRepository = InteriorRepositoryFactory.Create();
+
+
+            //if a file was uploaded and that file has content
+            if (model.UploadedFile != null && model.UploadedFile.ContentLength > 0)
+            {
+                // combine the path on the server with the filename uploaded
+                string path = Path.Combine(Server.MapPath("~/Uploads"), Path.GetFileName(model.UploadedFile.FileName));
+
+                //upload thr file to that path
+                model.UploadedFile.SaveAs(path);
+                // save the file name to the  photopath field
+                // thsi is a workaround, wa sgetting JS error saying not allwed to upload get local file when using whole filename
+                //workaround is combine path and filename in JS file via jquery
+                model.Vehicle.PhotoPath = Path.GetFileName(model.UploadedFile.FileName);
+            }
 
             Helper helper = new Helper();
 
@@ -1086,8 +1112,65 @@ namespace CarDealership2.Controllers
 
                 //model.Interiors = from m in interiorRepository.GetAll()                
                 //                  select new SelectListItem { Text = m.InteriorName, Value = m.InteriorId.ToString() };
-                
+
+                //reload make names
+
+                Vehicle vehicleToEdit = VehicleRepo.GetVehicleById(id);
+
+
+                //model.Vehicle = new Vehicle();
+                model.Vehicle = vehicleToEdit; // is the Vehcile found have a null make here
+                model.Vehicle.VehicleId = vehicleToEdit.VehicleId;
+
+                //set the the EditViewModels selection ids to match vehicleToEdit
+                // why is vehicle id zero when it is passed to post contoller????
+
+                model.Vehicle.Make = new Make();
+                model.Vehicle.Make = vehicleToEdit.Make;
+                model.selectedMakeName = model.Vehicle.MakeName;
+
+                model.Vehicle.VehicleModel = new Model();
+                model.Vehicle.VehicleModel = vehicleToEdit.VehicleModel;
+                model.selectedModelName = model.Vehicle.VehicleModelName;
+
+                model.Vehicle.Type = new VehicleType();
+                model.Vehicle.Type = vehicleToEdit.Type;
+                model.selectedVehicleTypeName = model.Vehicle.VehicleTypeName;
+
+
+                model.Vehicle.BodyStyle = new BodyStyle();
+                model.Vehicle.BodyStyle = vehicleToEdit.BodyStyle;
+                model.selectedBodyStyleName = model.Vehicle.BodyStyleName;
+
+                model.Vehicle.Year = vehicleToEdit.Year;
+
+                model.Vehicle.Transmission = new Transmission();
+                model.Vehicle.Transmission = vehicleToEdit.Transmission;
+                model.selectedTransmissionName = model.Vehicle.TransmissionName;
+
+                model.Vehicle.Color = new Color();
+                model.Vehicle.Color = vehicleToEdit.Color;
+                model.selectedColorName = model.Vehicle.ColorName;
+
+                model.Vehicle.Interior = new Interior();
+                model.Vehicle.Interior = vehicleToEdit.Interior;
+                model.selectedInteriorName = model.Vehicle.InteriorName;
+
+                model.Vehicle.Mileage = vehicleToEdit.Mileage;
+
+                model.Vehicle.VIN = vehicleToEdit.VIN;
+
+                model.Vehicle.MRSP = vehicleToEdit.MRSP;
+
+                model.Vehicle.SalePrice = vehicleToEdit.SalePrice;
+
+                model.Vehicle.Description = vehicleToEdit.Description;
+
+                model.Vehicle.IsFeatured = vehicleToEdit.IsFeatured;
+
                 return View("EditVehicle", model);
+
+
 
             }
 

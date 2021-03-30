@@ -33,6 +33,7 @@ function getAllVehicles() {
 
                 var Color = vehicle.Color.ColorName;
                 var VIN = vehicle.VIN;
+                var PhotoPath = vehicle.PhotoPath;
 
                 var count = index;
 
@@ -94,8 +95,8 @@ function getAllVehicles() {
                 //add image div to row
                 $("#" + divrowimageandvehicledata).append('<div class= "col-md-2" id =' + divimage + '></div>');
                 //add image to image div
-                $("#" + divimage).append('<img src="/images/dollar.png" alt="dollar sign" style="width:100px; class="center">');
-
+                //$("#" + divimage).append('<img src="/images/dollar.png" alt="dollar sign" style="width:100px; class="center">');
+                $("#" + divimage).append('<img src=' + PhotoPath + 'alt="dollar sign" style="width:100px; class="center">');
                 //add divvehicledata to divrowimage and vehicledata
                 $("#" + divrowimageandvehicledata).append('<div class="col-md-10" id=' + divvehicledata + '></div>');
                 //add tablevehicledata to divvehicledata
@@ -167,7 +168,7 @@ function getSearchResults() {
     var maxPrice = $('#MaxPrice').val();//int
     var minYear = $('#MinYear').val();//int
     var maxYear = $('#MaxYear').val();//int
-    alert('made it inside method - search term is : ' + searchTerm);
+    //alert('made it inside method - search term is : ' + searchTerm);
     //change url to action that gets searched for vehicles
     $.ajax({
         type: 'GET',
@@ -190,6 +191,10 @@ function getSearchResults() {
                 var Color = vehicle.Color.ColorName;
                 var VIN = vehicle.VIN;
 
+                var PhotoPath = vehicle.PhotoPath;
+
+                //alert("PhotoPath = " + PhotoPath);
+                
                 var count = index;
 
 
@@ -253,7 +258,9 @@ function getSearchResults() {
                 //add image div to row
                 $("#" + divrowimageandvehicledata).append('<div class= "col-md-2" id =' + divimage + '></div>');
                 //add image to image div
-                $("#" + divimage).append('<img src="/images/dollar.png" alt="dollar sign" style="width:100px; class="center">');
+                //$("#" + divimage).append('<img src="/images/dollar.png" alt="dollar sign" style="width:100px; class="center">');
+                //$("#" + divimage).append('<img src=' + PhotoPath + '" alt="dollar sign" style="width:100px; class="center">');
+                $("#" + divimage).append('<img src="/Uploads/' + PhotoPath + '"alt="dollar sign" style="width:100px; class="center">');
 
                 //add divvehicledata to divrowimage and vehicledata
                 $("#" + divrowimageandvehicledata).append('<div class="col-md-10" id=' + divvehicledata + '></div>');

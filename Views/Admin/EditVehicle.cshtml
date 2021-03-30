@@ -14,7 +14,7 @@
 <body>
     <div style="padding-top: 25px;" class="container">
         <div class="row">
-            @using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post))
+            @using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmupload" }))
             {
 
                 <div class="form-row col-md-10">
@@ -68,7 +68,7 @@
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-5">
                         <label for="Colors"> Color </label>
-                        @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors,Model.selectedColorName, new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.SelectedColorId, Model.Colors, Model.selectedColorName, new { @class = "form-control" })
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.SelectedColorId)</span>
                     </div>
 
@@ -122,6 +122,27 @@
                         <span class="text-danger">@Html.ValidationMessageFor(m => m.Vehicle.Description)</span>
                     </div>
                 </div>
+
+                <div class="form-row col-md-10">
+                    <div class="form-group col-md-2">
+                        <img src=/Uploads/@Model.Vehicle.PhotoPath alt="dollar sign" style="width:100px;" class="center">
+                    </div>
+                </div>
+
+                <div class="form-row col-md-10">
+                    <div class="form-group col-md-4">
+                        <H3>Replace Picture</H3>
+                    </div>
+                </div>
+
+                <div class="form-row col-md-10">
+                    <div class="form-group col-md-2">
+                        <label> Select File </label>
+                        @Html.TextBoxFor(m => m.UploadedFile, new { type = "file", @class = "form-control" })
+                        @*<button class="btn btn-md btn-primary">Upload File</button>*@
+                    </div>
+                </div>
+
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-6">
                         @Html.CheckBoxFor(m => m.Vehicle.IsFeatured, true);
@@ -133,7 +154,7 @@
 
                 <div class="form-row col-md-10">
                     <div class="form-group col-md-6">
-                       
+
                         <a href="@Url.Action("DeleteVehicle","Admin", new {id=Model.Vehicle.VehicleId })"
                            class="btn btn-md btn-danger" onclick="return confirm ('Are you sure want to delete vehicle?');">Delete</a>
                         @** add feature to add alert and ask if user is sure they want to delete *@

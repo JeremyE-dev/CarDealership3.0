@@ -79,6 +79,7 @@ namespace CarDealership2.Repositories
             model.Mileage = viewmodel.Vehicle.Mileage;
             model.VIN = viewmodel.Vehicle.VIN;
             model.MRSP = viewmodel.Vehicle.MRSP;
+            model.PhotoPath = viewmodel.Vehicle.PhotoPath;
             model.SalePrice = viewmodel.Vehicle.SalePrice;
             model.Description = viewmodel.Vehicle.Description;
             
@@ -141,7 +142,13 @@ namespace CarDealership2.Repositories
             vehicleToEdit.SalePrice = viewmodel.Vehicle.SalePrice;
             vehicleToEdit.Description = viewmodel.Vehicle.Description;
             vehicleToEdit.IsFeatured = viewmodel.Vehicle.IsFeatured;
-            vehicleToEdit.PhotoPath = viewmodel.Vehicle.PhotoPath;
+
+            if (viewmodel.UploadedFile != null)
+            {
+                vehicleToEdit.PhotoPath = viewmodel.Vehicle.PhotoPath;
+            }
+                
+          
 
             repository.SaveChanges();
 

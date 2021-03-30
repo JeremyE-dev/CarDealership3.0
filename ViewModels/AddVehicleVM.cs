@@ -43,5 +43,7 @@ namespace CarDealership2.ViewModels
         public HttpPostedFileBase UploadedFile { get; set; }
 
 
+
+
     }
 }

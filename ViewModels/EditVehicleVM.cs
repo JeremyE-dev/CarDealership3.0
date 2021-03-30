@@ -53,5 +53,7 @@ namespace CarDealership2.ViewModels
         public string selectedMakeName { get; set; }
 
         public string selectedModelName { get; set; }
+
+        public HttpPostedFileBase UploadedFile { get; set; }
     }
 }

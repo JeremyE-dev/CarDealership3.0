@@ -94,11 +94,12 @@
                 {
 
                     @*line-height: 75px; *@
-                    <div style="border-style: groove; background-color: #f1f1f1; width: 175px; margin: 10px; text-align: center; font-size: 15px; ">
+                    <div style="border-style: groove; background-color: #f1f1f1; width: 175px; margin: 10px; padding-top: 20px; text-align: center; font-size: 14px; ">
 
                         <div class="row">
-                            <img src="/images/Fiat.jpg" alt="dollar sign" style="width:100px" class="center">
-
+                            @*src=/Uploads/@Model.Vehicle.PhotoPath*@
+                            @*<img src="/images/Fiat.jpg " alt="dollar sign" style="width:100px" class="center">*@
+                            <img src=/Uploads/@featured.PhotoPath alt ="dollar sign" style="width:100px" class="center">
 
 
                         </div>

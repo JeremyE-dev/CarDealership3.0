@@ -10,22 +10,61 @@ namespace CarDealership2.Repositories
 {
     public class SpecialRepositoryQA : ISpecialRepository
     {
-        public void Add(AddSpecialVM model)
+        public static List<Special> specials;
+
+        public SpecialRepositoryQA()
         {
-            throw new NotImplementedException();
+            specials = new List<Special>();
+        }
+
+
+        public void Add(AddSpecialVM viewmodel)
+        {
+            
+            Special model = new Special();
+
+            model.Title = viewmodel.special.Title;
+            //sets new id
+
+            model.Description = viewmodel.special.Description;
+
+            if (!specials.Any())
+            {
+                model.SpecialId = 1;
+            }
+
+            else
+            {
+                model.SpecialId = specials.Max(m => m.SpecialId) + 1;
+            }
+
+            specials.Add(model);
+            
         }
 
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+           
+
+            //find the special with this id
+
+            var specialToDelete = specials.FirstOrDefault(s => s.SpecialId == id);
+
+            specials.Remove(specialToDelete);
+            
         }
 
     
 
         public IEnumerable<Special> GetAll()
         {
-            throw new NotImplementedException();
+          
+
+            var s = from special in specials
+                    select special;
+
+            return s;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace CarDealership2.Repositories
 {
     public class ColorRepositoryQA : IColorRepository
     {
-        public List<Color> colors { get; set; }
+        public static List<Color> colors { get; set; }
 
         public ColorRepositoryQA()
         {

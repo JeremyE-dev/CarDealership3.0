@@ -9,7 +9,7 @@ namespace CarDealership2.Repositories
 {
     public class InteriorRepositoryQA : IInteriorRepository
     {
-        public List<Interior> interiors { get; set; }
+        public static List<Interior> interiors { get; set; }
 
         public InteriorRepositoryQA()
         {

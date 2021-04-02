@@ -17,44 +17,48 @@ namespace CarDealership2.Repositories
             purchases = new List<Purchase>();
         }
 
-            public void Add(PurchaseVM viewmodel)
-            {
+
+
+
+        public void Add(PurchaseVM viewmodel)
+        {
 
             string username = viewmodel.salesPerson.UserName;
 
 
             List<UserData> users = UserRepositoryQA.users;
+            List<Vehicle> vehicles = vehicles = VehicleRepositoryQA.vehicles;
 
+            Purchase purchase = new Purchase();
 
-                Purchase purchase = new Purchase();
+            if (!purchases.Any())
+            {
+                purchase.PurchaseId = 1;
+            }
 
-                if (!purchases.Any())
-                {
-                    purchase.PurchaseId = 1;
-                }
+            else
+            {
+                purchase.PurchaseId = purchases.Max(m => m.PurchaseId) + 1;
+            }
+            //if this is teh first one set id this way:
+            //if it is not the first one, set it this way:
 
-                else
-                {
-                    purchase.PurchaseId = purchases.Max(m => m.PurchaseId) + 1;
-                }
-                //if this is teh first one set id this way:
-                //if it is not the first one, set it this way:
-
-                purchase.purchasedVehicle = viewmodel.vehicle;
+            purchase.purchasedVehicle = viewmodel.vehicle;
 
             //Notes - neeed to create in memeory vehicle reposotory
 
+            //public List<Vehicle> vehicles = VehicleRepositoryQA.vehicles;
 
-                //purchase.purchasedVehicle = repository.Vehicles.FirstOrDefault(v => v.VehicleId == viewmodel.vehicle.VehicleId);
-                ////find that vehicle and set is purchased to true
-                //var vehicleToEdit = repository.Vehicles.FirstOrDefault(v => v.VehicleId == purchase.purchasedVehicle.VehicleId);
-                //vehicleToEdit.IsPurchased = true;
+            purchase.purchasedVehicle = vehicles.FirstOrDefault(v => v.VehicleId == viewmodel.vehicle.VehicleId);
+            //find that vehicle and set is purchased to true
+            var vehicleToEdit = vehicles.FirstOrDefault(v => v.VehicleId == purchase.purchasedVehicle.VehicleId);
+            vehicleToEdit.IsPurchased = true;
 
-                //////just in case it is featured, set thatto false
-                //vehicleToEdit.IsFeatured = false;
+            ////just in case it is featured, set thatto false
+            vehicleToEdit.IsFeatured = false;
 
 
-                purchase.name = viewmodel.name;
+            purchase.name = viewmodel.name;
                 purchase.phone = viewmodel.phone;
                 purchase.email = viewmodel.email;
                 purchase.street1 = viewmodel.street1;
@@ -73,11 +77,11 @@ namespace CarDealership2.Repositories
 
                 var user = users.FirstOrDefault(u => u.UserName == username);
 
-                purchase.salesPersonUserName = user.UserName;
+            purchase.salesPersonUserName = user.UserName;
 
                 purchases.Add(purchase);
 
-               
-            }
+        }
+            
     }
 }

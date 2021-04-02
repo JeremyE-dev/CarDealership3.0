@@ -10,7 +10,7 @@ namespace CarDealership2.Repositories
     public class VehicleTypeRepositoryQA : IVehicleTypeRepository
     {
 
-        public List<VehicleType> vehicleTypes;
+        public static List<VehicleType> vehicleTypes;
 
         public VehicleTypeRepositoryQA()
         {

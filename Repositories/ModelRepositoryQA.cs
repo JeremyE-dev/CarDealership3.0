@@ -10,7 +10,7 @@ namespace CarDealership2.Repositories
 {
     public class ModelRepositoryQA : IModelRepository
     {
-        static List<Model> models;
+        public static List<Model> models;
 
         public ModelRepositoryQA()
         {

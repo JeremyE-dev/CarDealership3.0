@@ -10,7 +10,7 @@ namespace CarDealership2.Repositories
 {
     public class TransmissionRepositoryQA : ITransmissionRepository
     {
-        public List<Transmission> transmissions { get; set; }
+        public static List<Transmission> transmissions { get; set; }
 
         public TransmissionRepositoryQA()
         {

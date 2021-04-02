@@ -12,7 +12,7 @@ namespace CarDealership2.Repositories
     {
 
 
-        public List<BodyStyle> bodyStyles { get; set; }
+        public static List<BodyStyle> bodyStyles { get; set; }
 
         public BodyStyleRepositoryQA()       
         {

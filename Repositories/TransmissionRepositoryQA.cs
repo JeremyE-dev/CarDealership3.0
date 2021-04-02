@@ -10,9 +10,23 @@ namespace CarDealership2.Repositories
 {
     public class TransmissionRepositoryQA : ITransmissionRepository
     {
+        public List<Transmission> transmissions { get; set; }
+
+        public TransmissionRepositoryQA()
+        {
+            Transmission Manual = new Transmission { TransmissionId = 1, TransmissionName = "Manual" };
+            Transmission Automatic = new Transmission { TransmissionId = 2, TransmissionName = "Automatic" };
+
+        }
         public IEnumerable<Transmission> GetAll()
         {
-            throw new NotImplementedException();
+
+            var m = from model in transmissions
+                    select model;
+
+
+            return m;
+
         }
     }
 }

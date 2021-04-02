@@ -144,6 +144,11 @@ namespace CarDealership2.Repositories
             repository.SaveChanges();
         }
 
+        public IEnumerable<UserData> TestGetAll()
+        {
+            throw new NotImplementedException();
+        }
+
 
         //public AppUser GetUserById(AppUser appuser)
         //{
@@ -156,6 +161,6 @@ namespace CarDealership2.Repositories
         //    return user;
         //}
 
-      
+
     }
 }

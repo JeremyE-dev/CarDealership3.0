@@ -18,5 +18,7 @@ namespace CarDealership2.Interfaces
         List<AppUser> GetAll();
 
         void ChangePassword(ChangePasswordVM viewmodel);
+
+        IEnumerable<UserData> TestGetAll();
     }
 }

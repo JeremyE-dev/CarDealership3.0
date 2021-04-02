@@ -39,6 +39,8 @@ namespace CarDealership2.Models
 
         public AppUser salesPerson { get; set; }
 
+        public string salesPersonUserName { get; set; }
+
         //public Purchase()
         //{
 

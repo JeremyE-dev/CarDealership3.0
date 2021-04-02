@@ -1,4 +1,5 @@
-﻿using CarDealership2.Models;
+﻿using CarDealership2.Interfaces;
+using CarDealership2.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace CarDealership2.Repositories
 {
-    public class RoleRepositoryProd
+    public class RoleRepositoryProd : IRoleRepository
     {
         //public List<IdentityRole> GetAll()
         public IEnumerable<LocalRole> GetAll()

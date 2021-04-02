@@ -7,11 +7,32 @@ using System.Web;
 
 namespace CarDealership2.Repositories
 {
-    public class BodyStyleRepositoryQA : IBodyStyleRepository
+
+      public class BodyStyleRepositoryQA : IBodyStyleRepository
     {
+
+
+        public List<BodyStyle> bodyStyles { get; set; }
+
+        public BodyStyleRepositoryQA()       
+        {
+            BodyStyle Car = new BodyStyle { BodyStyleId = 1, BodyStyleName = "Car"};
+            BodyStyle Truck = new BodyStyle { BodyStyleId = 2, BodyStyleName = "Truck" };
+            BodyStyle Van = new BodyStyle { BodyStyleId = 2, BodyStyleName = "Van" };
+            BodyStyle SUV = new BodyStyle { BodyStyleId = 2, BodyStyleName = "SUV" };
+
+            bodyStyles.Add(Car);
+            bodyStyles.Add(Truck);
+            bodyStyles.Add(Van);
+            bodyStyles.Add(SUV);
+        }
+
         public IEnumerable<BodyStyle> GetAll()
         {
-            throw new NotImplementedException();
+            var m = from model in bodyStyles
+                    select model;
+
+            return m;
         }
     }
 }

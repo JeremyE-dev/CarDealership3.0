@@ -9,9 +9,23 @@ namespace CarDealership2.Repositories
 {
     public class VehicleTypeRepositoryQA : IVehicleTypeRepository
     {
+
+        public List<VehicleType> vehicleTypes;
+
+        public VehicleTypeRepositoryQA()
+        {
+            VehicleType New = new VehicleType {VehicleTypeId = 1, VehicleTypeName = "New" };
+            VehicleType Used = new VehicleType { VehicleTypeId = 1, VehicleTypeName = "Used" };
+
+            vehicleTypes.Add(New);
+            vehicleTypes.Add(Used);
+        }
         public IEnumerable<VehicleType> GetAll()
         {
-            throw new NotImplementedException();
+            var m = from model in vehicleTypes
+                    select model;
+
+            return m;
         }
     }
 }

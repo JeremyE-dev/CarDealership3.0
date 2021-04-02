@@ -239,6 +239,7 @@
     <Compile Include="Factories\InteriorRepositoryFactory.cs" />
     <Compile Include="Factories\InventoryReportRepositoryFactory.cs" />
     <Compile Include="Factories\PurchaseRepositoryFactory.cs" />
+    <Compile Include="Factories\RoleRepositoryFactory.cs" />
     <Compile Include="Factories\SalesReportRepositoryFactory.cs" />
     <Compile Include="Factories\TransmissionRepositoryFactory.cs" />
     <Compile Include="Factories\VehicleTypeRepositoryFactory.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Interfaces\IMakeRepository.cs" />
     <Compile Include="Interfaces\IModelRepository.cs" />
     <Compile Include="Interfaces\IPurchaseRepository.cs" />
+    <Compile Include="Interfaces\IRoleRepository.cs" />
     <Compile Include="Interfaces\ISalesReportRepository.cs" />
     <Compile Include="Interfaces\ITransmissionRepository.cs" />
     <Compile Include="Interfaces\IVehicleRepository.cs" />
@@ -469,6 +471,7 @@
     <Compile Include="Repositories\PurchaseRepositoryProd.cs" />
     <Compile Include="Repositories\PurchaseRepositoryQA.cs" />
     <Compile Include="Repositories\RoleRepositoryProd.cs" />
+    <Compile Include="Repositories\RoleRepositoryQA.cs" />
     <Compile Include="Repositories\SalesReportRepositoryProd.cs" />
     <Compile Include="Repositories\SalesReportRepositoryQA.cs" />
     <Compile Include="Repositories\SpecialRepositoryProd.cs" />

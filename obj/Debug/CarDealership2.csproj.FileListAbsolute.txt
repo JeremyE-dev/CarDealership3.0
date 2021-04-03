@@ -296,7 +296,6 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\bin\System.Web.WebPages.Razor.xml
 C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Newtonsoft.Json.xml
 C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Antlr3.Runtime.pdb
 C:\Users\Jeremy\source\repos\CarDealership3.0\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.csprojAssemblyReference.cache
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.init.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.identitysetup.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.identityseedtest.resources
@@ -387,3 +386,4 @@ C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migration
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.phonenumberisstring.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.updatedputchasetype.resources
 C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.Migrations.updatedphonetostring.resources
+C:\Users\Jeremy\source\repos\CarDealership3.0\obj\Debug\CarDealership2.csprojAssemblyReference.cache

@@ -14,8 +14,12 @@ namespace CarDealership2.Repositories
 
         public TransmissionRepositoryQA()
         {
+            transmissions = new List<Transmission>();
             Transmission Manual = new Transmission { TransmissionId = 1, TransmissionName = "Manual" };
             Transmission Automatic = new Transmission { TransmissionId = 2, TransmissionName = "Automatic" };
+            
+            transmissions.Add(Manual);
+            transmissions.Add(Automatic);
 
         }
         public IEnumerable<Transmission> GetAll()

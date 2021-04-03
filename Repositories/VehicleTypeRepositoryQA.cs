@@ -14,6 +14,8 @@ namespace CarDealership2.Repositories
 
         public VehicleTypeRepositoryQA()
         {
+            vehicleTypes = new List<VehicleType>();
+
             VehicleType New = new VehicleType {VehicleTypeId = 1, VehicleTypeName = "New" };
             VehicleType Used = new VehicleType { VehicleTypeId = 1, VehicleTypeName = "Used" };
 

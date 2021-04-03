@@ -16,10 +16,12 @@ namespace CarDealership2.Repositories
 
         public BodyStyleRepositoryQA()       
         {
+            bodyStyles = new List<BodyStyle>();
+            
             BodyStyle Car = new BodyStyle { BodyStyleId = 1, BodyStyleName = "Car"};
             BodyStyle Truck = new BodyStyle { BodyStyleId = 2, BodyStyleName = "Truck" };
-            BodyStyle Van = new BodyStyle { BodyStyleId = 2, BodyStyleName = "Van" };
-            BodyStyle SUV = new BodyStyle { BodyStyleId = 2, BodyStyleName = "SUV" };
+            BodyStyle Van = new BodyStyle { BodyStyleId = 3, BodyStyleName = "Van" };
+            BodyStyle SUV = new BodyStyle { BodyStyleId = 4, BodyStyleName = "SUV" };
 
             bodyStyles.Add(Car);
             bodyStyles.Add(Truck);

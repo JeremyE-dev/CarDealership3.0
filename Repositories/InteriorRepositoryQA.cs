@@ -13,6 +13,8 @@ namespace CarDealership2.Repositories
 
         public InteriorRepositoryQA()
         {
+            interiors = new List<Interior>();
+            
             Interior Black = new Interior { InteriorId = 1, InteriorName = "Black" };
             Interior White = new Interior { InteriorId = 2, InteriorName = "White" };
             Interior Red = new Interior { InteriorId = 3, InteriorName = "Red" };

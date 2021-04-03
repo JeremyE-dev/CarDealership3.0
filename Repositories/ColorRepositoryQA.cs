@@ -13,6 +13,8 @@ namespace CarDealership2.Repositories
 
         public ColorRepositoryQA()
         {
+            colors = new List<Color>();
+
             Color Black = new Color {ColorId = 1, ColorName = "Black" };
             Color White = new Color { ColorId = 2, ColorName = "White" };
             Color Red = new Color { ColorId = 3, ColorName = "Red" };

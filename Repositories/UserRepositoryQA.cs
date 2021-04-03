@@ -18,6 +18,8 @@ namespace CarDealership2.Repositories
 
         public  UserRepositoryQA()
         {
+            users = new List<UserData>();
+            
             UserData alan = new UserData { UserId = 1, Email = "awatts@sgcars.com", FirstName = "Alan", LastName = "Watts", UserName = "awatts@sgcars.com", Password = "testing123", RoleName = "sales" };
             UserData tom = new UserData { UserId = 2, Email = "tbaker@sgcars.com", FirstName = "Tom", LastName = "Baker", UserName = "tbaker@sgcars.com", Password = "testing123", RoleName = "sales" };
             UserData jeremy = new UserData { UserId = 3, Email = "jeudaly@sgcars.com", FirstName = "Jeremy", LastName = "Eudaly", UserName = "jeudaly@sgcars.com", Password = "testing123", RoleName = "admin" };

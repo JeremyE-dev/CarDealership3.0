@@ -15,17 +15,27 @@ namespace CarDealership2.Repositories
 
         public MakeRepositoryQA()
         {
+            makes = new List<Make>();
             Make Audi = new Make { MakeId = 1, MakeName = "Audi" };
             Make Buick = new Make { MakeId = 2, MakeName = "Buick" };
             Make Cadillac = new Make { MakeId = 3, MakeName = "Cadillac" };
             Make Dodge = new Make { MakeId = 4, MakeName = "Dodge" };
             Make Fiat = new Make { MakeId = 4, MakeName = "Fiat" };
+
+            makes.Add(Audi);
+            makes.Add(Buick);
+            makes.Add(Cadillac);
+            makes.Add(Dodge);
+            makes.Add(Fiat);
+
         }
        
         public void Add(string makename, string username)
         {
             //var repository = new CarDealership2DbContext();
-            List<UserData> users = UserRepositoryQA.users;
+            UserRepositoryQA UserRepo = new UserRepositoryQA();
+
+            List<UserData> users = UserRepo.TestGetAll().ToList();
 
             Make make = new Make();
             make.MakeName = makename;

@@ -88,7 +88,7 @@ namespace CarDealership2.Repositories
                 MRSP = 13000,
                 SalePrice = 12000,
                 IsFeatured = false,
-                IsPurchased = false,
+                IsPurchased = true,
                 PhotoPath = null
 
             };
@@ -134,7 +134,7 @@ namespace CarDealership2.Repositories
                 MRSP = 13000,
                 SalePrice = 12000,
                 IsFeatured = false,
-                IsPurchased = false,
+                IsPurchased = true,
                 PhotoPath = null
 
             };
@@ -368,7 +368,7 @@ namespace CarDealership2.Repositories
             
 
             var v = from vehicle in vehicles
-                    where vehicle.Type.VehicleTypeName == "Used"
+                    where vehicle.VehicleTypeName == "Used"
                     select vehicle;
 
             return v;
@@ -891,7 +891,7 @@ namespace CarDealership2.Repositories
             //if search term is empty
             if (searchTerm.Equals("0"))
             {
-                foreach (Vehicle v in vehicles)
+                foreach (Vehicle v in AllVehicles)
                 {
 
                     if ((minPrice == 0 && maxPrice == 0) && (minYear == 0 && maxYear == 0))
@@ -950,7 +950,7 @@ namespace CarDealership2.Repositories
            
 
             var AllVehicles = from vehicle in vehicles
-                              where vehicle.Type.VehicleTypeName == "Used"
+                              where vehicle.VehicleTypeName == "Used"
                               select vehicle;
 
             if (minPrice == 0 && maxPrice == 0)
@@ -1167,7 +1167,7 @@ namespace CarDealership2.Repositories
             //if search term is empty
             if (searchTerm.Equals("0"))
             {
-                foreach (Vehicle v in vehicles)
+                foreach (Vehicle v in AllVehicles)
                 {
 
                     if ((minPrice == 0 && maxPrice == 0) && (minYear == 0 && maxYear == 0))

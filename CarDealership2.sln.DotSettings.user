@@ -3,7 +3,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c78e21a_002Df127_002D47e2_002Dba20_002D1a7f93658948/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2e3805d9_002Db685_002D43e5_002D86c7_002Dfa9e006df93e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ModelPropertiesShouldMatchInput" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2e3805d9_002Db685_002D43e5_002D86c7_002Dfa9e006df93e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ModelPropertiesShouldMatchInput" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;NUnit3x::1438CD52-2CE0-426D-ABBA-35C2C60FBB04::.NETFramework,Version=v4.7.2::CarDealershipTests4.MockRepositoryTests.ModelPropertiesShouldMatchInput&lt;/TestId&gt;&#xD;

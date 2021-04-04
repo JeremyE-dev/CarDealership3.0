@@ -20,7 +20,7 @@ namespace CarDealership2.Repositories
             Make Buick = new Make { MakeId = 2, MakeName = "Buick" };
             Make Cadillac = new Make { MakeId = 3, MakeName = "Cadillac" };
             Make Dodge = new Make { MakeId = 4, MakeName = "Dodge" };
-            Make Fiat = new Make { MakeId = 4, MakeName = "Fiat" };
+            Make Fiat = new Make { MakeId = 5, MakeName = "Fiat" };
 
             makes.Add(Audi);
             makes.Add(Buick);

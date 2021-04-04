@@ -11,10 +11,148 @@ namespace CarDealership2.Repositories
     public class VehicleRepositoryQA : IVehicleRepository
     {
         public static List<Vehicle> vehicles;
+        List<Make> makes;
+        List<Model> models;
+
+
+
 
         public VehicleRepositoryQA()
         {
+            List<Make> makes = new List<Make>();
+            List<Model> models = new List<Model>();
+            List<VehicleType> types = new List<VehicleType>();
+
+
+
+            MakeRepositoryQA MakeRepo = new MakeRepositoryQA();
+            makes = MakeRepo.GetAll().ToList();
+
+            ModelRepositoryQA ModelRepo = new ModelRepositoryQA();
+            models = ModelRepo.GetAll().ToList();
+
+            VehicleTypeRepositoryQA TypeRepo = new VehicleTypeRepositoryQA();
+            types = TypeRepo.GetAll().ToList();
+
+
+
             vehicles = new List<Vehicle>();
+
+            Make make = makes.FirstOrDefault();
+            Model model = models.FirstOrDefault();
+
+            VehicleType usedType = types.FirstOrDefault(x => x.VehicleTypeName == "Used");
+            VehicleType newType = types.FirstOrDefault(x => x.VehicleTypeName == "New");
+
+
+
+
+            Vehicle vehicle1New = new Vehicle
+            {
+                VehicleId = 1,
+                Make = make,
+                VehicleModel = model,
+                VehicleTypeId = 1,
+                VehicleTypeName = "New",
+                Year = 2021,
+                TransmissionId = 1,
+                ColorId = 1,
+                InteriorId = 1,
+                BodyStyleId = 1,
+                Mileage = 999,
+                Description = "TBD",
+                VIN = "12345x",
+                MRSP = 12000,
+                SalePrice = 11000,
+                IsFeatured = false,
+                IsPurchased = false,
+                PhotoPath = null
+           
+            };
+
+            Vehicle vehicle2New = new Vehicle
+            {
+                VehicleId = 2,
+                Make = make,
+                VehicleModel = model,
+                VehicleTypeId = 1,
+                VehicleTypeName = "New",
+                Year = 2021,
+                TransmissionId = 2,
+                ColorId = 2,
+                InteriorId = 2,
+                BodyStyleId = 2,
+                Mileage = 999,
+                Description = "TBD",
+                VIN = "12345z",
+                MRSP = 13000,
+                SalePrice = 12000,
+                IsFeatured = false,
+                IsPurchased = false,
+                PhotoPath = null
+
+            };
+
+            Vehicle vehicle3Used = new Vehicle
+            {
+                VehicleId = 3,
+                Make = make,
+                VehicleModel = model,
+                VehicleTypeId = 2,
+                VehicleTypeName = "Used",
+                Year = 2021,
+                TransmissionId = 1,
+                ColorId = 1,
+                InteriorId = 1,
+                BodyStyleId = 1,
+                Mileage = 999,
+                Description = "TBD",
+                VIN = "12345x",
+                MRSP = 12000,
+                SalePrice = 11000,
+                IsFeatured = false,
+                IsPurchased = false,
+                PhotoPath = null
+
+            };
+
+            Vehicle vehicle4Used = new Vehicle
+            {
+                VehicleId = 4,
+                Make = make,
+                VehicleModel = model,
+                VehicleTypeId = 2,
+                VehicleTypeName = "Used",
+                Year = 2021,
+                TransmissionId = 2,
+                ColorId = 2,
+                InteriorId = 2,
+                BodyStyleId = 2,
+                Mileage = 999,
+                Description = "TBD",
+                VIN = "12345z",
+                MRSP = 13000,
+                SalePrice = 12000,
+                IsFeatured = false,
+                IsPurchased = false,
+                PhotoPath = null
+
+            };
+
+
+
+
+
+
+            vehicles.Add(vehicle1New);
+
+            vehicles.Add(vehicle2New);
+
+            vehicles.Add(vehicle3Used);
+
+            vehicles.Add(vehicle4Used);
+
+
         }
 
         public void Add(AddVehicleVM viewmodel)
@@ -23,24 +161,31 @@ namespace CarDealership2.Repositories
 
             List<Model> models = ModelRepositoryQA.models;
 
-            List<VehicleType> vehicleTypes = VehicleTypeRepositoryQA.vehicleTypes;
+            VehicleTypeRepositoryQA VehicleTypeRepo = new VehicleTypeRepositoryQA();
+            List<VehicleType> vehicleTypes = VehicleTypeRepo.GetAll().ToList();
 
-            List<BodyStyle> bodyStyles = BodyStyleRepositoryQA.bodyStyles;
 
-            List<Transmission> transmissions = TransmissionRepositoryQA.transmissions;
+            BodyStyleRepositoryQA BodyStyleRepo = new BodyStyleRepositoryQA();
+            List<BodyStyle> bodyStyles = BodyStyleRepo.GetAll().ToList();
 
-            List<Color> colors = ColorRepositoryQA.colors;
+            TransmissionRepositoryQA TransmissionRepo = new TransmissionRepositoryQA();
+            List<Transmission> transmissions = TransmissionRepo.GetAll().ToList();
 
-            List<Interior> interiors = InteriorRepositoryQA.interiors;
+            ColorRepositoryQA ColorRepo = new ColorRepositoryQA();
+            List<Color> colors = ColorRepo.GetAll().ToList();
 
+
+            InteriorRepositoryQA InteriorRepo = new InteriorRepositoryQA();
+            List<Interior> interiors = InteriorRepo.GetAll().ToList();
             
 
             Vehicle model = new Vehicle();
 
-            if (vehicles.Any())
+            if (!vehicles.Any())
             {
                 model.VehicleId = 1;
             }
+
 
             else
             {
@@ -201,7 +346,7 @@ namespace CarDealership2.Repositories
         public IEnumerable<Vehicle> GetAllNewVehicles()
         {            
             var v = from vehicle in vehicles
-                    where vehicle.Type.VehicleTypeName == "New"
+                    where vehicle.VehicleTypeName == "New"
                     select vehicle;
 
             return v;
@@ -254,7 +399,7 @@ namespace CarDealership2.Repositories
             
 
             var AllVehicles = from vehicle in vehicles
-                              where vehicle.Type.VehicleTypeName == "New"
+                              where vehicle.VehicleTypeName == "New"
                               select vehicle;
 
             if (minPrice == 0 && maxPrice == 0)
@@ -471,7 +616,7 @@ namespace CarDealership2.Repositories
             //if search term is empty
             if (searchTerm.Equals("0"))
             {
-                foreach (Vehicle v in vehicles)
+                foreach (Vehicle v in AllVehicles)
                 {
 
                     if ((minPrice == 0 && maxPrice == 0) && (minYear == 0 && maxYear == 0))

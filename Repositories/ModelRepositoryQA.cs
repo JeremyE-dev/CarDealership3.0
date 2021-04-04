@@ -10,11 +10,71 @@ namespace CarDealership2.Repositories
 {
     public class ModelRepositoryQA : IModelRepository
     {
-        public static List<Model> models;
+        public static List<Model> models { get; set;}
 
         public ModelRepositoryQA()
         {
             models = new List<Model>();
+
+            
+            Model model1 = new Model
+            {
+                ModelName = "A1",
+                ModelId = 1,
+                DateAdded = DateTime.Today.ToShortDateString(),
+                MakeId = 1,
+                MakeName = "Audi",
+                currentUserEmail = "jeudaly@sgcars.com"
+            };
+
+            Model model2 = new Model
+            {
+                ModelName = "B1",
+                ModelId = 2,
+                DateAdded = DateTime.Today.ToShortDateString(),
+                MakeId = 2,
+                MakeName = "Buick",
+                currentUserEmail = "jeudaly@sgcars.com"
+            };
+
+            Model model3 = new Model
+            {
+                ModelName = "C1",
+                ModelId = 3,
+                DateAdded = DateTime.Today.ToShortDateString(),
+                MakeId = 3,
+                MakeName = "Cadillac",
+                currentUserEmail = "jeudaly@sgcars.com"
+            };
+
+            Model model4 = new Model
+            {
+                ModelName = "D1",
+                ModelId = 4,
+                DateAdded = DateTime.Today.ToShortDateString(),
+                MakeId = 4,
+                MakeName = "Dodge",
+                currentUserEmail = "jeudaly@sgcars.com"
+            };
+
+
+            Model model5 = new Model
+            {
+                ModelName = "F1",
+                ModelId = 5,
+                DateAdded = DateTime.Today.ToShortDateString(),
+                MakeId = 5,
+                MakeName = "Fiat",
+                currentUserEmail = "jeudaly@sgcars.com"
+            };
+
+            models.Add(model1);
+            models.Add(model2);
+            models.Add(model3);
+            models.Add(model4);
+            models.Add(model5);
+
+
         }
 
         public void Add(AddModelVM viewmodel)
@@ -29,12 +89,19 @@ namespace CarDealership2.Repositories
             model.DateAdded = DateTime.Today.ToShortDateString();
             model.MakeId = Convert.ToInt32(viewmodel.SelectedMakeId);
 
-            List<Make> makes = MakeRepositoryQA.makes;
+            MakeRepositoryQA MakeRepo = new MakeRepositoryQA();
+
+
+
+            List<Make> makes = MakeRepo.GetAll().ToList();
 
             var make = makes.FirstOrDefault(m => m.MakeId == model.MakeId);
             model.MakeName = make.MakeName;
             // linq query to get the emmail address of the current user
-            var users = UserRepositoryQA.users;
+
+            UserRepositoryQA UserRepo = new UserRepositoryQA();
+
+            List<UserData> users = UserRepo.TestGetAll().ToList();
             var currentuser = users.Where(u => u.UserName == viewmodel.currentUsername).FirstOrDefault();
 
             //now current user email is in the DB

@@ -12,9 +12,51 @@ namespace CarDealership2.Repositories
     {
         public static List<Purchase> purchases;
 
+        
+
         public PurchaseRepositoryQA()
         {
             purchases = new List<Purchase>();
+            
+            VehicleRepositoryQA VehicleRepo = new VehicleRepositoryQA();
+            Vehicle vehicleToPurchase = VehicleRepo.GetVehicleById(1);
+            State state = State.WI;
+            PurchaseTypes TypeOfPurchase = PurchaseTypes.Cash;
+
+            AppUser user = new AppUser()
+            {
+                FirstName = "Rick",
+                LastName = "Steves",
+                RoleName = "sales"
+            };
+
+            Purchase purchase = new Purchase()
+            {
+                city = "Milwaukee",
+                email = "email@email.com",
+                name = "Jeremy Steves",
+                phone = "111-111-1111",
+                purchaseDate = DateTime.Today,
+                purchasePrice = 11000,
+                purchaseState = state,
+                purchaseType = TypeOfPurchase,
+                salesPerson = user,
+                street1 = "1234 First Street",
+                salesPersonUserName = "jeudaly@sgcars.com",
+                purchasedVehicle = vehicleToPurchase,
+                zipcode = 12345,
+                PurchaseId = 1,
+                vehicle = vehicleToPurchase
+
+            };
+
+            purchases.Add(purchase);
+    
+
+
+           
+
+     
         }
 
 
@@ -75,12 +117,20 @@ namespace CarDealership2.Repositories
 
                 //gpto users table and get this userby id
 
-                var user = users.FirstOrDefault(u => u.UserName == username);
-
-            purchase.salesPersonUserName = user.UserName;
+            //commented out - right now do not need to go to user table, will assign username locally for testing purposes
+                //var user = users.FirstOrDefault(u => u.UserName == username);
+            //set username locally for testing purposes - would get username from user table in production
+            purchase.salesPersonUserName = "awatts@sgcars.com";
 
                 purchases.Add(purchase);
 
+        }
+
+        public IEnumerable<Purchase> GetAll()
+        {
+            var results = from p in purchases
+                            select p;
+            return results;
         }
             
     }

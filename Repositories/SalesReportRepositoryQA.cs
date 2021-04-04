@@ -12,7 +12,9 @@ namespace CarDealership2.Repositories
     {
         public List<Sale> GetAll()
         {
-            List<Purchase> purchases = PurchaseRepositoryQA.purchases;
+            PurchaseRepositoryQA PurchaseRepo = new PurchaseRepositoryQA();
+
+            List<Purchase> purchases = PurchaseRepo.GetAll().ToList();
             
             List<Sale> salesByUser = new List<Sale>();
 
